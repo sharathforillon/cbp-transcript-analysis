@@ -1,0 +1,802 @@
+{
+  "sess-358a906bc3c9fa39": {
+    "journey_id": "ACCT_005",
+    "journey_name": "IBAN Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly requests their IBAN number in the first turn, which is the primary intent of this session.",
+    "session_id": "sess-358a906bc3c9fa39",
+    "user_id": "u-5242045cd00634e42979925bf9"
+  },
+  "sess-aeab22217695e1e8": {
+    "journey_id": "ACCT_004",
+    "journey_name": "Account Closure Request",
+    "confidence": 5,
+    "reasoning": "User explicitly states intent to close their savings account in Turn 1, which is the primary reason for initiating contact; subsequent turns clarify details about the closure process.",
+    "session_id": "sess-aeab22217695e1e8",
+    "user_id": "u-2ecb2315837891abcd18a3c5b8"
+  },
+  "sess-ac77e45aa72db4d2": {
+    "journey_id": "CARD_012",
+    "journey_name": "Credit Card Minimum Payment Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks about the minimum payment on their credit card in the first turn, which directly matches the Credit Card Minimum Payment Enquiry journey.",
+    "session_id": "sess-ac77e45aa72db4d2",
+    "user_id": "u-c89fc377596bee6f9906520923"
+  },
+  "sess-67592e19483d8bdb": {
+    "journey_id": "ACCT_013",
+    "journey_name": "Joint Account Holder Addition",
+    "confidence": 5,
+    "reasoning": "User explicitly requests to add their wife as a joint account holder, clearly stated in turns 1, 2, 3, and 4, making this a definitive account management journey.",
+    "session_id": "sess-67592e19483d8bdb",
+    "user_id": "u-2e54349157cc5b49344ecef379"
+  },
+  "sess-2fcd50f76354ec89": {
+    "journey_id": "ACCT_002",
+    "journey_name": "Savings Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly requests to view their savings account balance in the first turn, which is the primary intent of this session.",
+    "session_id": "sess-2fcd50f76354ec89",
+    "user_id": "u-aeb5b7a890bf69636a1f7b3ddc"
+  },
+  "sess-8515cc887d336f35": {
+    "journey_id": "REMI_008",
+    "journey_name": "Transfer Limit Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly asks about daily transfer limit for international transfers, which directly matches the Transfer Limit Enquiry journey.",
+    "session_id": "sess-8515cc887d336f35",
+    "user_id": "u-7a2919a6d4a97e3f27ae9a20da"
+  },
+  "sess-b45fda1c928db8c4": {
+    "journey_id": "LOAN_014",
+    "journey_name": "Loan Payment History Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests loan payment history, which directly matches the LOAN_014 journey definition.",
+    "session_id": "sess-b45fda1c928db8c4",
+    "user_id": "u-af588ed630745d0739b04ba51f"
+  },
+  "sess-a50788e668735a71": {
+    "journey_id": "DIGI_001",
+    "journey_name": "Mobile App Login / Access Issue",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states inability to log into the Mashreq NEO mobile app, which is a direct match for the Mobile App Login/Access Issue journey.",
+    "session_id": "sess-a50788e668735a71",
+    "user_id": "u-407350f3586da6253f05569989"
+  },
+  "sess-2333605c4f19a4e4": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "confidence": 4,
+    "reasoning": "User is asking for their current account balance, which directly matches the Current Account Balance Enquiry journey; confidence is 4 rather than 5 because the account type (current vs. savings) is inferred from the phrasing 'current account' rather than explicitly stated.",
+    "session_id": "sess-2333605c4f19a4e4",
+    "user_id": "u-b5ced079b0ae0b36d7b7b5a7ae"
+  },
+  "sess-07fa56f8ea5cf0c0": {
+    "journey_id": "DIGI_001",
+    "journey_name": "Mobile App Login / Access Issue",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states inability to log into the Mashreq NEO mobile app, which is a direct match for the Mobile App Login/Access Issue journey.",
+    "session_id": "sess-07fa56f8ea5cf0c0",
+    "user_id": "u-1cfa53482bb339bddc3e32d39b"
+  },
+  "sess-40db0078c2f3b5e5": {
+    "journey_id": "CARD_008",
+    "journey_name": "Debit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states their debit card was lost and needs to block it, which directly matches the Debit Card Block / Replacement journey.",
+    "session_id": "sess-40db0078c2f3b5e5",
+    "user_id": "u-440d18c0d9d434c800ee4674cb"
+  },
+  "sess-0028b5b8e3a2e85f": {
+    "journey_id": "ACCT_002",
+    "journey_name": "Savings Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly requests to view their savings account balance, which is a direct match for the Savings Account Balance Enquiry journey.",
+    "session_id": "sess-0028b5b8e3a2e85f",
+    "user_id": "u-1a292b6c669bf7008a7eecbfbd"
+  },
+  "sess-02c63003d2983994": {
+    "journey_id": "ACCT_008",
+    "journey_name": "Account Freeze / Unfreeze Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer is directly asking about their account being frozen, which is a clear match for the Account Freeze/Unfreeze Enquiry journey.",
+    "session_id": "sess-02c63003d2983994",
+    "user_id": "u-0654e9cbe554151321aea09a7e"
+  },
+  "sess-f35de3938d6615a3": {
+    "journey_id": "ACCT_011",
+    "journey_name": "Account Interest Rate Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer's first message directly asks about the interest rate earned on their account, which is the primary intent and matches the Account Interest Rate Enquiry journey.",
+    "session_id": "sess-f35de3938d6615a3",
+    "user_id": "u-b628c3f513975fea7547b82fc6"
+  },
+  "sess-7ee5e56ca9490025": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks for current account balance in the first turn, which is the primary intent; subsequent turns confirm satisfaction with the response.",
+    "session_id": "sess-7ee5e56ca9490025",
+    "user_id": "u-59f78bce9a57b9dbe0f7cd7181"
+  },
+  "sess-fc032faf518c4ca5": {
+    "journey_id": "DIGI_004",
+    "journey_name": "OTP / Authentication Issues",
+    "confidence": 5,
+    "reasoning": "User explicitly states they are not receiving OTP, which is a direct match for the OTP/Authentication Issues journey.",
+    "session_id": "sess-fc032faf518c4ca5",
+    "user_id": "u-3f16350a961c6be9725406b4f8"
+  },
+  "sess-f2620ae456b6c72f": {
+    "journey_id": "LOAN_001",
+    "journey_name": "Personal Loan Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly requests outstanding personal loan balance in the first turn, which is the primary intent and matches LOAN_001 exactly.",
+    "session_id": "sess-f2620ae456b6c72f",
+    "user_id": "u-b2d85ebb652280ad636b947f3e"
+  },
+  "sess-44d85b2e70af1620": {
+    "journey_id": "WELL_002",
+    "journey_name": "Spending Analysis Request",
+    "confidence": 4,
+    "reasoning": "Customer explicitly requests spending analysis in Turn 1, which is the primary intent despite subsequent frustration with the response quality.",
+    "session_id": "sess-44d85b2e70af1620",
+    "user_id": "u-973adeebe3e2d852456ab02a14"
+  },
+  "sess-f14e69acd0c0e07c": {
+    "journey_id": "WELL_001",
+    "journey_name": "Financial Health Check Enquiry",
+    "confidence": 4,
+    "reasoning": "Customer explicitly requests a financial health check in Turn 1, which is the primary intent despite subsequent frustration with the response quality.",
+    "session_id": "sess-f14e69acd0c0e07c",
+    "user_id": "u-2bbfc57d31a2db36b2d0a3b079"
+  },
+  "sess-dfc2f6454243c8b9": {
+    "journey_id": "REMI_001",
+    "journey_name": "International Remittance Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states intent to send money to Egypt, which is a clear international remittance enquiry matching the primary banking need.",
+    "session_id": "sess-dfc2f6454243c8b9",
+    "user_id": "u-629c428bcb9eb4d41d64545879"
+  },
+  "sess-53bc22e1d435064b": {
+    "journey_id": "LOAN_006",
+    "journey_name": "Personal Loan Restructuring Request",
+    "confidence": 5,
+    "reasoning": "Customer explicitly requests loan restructuring due to payment difficulties, which directly matches the Personal Loan Restructuring Request journey.",
+    "session_id": "sess-53bc22e1d435064b",
+    "user_id": "u-f7d5e13c8f0beae9284b08899c"
+  },
+  "sess-c8a72024320b4df5": {
+    "journey_id": "LOAN_009",
+    "journey_name": "Auto Loan Early Settlement",
+    "confidence": 5,
+    "reasoning": "Customer is explicitly asking about charges related to early settlement of a car loan, which directly matches the Auto Loan Early Settlement journey.",
+    "session_id": "sess-c8a72024320b4df5",
+    "user_id": "u-adb5f6459b3028462c3db67fcd"
+  },
+  "sess-5a6715967e56bea4": {
+    "journey_id": "CARD_012",
+    "journey_name": "Credit Card Minimum Payment Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks about the minimum payment on their credit card in the first turn, which directly matches the Credit Card Minimum Payment Enquiry journey.",
+    "session_id": "sess-5a6715967e56bea4",
+    "user_id": "u-fdd7ac0ec58edeca1f25f39ded"
+  },
+  "sess-339825e9c58781e5": {
+    "journey_id": "LOAN_001",
+    "journey_name": "Personal Loan Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking for their outstanding personal loan balance, which is the primary intent of the LOAN_001 journey.",
+    "session_id": "sess-339825e9c58781e5",
+    "user_id": "u-98e6d22154dab9aef706cf50e4"
+  },
+  "sess-a4511940b86a4097": {
+    "journey_id": "LOAN_002",
+    "journey_name": "Personal Loan Statement Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests a loan statement in the first turn, which is the primary intent; subsequent turns confirm satisfaction with the response.",
+    "session_id": "sess-a4511940b86a4097",
+    "user_id": "u-1246b0d448e4db09619aa4f97d"
+  },
+  "sess-16bdd7f5c9a0d0dd": {
+    "journey_id": "CARD_014",
+    "journey_name": "Credit Card Annual Fee Waiver Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests waiver of annual credit card fee, which directly matches the CARD_014 journey definition.",
+    "session_id": "sess-16bdd7f5c9a0d0dd",
+    "user_id": "u-8a894e18a353a74d95b061be78"
+  },
+  "sess-52da47c747ba2751": {
+    "journey_id": "LOAN_001",
+    "journey_name": "Personal Loan Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking for their outstanding personal loan balance, which is the primary intent of the LOAN_001 journey.",
+    "session_id": "sess-52da47c747ba2751",
+    "user_id": "u-9ea289b7edbbf998a5ccc96d9a"
+  },
+  "sess-af698c83da17d332": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks for current account balance in the first turn, which is the primary intent; subsequent turns confirm satisfaction with the response.",
+    "session_id": "sess-af698c83da17d332",
+    "user_id": "u-2cfbac9f234547ac6adb837ff4"
+  },
+  "sess-7b2cc7c4265af5a3": {
+    "journey_id": "WLTH_010",
+    "journey_name": "Structured Product Enquiry",
+    "confidence": 4,
+    "reasoning": "Customer is explicitly asking about structured products offered by Mashreq Bank, which directly maps to the Structured Product Enquiry journey in the Wealth category.",
+    "session_id": "sess-7b2cc7c4265af5a3",
+    "user_id": "u-8e0a4002eb43d4ec9dbe49212d"
+  },
+  "sess-489d6bbaf4d8ef86": {
+    "journey_id": "REMI_004",
+    "journey_name": "Beneficiary Addition / Management",
+    "confidence": 5,
+    "reasoning": "User explicitly states intent to add a new beneficiary for transfers, which directly matches the Beneficiary Addition/Management journey in the remittances category.",
+    "session_id": "sess-489d6bbaf4d8ef86",
+    "user_id": "u-eadd2ced93a92dd95df017ed3e"
+  },
+  "sess-f1160c9ba5ae66f8": {
+    "journey_id": "DIGI_005",
+    "journey_name": "Mobile App Feature Navigation Help",
+    "confidence": 4,
+    "reasoning": "User is asking for help navigating the transfer feature within the mobile app, which is a direct request for feature navigation assistance.",
+    "session_id": "sess-f1160c9ba5ae66f8",
+    "user_id": "u-d773a6fc038d92734022ef5c8a"
+  },
+  "sess-b00e6d2e01b8906d": {
+    "journey_id": "CARD_011",
+    "journey_name": "Credit Card Payment Due Date Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking about their credit card payment due date, which is the exact definition of the CARD_011 journey.",
+    "session_id": "sess-b00e6d2e01b8906d",
+    "user_id": "u-25c5932eecfc31addf89f56045"
+  },
+  "sess-ede56509eb06d250": {
+    "journey_id": "REMI_002",
+    "journey_name": "International Remittance Status Tracking",
+    "confidence": 4,
+    "reasoning": "Customer is reporting a transfer that hasn't arrived and requesting status resolution using a reference number, which is a clear remittance tracking inquiry.",
+    "session_id": "sess-ede56509eb06d250",
+    "user_id": "u-b9574b8c912d77d38c59748fc2"
+  },
+  "sess-4929bb70dc66569d": {
+    "journey_id": "LOAN_001",
+    "journey_name": "Personal Loan Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking for their outstanding personal loan balance, which is the primary intent of the LOAN_001 journey.",
+    "session_id": "sess-4929bb70dc66569d",
+    "user_id": "u-c048b4c0d81850fef866f199fc"
+  },
+  "sess-3d52d9c21d42a4a9": {
+    "journey_id": "CARD_011",
+    "journey_name": "Credit Card Payment Due Date Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking about their credit card payment due date, which is the exact definition of the CARD_011 journey.",
+    "session_id": "sess-3d52d9c21d42a4a9",
+    "user_id": "u-762282b95d88224c4cf792ac13"
+  },
+  "sess-0a8088024203f621": {
+    "journey_id": "CARD_011",
+    "journey_name": "Credit Card Payment Due Date Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking about their credit card payment due date, which is the exact definition of the CARD_011 journey.",
+    "session_id": "sess-0a8088024203f621",
+    "user_id": "u-148dd759612ed7475bdcd9c0cf"
+  },
+  "sess-e24abdbc551e96b1": {
+    "journey_id": "ACCT_004",
+    "journey_name": "Account Closure Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests to close their savings account in Turn 1, which is the primary intent; Turn 2 clarifies the account has zero balance and expresses frustration about closure barriers.",
+    "session_id": "sess-e24abdbc551e96b1",
+    "user_id": "u-fbe15b547772fdee2f6175d054"
+  },
+  "sess-176ddd091329707c": {
+    "journey_id": "CARD_014",
+    "journey_name": "Credit Card Annual Fee Waiver Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests waiver of annual credit card fee, which directly matches the CARD_014 journey definition.",
+    "session_id": "sess-176ddd091329707c",
+    "user_id": "u-a282740bebd115b81139b67fac"
+  },
+  "sess-5957d88f2ed09db7": {
+    "journey_id": "LOAN_010",
+    "journey_name": "Home Loan Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly requests their home loan balance, which directly matches the Home Loan Balance Enquiry journey definition.",
+    "session_id": "sess-5957d88f2ed09db7",
+    "user_id": "u-c92f857b0d9b035832b095c318"
+  },
+  "sess-6169426a69e9ea5d": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "User explicitly states need to block credit card urgently in first message, indicating immediate card security concern requiring blocking action.",
+    "session_id": "sess-6169426a69e9ea5d",
+    "user_id": "u-7e963e2dbe689bad5a760038df"
+  },
+  "sess-8ee321eacc09b6ac": {
+    "journey_id": "CARD_001",
+    "journey_name": "Credit Card Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks for their credit card balance, which is a direct match to the Credit Card Balance Enquiry journey.",
+    "session_id": "sess-8ee321eacc09b6ac",
+    "user_id": "u-d93520091683af58bc6eff88b7"
+  },
+  "sess-4050446fa3137edf": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks for current account balance in the first turn, which is the primary intent; subsequent turns confirm satisfaction with the response.",
+    "session_id": "sess-4050446fa3137edf",
+    "user_id": "u-1a56896a2657a53a16ba09c7ec"
+  },
+  "sess-7b78cded1bff3798": {
+    "journey_id": "ACCT_005",
+    "journey_name": "IBAN Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly requesting their IBAN number, which is a straightforward account information enquiry matching the IBAN Enquiry journey.",
+    "session_id": "sess-7b78cded1bff3798",
+    "user_id": "u-b967a77f14110b1f3f9c3e398d"
+  },
+  "sess-1d00eea6a768682c": {
+    "journey_id": "REMI_001",
+    "journey_name": "International Remittance Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states intent to send money to Pakistan, which is a core international remittance enquiry for Mashreq Bank's cross-border transfer services.",
+    "session_id": "sess-1d00eea6a768682c",
+    "user_id": "u-e575c7ab05668e91675d8c915e"
+  },
+  "sess-4a4d7bdc7dd2c454": {
+    "journey_id": "REMI_001",
+    "journey_name": "International Remittance Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states intent to send money to Pakistan, which is a core international remittance enquiry for Mashreq Bank's cross-border transfer services.",
+    "session_id": "sess-4a4d7bdc7dd2c454",
+    "user_id": "u-b4700f73cb69060f7ee7f3efa4"
+  },
+  "sess-ce4bd614a8c910ef": {
+    "journey_id": "LOAN_004",
+    "journey_name": "Personal Loan Application Status",
+    "confidence": 5,
+    "reasoning": "User explicitly asks about loan application status in the first turn, which is the primary intent; subsequent turns express doubt and request escalation but do not change the core journey.",
+    "session_id": "sess-ce4bd614a8c910ef",
+    "user_id": "u-b1514fa07fc16c435decd82673"
+  },
+  "sess-959a9ca21daa12b5": {
+    "journey_id": "DIGI_006",
+    "journey_name": "Cardless Withdrawal Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking about the mechanics and process of cardless ATM withdrawal, which is a specific digital banking feature enquiry.",
+    "session_id": "sess-959a9ca21daa12b5",
+    "user_id": "u-81255a271efec39f9c02e79529"
+  },
+  "sess-8bc7081750e6295e": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly and repeatedly requests current account balance information across multiple turns, clearly indicating the primary intent is a current account balance enquiry.",
+    "session_id": "sess-8bc7081750e6295e",
+    "user_id": "u-293a75036b5e86d398a29ff74a"
+  },
+  "sess-c9366f8cfbeaaaf7": {
+    "journey_id": "REMI_002",
+    "journey_name": "International Remittance Status Tracking",
+    "confidence": 4,
+    "reasoning": "Customer initiated contact with a missing transfer and reference number, indicating they need to track the status of a remittance that has not yet arrived.",
+    "session_id": "sess-c9366f8cfbeaaaf7",
+    "user_id": "u-aee484191a8e677b50808751cb"
+  },
+  "sess-b7f80c4e29114397": {
+    "journey_id": "ACCT_005",
+    "journey_name": "IBAN Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly requesting their IBAN number, which is a straightforward account information enquiry matching the IBAN Enquiry journey.",
+    "session_id": "sess-b7f80c4e29114397",
+    "user_id": "u-a9ec9b880104e8454e06515a31"
+  },
+  "sess-35372685aa10f733": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "User explicitly states need to block credit card urgently, which directly matches the Credit Card Block/Replacement journey.",
+    "session_id": "sess-35372685aa10f733",
+    "user_id": "u-3591153541ea1614ba34655763"
+  },
+  "sess-446dd49ad1b3ac91": {
+    "journey_id": "ACCT_003",
+    "journey_name": "Account Statement Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests account statement for a specific period (last 3 months), which directly matches the Account Statement Request journey.",
+    "session_id": "sess-446dd49ad1b3ac91",
+    "user_id": "u-c553b7e75b4f9c35c603e30553"
+  },
+  "sess-8e5b4ffa924f642e": {
+    "journey_id": "LOAN_007",
+    "journey_name": "Personal Loan EMI Deferral Request",
+    "confidence": 5,
+    "reasoning": "User is explicitly requesting to defer their EMI (Equated Monthly Instalment) payment, which directly matches the Personal Loan EMI Deferral Request journey.",
+    "session_id": "sess-8e5b4ffa924f642e",
+    "user_id": "u-4adf2bd80a99a2b6ee7777afc5"
+  },
+  "sess-a1d3c86584734aa5": {
+    "journey_id": "DIGI_004",
+    "journey_name": "OTP / Authentication Issues",
+    "confidence": 5,
+    "reasoning": "Customer explicitly reports not receiving OTP across multiple turns, which is a clear authentication/OTP delivery issue in digital banking.",
+    "session_id": "sess-a1d3c86584734aa5",
+    "user_id": "u-ec05f30842bea9a93c8b94ca0c"
+  },
+  "sess-01444d44a851be28": {
+    "journey_id": "REMI_001",
+    "journey_name": "International Remittance Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states intent to send money to UK, which is a clear international remittance enquiry requiring information about cross-border transfer options.",
+    "session_id": "sess-01444d44a851be28",
+    "user_id": "u-c513d700be676447949e09562d"
+  },
+  "sess-66acec9fe2eabc2c": {
+    "journey_id": "DIGI_004",
+    "journey_name": "OTP / Authentication Issues",
+    "confidence": 5,
+    "reasoning": "User explicitly states they are not receiving OTP, which is a direct match for the OTP/Authentication Issues journey.",
+    "session_id": "sess-66acec9fe2eabc2c",
+    "user_id": "u-e6e3f1931b6312fe5817ce5f55"
+  },
+  "sess-aace85e9db670cf1": {
+    "journey_id": "LOAN_007",
+    "journey_name": "Personal Loan EMI Deferral Request",
+    "confidence": 5,
+    "reasoning": "User is explicitly requesting to defer their EMI (Equated Monthly Instalment) payment, which directly matches the Personal Loan EMI Deferral Request journey.",
+    "session_id": "sess-aace85e9db670cf1",
+    "user_id": "u-27134aa6fb64828ffc7b578f38"
+  },
+  "sess-ef41f63c241506c0": {
+    "journey_id": "REMI_003",
+    "journey_name": "Exchange Rate Enquiry",
+    "confidence": 5,
+    "reasoning": "User's primary intent in Turn 1 is to inquire about USD to AED exchange rates, which is a direct match for the Exchange Rate Enquiry journey under Remittances.",
+    "session_id": "sess-ef41f63c241506c0",
+    "user_id": "u-e6af2c9eccf49643d55377d96c"
+  },
+  "sess-bb7c70648aa92578": {
+    "journey_id": "CARD_001",
+    "journey_name": "Credit Card Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks for credit card balance in the first turn, which is the primary intent; subsequent turns confirm satisfaction with the response.",
+    "session_id": "sess-bb7c70648aa92578",
+    "user_id": "u-387387d819bb8a4343d5acb78d"
+  },
+  "sess-116496d41f179041": {
+    "journey_id": "ACCT_003",
+    "journey_name": "Account Statement Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests account statement for a specific period (last 3 months), which directly matches the Account Statement Request journey.",
+    "session_id": "sess-116496d41f179041",
+    "user_id": "u-319f4f7b404d21e6f9736d8e09"
+  },
+  "sess-bae21d28bed79004": {
+    "journey_id": "LOAN_003",
+    "journey_name": "Personal Loan Eligibility Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking about personal loan eligibility, which is the primary intent of this session.",
+    "session_id": "sess-bae21d28bed79004",
+    "user_id": "u-36524254d94f184f570a7d833b"
+  },
+  "sess-3bd3e895b8fa124d": {
+    "journey_id": "ACCT_003",
+    "journey_name": "Account Statement Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests account statement for a 3-month period in the first turn, which is the primary intent of the session.",
+    "session_id": "sess-3bd3e895b8fa124d",
+    "user_id": "u-3c0104bc481be0a047f8bb3006"
+  },
+  "sess-da87fc18908dad20": {
+    "journey_id": "REMI_003",
+    "journey_name": "Exchange Rate Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer is directly asking for current exchange rate information between USD and AED, which is a standard remittance-related enquiry.",
+    "session_id": "sess-da87fc18908dad20",
+    "user_id": "u-84d6a04c168639848314a7fe2d"
+  },
+  "sess-2562a0297cb4a86b": {
+    "journey_id": "ACCT_011",
+    "journey_name": "Account Interest Rate Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer is directly asking about the interest rate earned on their account, which is a straightforward account interest rate enquiry.",
+    "session_id": "sess-2562a0297cb4a86b",
+    "user_id": "u-908a1d64d2cd16e239f48220e6"
+  },
+  "sess-054c1dad7da14d3f": {
+    "journey_id": "ACCT_003",
+    "journey_name": "Account Statement Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests account statement for a specific period (last 3 months), which directly matches the Account Statement Request journey.",
+    "session_id": "sess-054c1dad7da14d3f",
+    "user_id": "u-0f8cbffaa55bc1bcdf6690e5c6"
+  },
+  "sess-b153a16d7d7053e8": {
+    "journey_id": "LOAN_007",
+    "journey_name": "Personal Loan EMI Deferral Request",
+    "confidence": 5,
+    "reasoning": "User is explicitly requesting to defer their EMI (Equated Monthly Instalment) payment, which directly matches the Personal Loan EMI Deferral Request journey.",
+    "session_id": "sess-b153a16d7d7053e8",
+    "user_id": "u-a25d49f29455e81cdc31a419e4"
+  },
+  "sess-cb7026b8207dc3f4": {
+    "journey_id": "REMI_001",
+    "journey_name": "International Remittance Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states intent to send money to Philippines, which is a clear international remittance enquiry, the primary banking need initiating this session.",
+    "session_id": "sess-cb7026b8207dc3f4",
+    "user_id": "u-e76c0d51e880c8cc5a0694137b"
+  },
+  "sess-aaad6bbf8dd3495f": {
+    "journey_id": "ACCT_003",
+    "journey_name": "Account Statement Request",
+    "confidence": 5,
+    "reasoning": "User explicitly requests account statement for a specific period (last 3 months), which directly matches the Account Statement Request journey.",
+    "session_id": "sess-aaad6bbf8dd3495f",
+    "user_id": "u-ff2f41a339e15d6b6264512f56"
+  },
+  "sess-67e1b2d838980fdb": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "User explicitly states need to block credit card urgently, which directly matches the Credit Card Block/Replacement journey.",
+    "session_id": "sess-67e1b2d838980fdb",
+    "user_id": "u-1b69036bfd5e865141e58ea8d0"
+  },
+  "sess-3a31dcdf1e448021": {
+    "journey_id": "REMI_003",
+    "journey_name": "Exchange Rate Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer is directly asking for current exchange rate information between USD and AED, which is a standard remittance-related enquiry.",
+    "session_id": "sess-3a31dcdf1e448021",
+    "user_id": "u-74822791b2941bed8f348d9d77"
+  },
+  "sess-3add2f1fb7972b26": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "User explicitly states need to block credit card urgently in the first turn, which directly matches the Credit Card Block/Replacement journey.",
+    "session_id": "sess-3add2f1fb7972b26",
+    "user_id": "u-e093f6bb4965e5af68657e6fdd"
+  },
+  "sess-271a29d6da89dd37": {
+    "journey_id": "CARD_011",
+    "journey_name": "Credit Card Payment Due Date Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking about their credit card payment due date, which is the exact definition of the CARD_011 journey.",
+    "session_id": "sess-271a29d6da89dd37",
+    "user_id": "u-8fbf04a94d1f71181e85b8334b"
+  },
+  "sess-d8e44515da75fb4f": {
+    "journey_id": "WLTH_003",
+    "journey_name": "Fixed Deposit Renewal Request",
+    "confidence": 5,
+    "reasoning": "User explicitly states intent to renew a fixed deposit in the first turn, which directly matches the Fixed Deposit Renewal Request journey.",
+    "session_id": "sess-d8e44515da75fb4f",
+    "user_id": "u-64b017b5d0a45cace56f71463b"
+  },
+  "sess-845b8907ea88de6e": {
+    "journey_id": "DIGI_001",
+    "journey_name": "Mobile App Login / Access Issue",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states inability to log into the Mashreq NEO mobile app, which is a direct match for the Mobile App Login/Access Issue journey.",
+    "session_id": "sess-845b8907ea88de6e",
+    "user_id": "u-57916beb3d1b34c8636d1cf857"
+  },
+  "sess-7b43e7c232f7e32c": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "confidence": 4,
+    "reasoning": "User explicitly states they want to block their credit card and escalated to human agent after bot was unable to assist, indicating a clear intent to block/replace their card.",
+    "session_id": "sess-7b43e7c232f7e32c",
+    "user_id": "u-4b69eb51fcbf08955e0c8273c2"
+  },
+  "sess-5f4b8c9adc0e963c": {
+    "journey_id": "CARD_008",
+    "journey_name": "Debit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states their debit card was lost and needs to block it, which directly matches the Debit Card Block / Replacement journey.",
+    "session_id": "sess-5f4b8c9adc0e963c",
+    "user_id": "u-8f1f328b67dd561348b238f46c"
+  },
+  "sess-e73e4ef54f4430f0": {
+    "journey_id": "REMI_003",
+    "journey_name": "Exchange Rate Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer is directly asking for current exchange rate information between USD and AED, which is a standard remittance-related enquiry.",
+    "session_id": "sess-e73e4ef54f4430f0",
+    "user_id": "u-5c50d2ec75d6eccf4eb21231c3"
+  },
+  "sess-1fb8f34942214be2": {
+    "journey_id": "WLTH_007",
+    "journey_name": "Sukuk / Bond Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly asks about available Sukuk options in the first turn, which directly matches the Sukuk/Bond Enquiry journey; subsequent turns confirm closure of the enquiry.",
+    "session_id": "sess-1fb8f34942214be2",
+    "user_id": "u-96a5d2ad61640095dccc722257"
+  },
+  "sess-ff8a0bc24f400be0": {
+    "journey_id": "REMI_008",
+    "journey_name": "Transfer Limit Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly asks about daily transfer limit for international transfers, which directly matches the Transfer Limit Enquiry journey.",
+    "session_id": "sess-ff8a0bc24f400be0",
+    "user_id": "u-23bb95fc068103b13a5fe9e361"
+  },
+  "sess-332d35edb4d814fe": {
+    "journey_id": "REMI_001",
+    "journey_name": "International Remittance Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly states intent to send money to Pakistan, which is a core international remittance enquiry for Mashreq Bank's cross-border transfer services.",
+    "session_id": "sess-332d35edb4d814fe",
+    "user_id": "u-56356ae84bf923766d1a378eec"
+  },
+  "sess-f0ccb3d3cb8c8b21": {
+    "journey_id": "CARD_001",
+    "journey_name": "Credit Card Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User's primary intent in Turn 1 is explicitly requesting their credit card balance, which directly matches the CARD_001 journey definition.",
+    "session_id": "sess-f0ccb3d3cb8c8b21",
+    "user_id": "u-8061be47f66564bf962337dfae"
+  },
+  "sess-d5b954d2ef16d811": {
+    "journey_id": "DIGI_009",
+    "journey_name": "Push Notification / Alert Setup",
+    "confidence": 4,
+    "reasoning": "Customer is asking about setting up transaction alerts, which directly corresponds to the alert setup functionality in digital banking.",
+    "session_id": "sess-d5b954d2ef16d811",
+    "user_id": "u-2e29cbcf33166f863a957ee5f3"
+  },
+  "sess-b247225ab3f40a0b": {
+    "journey_id": "ACCT_002",
+    "journey_name": "Savings Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly requests to view their savings account balance, which is a direct match for the Savings Account Balance Enquiry journey.",
+    "session_id": "sess-b247225ab3f40a0b",
+    "user_id": "u-62fefa5164cd731cb097b47b9a"
+  },
+  "sess-998c9186421d9740": {
+    "journey_id": "ACCT_007",
+    "journey_name": "Cheque Status Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly asking about the status of a specific cheque number, which is a clear and unambiguous cheque status enquiry.",
+    "session_id": "sess-998c9186421d9740",
+    "user_id": "u-d00cd713c073e478f5997a9789"
+  },
+  "sess-125d0eed478adc85": {
+    "journey_id": "WLTH_010",
+    "journey_name": "Structured Product Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly and repeatedly asks about structured products offered by Mashreq Bank, which directly maps to the Structured Product Enquiry journey in the Wealth category.",
+    "session_id": "sess-125d0eed478adc85",
+    "user_id": "u-a1432412ca731c6f216897127e"
+  },
+  "sess-d8ec59e773d68f6e": {
+    "journey_id": "ACCT_005",
+    "journey_name": "IBAN Enquiry",
+    "confidence": 5,
+    "reasoning": "User is directly requesting their IBAN number, which is a straightforward account information enquiry.",
+    "session_id": "sess-d8ec59e773d68f6e",
+    "user_id": "u-bbaad931c9fa73e68911240335"
+  },
+  "sess-1feba3bf84beae62": {
+    "journey_id": "WELL_005",
+    "journey_name": "Product Recommendation Enquiry",
+    "confidence": 4,
+    "reasoning": "Customer is asking for product recommendations, which directly matches the Product Recommendation Enquiry journey under Wellness/Advisory services.",
+    "session_id": "sess-1feba3bf84beae62",
+    "user_id": "u-47bd939d39a549af3b46d6a575"
+  },
+  "sess-f8604f46e4113021": {
+    "journey_id": "LOAN_003",
+    "journey_name": "Personal Loan Eligibility Enquiry",
+    "confidence": 4,
+    "reasoning": "Customer's primary intent is to check personal loan eligibility (Turn 1), with subsequent turns showing authentication/verification issues that are secondary to the main enquiry.",
+    "session_id": "sess-f8604f46e4113021",
+    "user_id": "u-c11692667609bd4cb25cda0832"
+  },
+  "sess-e1b45a60b5f224e0": {
+    "journey_id": "CARD_001",
+    "journey_name": "Credit Card Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks for their credit card balance, which is a direct match to the Credit Card Balance Enquiry journey.",
+    "session_id": "sess-e1b45a60b5f224e0",
+    "user_id": "u-2162dc2091e3e24480a9221f50"
+  },
+  "sess-0f077299dbd2c233": {
+    "journey_id": "DIGI_005",
+    "journey_name": "Mobile App Feature Navigation Help",
+    "confidence": 4,
+    "reasoning": "User is asking for help navigating a specific feature (transfer option) within the mobile app, which directly matches the Mobile App Feature Navigation Help journey.",
+    "session_id": "sess-0f077299dbd2c233",
+    "user_id": "u-4121e00434797eccfd6977053b"
+  },
+  "sess-ad9c13c783aa57c8": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "User explicitly states need to block credit card urgently in Turn 1, with emphasis on urgency and resolution in Turn 2, directly matching the Credit Card Block/Replacement journey.",
+    "session_id": "sess-ad9c13c783aa57c8",
+    "user_id": "u-0d890ee52cc9de62fb6544d86c"
+  },
+  "sess-19713f7de913ad54": {
+    "journey_id": "ACCT_005",
+    "journey_name": "IBAN Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer explicitly requests their IBAN number in the first turn, which is the primary intent of this session.",
+    "session_id": "sess-19713f7de913ad54",
+    "user_id": "u-2e43e8aed2cdc09b9e2de6d372"
+  },
+  "sess-28c826489b3cc3ca": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "confidence": 5,
+    "reasoning": "User explicitly states need to block credit card urgently, which directly matches the Credit Card Block/Replacement journey.",
+    "session_id": "sess-28c826489b3cc3ca",
+    "user_id": "u-c68c00c35b083a0423cac85bb5"
+  },
+  "sess-6f15f8990dbf6856": {
+    "journey_id": "CARD_011",
+    "journey_name": "Credit Card Payment Due Date Enquiry",
+    "confidence": 5,
+    "reasoning": "User's first message explicitly asks about credit card payment due date, which is the primary intent and matches CARD_011 exactly.",
+    "session_id": "sess-6f15f8990dbf6856",
+    "user_id": "u-0e485d5747be2d998875ecf618"
+  },
+  "sess-5e1c1b284f285954": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "confidence": 4,
+    "reasoning": "User is asking for their current account balance, which directly matches the Current Account Balance Enquiry journey; confidence is 4 rather than 5 because the account type (current vs. savings) is inferred from the phrasing 'current account' rather than explicitly stated.",
+    "session_id": "sess-5e1c1b284f285954",
+    "user_id": "u-39b8244a762c5994b71b3f2a64"
+  },
+  "sess-8b76f0a9af71bad0": {
+    "journey_id": "ACCT_005",
+    "journey_name": "IBAN Enquiry",
+    "confidence": 5,
+    "reasoning": "Customer is directly requesting their IBAN number, which is a straightforward account information enquiry.",
+    "session_id": "sess-8b76f0a9af71bad0",
+    "user_id": "u-347284f99236915fa7884a53cc"
+  },
+  "sess-00e5580b91ee20d3": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks for current account balance in the first turn, which is the primary intent; subsequent turns confirm satisfaction with the response.",
+    "session_id": "sess-00e5580b91ee20d3",
+    "user_id": "u-f7c02987695724f489794026fd"
+  },
+  "sess-d4427d8ff2808ad6": {
+    "journey_id": "DIGI_001",
+    "journey_name": "Mobile App Login / Access Issue",
+    "confidence": 4,
+    "reasoning": "User explicitly states they cannot log into their mobile app, indicating a login or access problem with the digital banking platform.",
+    "session_id": "sess-d4427d8ff2808ad6",
+    "user_id": "u-441b2c483d8f30e228d5a9c0fb"
+  },
+  "sess-ff72101a93f21649": {
+    "journey_id": "COMP_002",
+    "journey_name": "Complaint Status Followup",
+    "confidence": 5,
+    "reasoning": "Customer explicitly inquires about the status of a specific complaint ID (172221), which directly matches the Complaint Status Followup journey.",
+    "session_id": "sess-ff72101a93f21649",
+    "user_id": "u-0e822b39caaf476d886a21074a"
+  },
+  "sess-1d7becfe224adbd4": {
+    "journey_id": "CARD_012",
+    "journey_name": "Credit Card Minimum Payment Enquiry",
+    "confidence": 5,
+    "reasoning": "User explicitly asks about the minimum payment on their credit card in the first turn, which directly matches the Credit Card Minimum Payment Enquiry journey.",
+    "session_id": "sess-1d7becfe224adbd4",
+    "user_id": "u-cfdd99c39f96bc2671dcd3880c"
+  }
+}

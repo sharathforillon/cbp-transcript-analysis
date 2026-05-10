@@ -1,0 +1,492 @@
+{
+  "LOAN_003": {
+    "journey_id": "LOAN_003",
+    "journey_name": "Personal Loan Eligibility Enquiry",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "authentication_friction",
+    "failure_mode_distribution": {
+      "authentication_friction": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "authentication_friction_reduction",
+        "priority": 1,
+        "rationale": "Single session shows authentication friction blocking loan eligibility enquiry; reducing auth steps or improving fallback will unblock this journey.",
+        "estimated_impact": "high",
+        "implementation_complexity": "medium"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "What authentication methods are accepted for loan eligibility checks?",
+      "What should I do if authentication fails during loan enquiry?"
+    ],
+    "confidence": 2,
+    "reasoning": "Sample size of 1 session is insufficient to establish pattern confidence; authentication friction is the sole failure mode observed, but broader sampling is needed before full remediation scope can be determined.",
+    "sessions_in_sample": 1
+  },
+  "CARD_004": {
+    "journey_id": "CARD_004",
+    "journey_name": "Credit Card Block / Replacement",
+    "sessions_analyzed": 3,
+    "primary_failure_mode": "backend_integration_gap",
+    "failure_mode_distribution": {
+      "backend_integration_gap": 2,
+      "customer_demanded_human": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "backend_integration",
+        "priority": 1,
+        "rationale": "Two of three escalations (67%) stem from backend API integration failures preventing the bot from completing card block/replacement actions; fixing this integration will directly resolve the majority of escalations.",
+        "estimated_impact": "high",
+        "implementation_complexity": "high"
+      },
+      {
+        "remediation_type": "flow_redesign",
+        "priority": 2,
+        "rationale": "One escalation was driven by customer demand for human interaction; redesigning the flow to offer earlier human handoff or clearer expectations may reduce friction for customers who prefer agent assistance.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "medium"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "How long does it take to block a credit card?",
+      "What happens to pending transactions when I block my card?",
+      "Can I replace my card immediately after blocking it?",
+      "Will I receive a replacement card by mail or can I pick it up?"
+    ],
+    "confidence": 3,
+    "reasoning": "Small sample size (n=3) limits confidence, but backend integration gap is clearly the dominant failure mode; recommend prioritizing API fix while monitoring customer_demanded_human escalations to determine if flow redesign is needed post-fix.",
+    "sessions_in_sample": 3
+  },
+  "WELL_002": {
+    "journey_id": "WELL_002",
+    "journey_name": "Spending Analysis Request",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "backend_integration_gap",
+    "failure_mode_distribution": {
+      "backend_integration_gap": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "backend_integration",
+        "priority": 1,
+        "rationale": "The bot cannot complete spending analysis requests due to missing or broken API integration with the backend spending data service.",
+        "estimated_impact": "high",
+        "implementation_complexity": "high"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [],
+    "confidence": 2,
+    "reasoning": "Only one session analyzed; backend_integration_gap is clear but sample size is too small to validate pattern or estimate true escalation rate for this journey.",
+    "sessions_in_sample": 1
+  },
+  "CARD_008": {
+    "journey_id": "CARD_008",
+    "journey_name": "Debit Card Block / Replacement",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "policy_routed",
+    "failure_mode_distribution": {
+      "policy_routed": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "no_action",
+        "priority": 1,
+        "rationale": "The single escalation was correctly policy-routed, indicating the bot appropriately identified a case requiring human judgment rather than failing to handle it.",
+        "estimated_impact": "low",
+        "implementation_complexity": "low"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [],
+    "confidence": 2,
+    "reasoning": "Sample size of 1 session is insufficient to establish a reliable pattern; policy_routed classification suggests correct bot behavior, but more data is needed to confirm this journey does not require remediation.",
+    "sessions_in_sample": 1
+  },
+  "ACCT_013": {
+    "journey_id": "ACCT_013",
+    "journey_name": "Joint Account Holder Addition",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "bot_fallback_exhausted",
+    "failure_mode_distribution": {
+      "bot_fallback_exhausted": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "intent_model_improvement",
+        "priority": 1,
+        "rationale": "Bot exhausted fallback handling, indicating NLU failed to recognize customer intent; retraining with domain-specific examples for joint account addition requests will improve intent classification accuracy.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "medium"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "How do I add a joint account holder?",
+      "What documents are required to add a joint account holder?",
+      "What are the eligibility requirements for joint account holders?"
+    ],
+    "confidence": 2,
+    "reasoning": "Single session with bot_fallback_exhausted is insufficient to establish pattern confidence; recommend intent model improvement as precautionary measure, but larger sample size (N≥10) needed to validate remediation priority.",
+    "sessions_in_sample": 1
+  },
+  "ACCT_001": {
+    "journey_id": "ACCT_001",
+    "journey_name": "Current Account Balance Enquiry",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "bot_fallback_exhausted",
+    "failure_mode_distribution": {
+      "bot_fallback_exhausted": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "intent_model_improvement",
+        "priority": 1,
+        "rationale": "Bot exhausted fallback handling for balance enquiry intent; NLU model needs additional training examples to recognize legitimate balance check variations.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "medium"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "How do I check my current account balance?",
+      "What are the different ways to view my account balance?"
+    ],
+    "confidence": 2,
+    "reasoning": "Single session sample is insufficient for high-confidence recommendation; bot_fallback_exhausted suggests NLU coverage gap, but lack of agent explanations and minimal data volume limit ability to prescribe specific training examples or alternative remediations.",
+    "sessions_in_sample": 1
+  },
+  "REMI_002": {
+    "journey_id": "REMI_002",
+    "journey_name": "International Remittance Status Tracking",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "backend_integration_gap",
+    "failure_mode_distribution": {
+      "backend_integration_gap": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "backend_integration",
+        "priority": 1,
+        "rationale": "The bot cannot retrieve remittance status because the backend API integration is missing or broken; fixing this integration will enable the bot to complete the journey without escalation.",
+        "estimated_impact": "high",
+        "implementation_complexity": "high"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "How do I track my international remittance status?",
+      "What information do I need to check my remittance?",
+      "How long does an international remittance take?"
+    ],
+    "confidence": 2,
+    "reasoning": "Only one session analyzed; backend_integration_gap is clear but sample size is too small to establish pattern confidence or rule out other failure modes in this journey.",
+    "sessions_in_sample": 1
+  },
+  "LOAN_006": {
+    "journey_id": "LOAN_006",
+    "journey_name": "Personal Loan Restructuring Request",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "policy_routed",
+    "failure_mode_distribution": {
+      "policy_routed": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "no_action",
+        "priority": 1,
+        "rationale": "The single escalation is correctly policy_routed, indicating the bot appropriately identified that loan restructuring requires human judgment and policy compliance review.",
+        "estimated_impact": "low",
+        "implementation_complexity": "low"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [],
+    "confidence": 2,
+    "reasoning": "Sample size of 1 session is insufficient to establish a reliable pattern; recommend collecting additional sessions (minimum 10-15) before making remediation decisions for this journey.",
+    "sessions_in_sample": 1
+  },
+  "ACCT_008": {
+    "journey_id": "ACCT_008",
+    "journey_name": "Account Freeze / Unfreeze Enquiry",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "policy_routed",
+    "failure_mode_distribution": {
+      "policy_routed": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "product_or_policy_change",
+        "priority": 1,
+        "rationale": "The single escalation is policy-routed, indicating the bot correctly identified that account freeze/unfreeze decisions require human judgment; recommend ops/product review whether any freeze scenarios can be automated or self-service.",
+        "estimated_impact": "high",
+        "implementation_complexity": "medium"
+      },
+      {
+        "remediation_type": "faq_addition",
+        "priority": 2,
+        "rationale": "Add FAQ entries explaining common reasons for account freezes, unfreeze eligibility criteria, and expected timelines to reduce customer confusion and unnecessary escalations.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "low"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "Why is my account frozen?",
+      "How do I request an account unfreeze?",
+      "What is the timeline for account unfreeze approval?",
+      "What documents are needed to unfreeze my account?"
+    ],
+    "confidence": 2,
+    "reasoning": "Sample size of 1 session is insufficient to establish reliable patterns; recommendation is conservative and focuses on policy clarification and FAQ coverage to support the policy-routed escalation.",
+    "sessions_in_sample": 1
+  },
+  "LOAN_007": {
+    "journey_id": "LOAN_007",
+    "journey_name": "Personal Loan EMI Deferral Request",
+    "sessions_analyzed": 3,
+    "primary_failure_mode": "policy_routed",
+    "failure_mode_distribution": {
+      "policy_routed": 3
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "product_or_policy_change",
+        "priority": 1,
+        "rationale": "100% of escalations are policy_routed, indicating the bot correctly identifies that EMI deferral decisions require human judgment; recommend ops/product team review deferral eligibility criteria to determine if any cases can be auto-approved or pre-screened.",
+        "estimated_impact": "high",
+        "implementation_complexity": "medium"
+      },
+      {
+        "remediation_type": "flow_redesign",
+        "priority": 2,
+        "rationale": "All three sessions flagged flow redesign as prevention opportunity; restructure the deferral request flow to collect eligibility signals upfront (hardship reason, account status, payment history) so agents receive pre-qualified context and can resolve faster.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "medium"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "EMI deferral eligibility criteria",
+      "Required documents for deferral request",
+      "Deferral approval timeline and process",
+      "Impact of deferral on loan tenure and interest"
+    ],
+    "confidence": 4,
+    "reasoning": "All escalations are correctly policy-routed; the bot is functioning as designed. Remediation focus should shift to policy review and flow optimization to reduce escalation volume by pre-qualifying requests and clarifying eligibility upfront.",
+    "sessions_in_sample": 3
+  },
+  "DIGI_004": {
+    "journey_id": "DIGI_004",
+    "journey_name": "OTP / Authentication Issues",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "authentication_friction",
+    "failure_mode_distribution": {
+      "authentication_friction": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "authentication_friction_reduction",
+        "priority": 1,
+        "rationale": "The single session shows authentication friction as the blocker; reducing OTP delivery delays or fallback auth options will directly unblock this journey.",
+        "estimated_impact": "high",
+        "implementation_complexity": "medium"
+      },
+      {
+        "remediation_type": "backend_integration",
+        "priority": 2,
+        "rationale": "The prevention note references 'fix_api_integration', suggesting the OTP delivery or validation API may be failing or timing out; fixing this integration will resolve the root cause.",
+        "estimated_impact": "high",
+        "implementation_complexity": "high"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "Why am I not receiving my OTP?",
+      "What should I do if OTP verification fails?",
+      "How long does OTP delivery take?",
+      "Can I use an alternative authentication method if OTP fails?"
+    ],
+    "confidence": 2,
+    "reasoning": "Sample size of 1 session is insufficient to establish a reliable pattern; recommend collecting 10+ sessions before finalizing remediation scope, but authentication_friction + API integration gap suggests both backend fix and UX fallback are needed.",
+    "sessions_in_sample": 1
+  },
+  "DIGI_001": {
+    "journey_id": "DIGI_001",
+    "journey_name": "Mobile App Login / Access Issue",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "customer_demanded_human",
+    "failure_mode_distribution": {
+      "customer_demanded_human": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "flow_redesign",
+        "priority": 1,
+        "rationale": "Single session shows customer demanded human escalation; flow redesign is the indicated prevention, suggesting the bot's troubleshooting sequence may not address customer needs efficiently.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "medium"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [],
+    "confidence": 1,
+    "reasoning": "Sample size of 1 session is insufficient to establish reliable patterns; recommendation is based solely on the single session's prevention tag and should be validated with larger sample before implementation.",
+    "sessions_in_sample": 1
+  },
+  "LOAN_004": {
+    "journey_id": "LOAN_004",
+    "journey_name": "Personal Loan Application Status",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "trust_or_ux_failure",
+    "failure_mode_distribution": {
+      "trust_or_ux_failure": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "content_quality_improvement",
+        "priority": 1,
+        "rationale": "Trust or UX failures typically stem from unclear, jargon-heavy, or non-reassuring bot responses; improving response clarity and tone will directly address customer confidence in the loan status journey.",
+        "estimated_impact": "high",
+        "implementation_complexity": "low"
+      },
+      {
+        "remediation_type": "faq_addition",
+        "priority": 2,
+        "rationale": "Without clustered agent explanations, a targeted FAQ is difficult to scope; however, loan status inquiries commonly require FAQs on processing timelines, status definitions, and next steps—adding these will reduce ambiguity.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "low"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "What does each loan application status mean (submitted, under review, approved, rejected)?",
+      "How long does a personal loan application typically take to process?",
+      "How can I check my loan application status?",
+      "What should I do if my loan application is rejected?"
+    ],
+    "confidence": 2,
+    "reasoning": "Sample size of 1 session is insufficient to establish reliable patterns; recommendation prioritizes low-effort content improvements while flagging that additional data collection is critical before major investment.",
+    "sessions_in_sample": 1
+  },
+  "WLTH_010": {
+    "journey_id": "WLTH_010",
+    "journey_name": "Structured Product Enquiry",
+    "sessions_analyzed": 2,
+    "primary_failure_mode": "bot_fallback_exhausted",
+    "failure_mode_distribution": {
+      "bot_fallback_exhausted": 1,
+      "backend_integration_gap": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "backend_integration",
+        "priority": 1,
+        "rationale": "One session failed due to missing or broken API integration for structured product data retrieval; fixing this will unblock a complete journey capability.",
+        "estimated_impact": "high",
+        "implementation_complexity": "high"
+      },
+      {
+        "remediation_type": "intent_model_improvement",
+        "priority": 2,
+        "rationale": "One session exhausted bot fallback, indicating the NLU model did not recognize or route the customer's intent correctly; retraining with more structured product enquiry examples will improve recognition.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "medium"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [
+      "What structured products does Mashreq offer?",
+      "How do I enquire about structured product details (maturity, returns, risk)?",
+      "What are the eligibility criteria for structured products?"
+    ],
+    "confidence": 2,
+    "reasoning": "Sample size is very small (n=2) with equal split between two distinct failure modes; recommendations are directional only and should be validated with larger sample before prioritization.",
+    "sessions_in_sample": 2
+  },
+  "WELL_005": {
+    "journey_id": "WELL_005",
+    "journey_name": "Product Recommendation Enquiry",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "policy_routed",
+    "failure_mode_distribution": {
+      "policy_routed": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "no_action",
+        "priority": 1,
+        "rationale": "The single escalation is correctly policy-routed, indicating the bot is functioning as designed and human judgment is appropriately required for product recommendations.",
+        "estimated_impact": "low",
+        "implementation_complexity": "low"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [],
+    "confidence": 2,
+    "reasoning": "Sample size of 1 session is insufficient to establish a reliable pattern; recommend collecting additional sessions (minimum 10-15) before making remediation decisions for this journey.",
+    "sessions_in_sample": 1
+  },
+  "ACCT_004": {
+    "journey_id": "ACCT_004",
+    "journey_name": "Account Closure Request",
+    "sessions_analyzed": 2,
+    "primary_failure_mode": "bot_has_data_communicates_poorly",
+    "failure_mode_distribution": {
+      "bot_has_data_communicates_poorly": 2
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "content_quality_improvement",
+        "priority": 1,
+        "rationale": "100% of escalations stem from poor bot communication despite having the necessary data; improving response clarity and specificity will directly address the root cause.",
+        "estimated_impact": "high",
+        "implementation_complexity": "low"
+      },
+      {
+        "remediation_type": "faq_addition",
+        "priority": 2,
+        "rationale": "Both sessions flagged FAQ gaps as prevention strategy; adding targeted FAQ entries will provide customers self-service alternatives and reduce bot communication failures.",
+        "estimated_impact": "medium",
+        "implementation_complexity": "low"
+      }
+    ],
+    "knowledge_transfer_opportunity": "Both sessions indicate the bot possesses account closure information but communicates it ineffectively; agent explanations cluster around clarifying closure procedures, timelines, and consequences—suggesting the bot's response copy lacks specificity or actionability.",
+    "recommended_faq_topics": [
+      "Account closure eligibility and requirements",
+      "Account closure processing timeline and what happens after submission",
+      "Consequences of account closure (e.g., outstanding balances, linked services, reactivation options)",
+      "Account closure process steps and confirmation requirements"
+    ],
+    "confidence": 4,
+    "reasoning": "Small sample size (n=2) limits statistical confidence, but 100% consistency on a single failure mode with clear prevention signals provides strong directional guidance for immediate content remediation.",
+    "sessions_in_sample": 2
+  },
+  "WELL_001": {
+    "journey_id": "WELL_001",
+    "journey_name": "Financial Health Check Enquiry",
+    "sessions_analyzed": 1,
+    "primary_failure_mode": "backend_integration_gap",
+    "failure_mode_distribution": {
+      "backend_integration_gap": 1
+    },
+    "recommended_remediations": [
+      {
+        "remediation_type": "backend_integration",
+        "priority": 1,
+        "rationale": "The single failure is a backend API integration gap; fixing the missing or broken integration will directly enable the bot to complete the Financial Health Check enquiry without escalation.",
+        "estimated_impact": "high",
+        "implementation_complexity": "high"
+      }
+    ],
+    "knowledge_transfer_opportunity": null,
+    "recommended_faq_topics": [],
+    "confidence": 2,
+    "reasoning": "Only 1 session analyzed; backend_integration_gap is clear but sample size is too small to rule out other failure modes or to estimate true impact on escalation rate.",
+    "sessions_in_sample": 1
+  }
+}

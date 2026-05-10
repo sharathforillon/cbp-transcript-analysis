@@ -1,0 +1,186 @@
+{
+  "sess-f8604f46e4113021": {
+    "transfer_reason_code": "authentication_friction",
+    "confidence": 5,
+    "reasoning": "Customer failed to complete the bot's OTP verification flow (OTP not received), then attempted Emirates ID verification which also failed, triggering the transfer. The bot explicitly stated 'I'm unable to verify your identity at this time' and transferred to authentication support.",
+    "transfer_point": "At 12:32:43, after customer provided Emirates ID but bot could not verify it through available methods.",
+    "agent_resolution": "Agent Ahmed Al Mansoori requested email address as an alternative verification method to complete identity confirmation for loan eligibility assessment.",
+    "session_id": "sess-f8604f46e4113021"
+  },
+  "sess-7b43e7c232f7e32c": {
+    "transfer_reason_code": "customer_demanded_human",
+    "confidence": 5,
+    "reasoning": "Customer explicitly requested a human agent at 18:30:25 ('Connect me to a human please') before the bot could attempt to resolve the credit card block query, demonstrating early demand for human interaction rather than bot failure.",
+    "transfer_point": "At 18:30:25, immediately after welcome and category selection, customer demanded human agent before engaging with bot resolution flow.",
+    "agent_resolution": "Agent Nour Ibrahim confirmed ability to assist with card blocking and initiated account verification process, suggesting the bot could have handled this request had the customer not demanded escalation first.",
+    "session_id": "sess-7b43e7c232f7e32c"
+  },
+  "sess-44d85b2e70af1620": {
+    "transfer_reason_code": "backend_integration_gap",
+    "confidence": 4,
+    "reasoning": "The bot stated 'This request cannot be completed at this time' without providing specific data or explanation, indicating the spending analysis feature either lacks backend integration or the API call failed to return usable data; the agent (Vikram Patel) was able to resolve it, confirming the capability exists but the bot could not access it.",
+    "transfer_point": "At 2026-03-11 19:25:40, after the customer's second request for specificity and frustration with generic responses, the bot transferred to live_agent template.",
+    "agent_resolution": "Agent Vikram Patel provided the spending analysis and resolved the query, issuing reference REF50892642, demonstrating that the requested functionality is available through human agents but was not accessible to the bot.",
+    "session_id": "sess-44d85b2e70af1620"
+  },
+  "sess-5f4b8c9adc0e963c": {
+    "transfer_reason_code": "policy_routed",
+    "confidence": 5,
+    "reasoning": "Bot explicitly stated 'This request must be handled by a specialist as per Mashreq Bank's service policies' and 'requires review by our specialist team', indicating a deliberate policy-based transfer for lost/blocked debit cards, not a fallback or NLU failure.",
+    "transfer_point": "Immediately after customer reported lost debit card at 10:21:13; bot transferred at 10:22:43.",
+    "agent_resolution": null,
+    "session_id": "sess-5f4b8c9adc0e963c"
+  },
+  "sess-67592e19483d8bdb": {
+    "transfer_reason_code": "bot_fallback_exhausted",
+    "confidence": 5,
+    "reasoning": "The bot failed to recognize the customer's intent across four identical or near-identical requests ('add my wife to my account', 'joint account holder addition') and repeatedly responded with 'I didn't quite understand', demonstrating NLU engine failure rather than a policy-based transfer or customer demand for human contact.",
+    "transfer_point": "After the fourth failed NLU match at 13:15:18, the customer explicitly requested an agent at 13:16:03, and the bot transferred at 13:17:03.",
+    "agent_resolution": null,
+    "session_id": "sess-67592e19483d8bdb"
+  },
+  "sess-8bc7081750e6295e": {
+    "transfer_reason_code": "bot_fallback_exhausted",
+    "confidence": 5,
+    "reasoning": "The bot failed to match a straightforward 'current account balance' intent across four customer attempts using identical or near-identical phrasing, repeatedly responding with 'I didn't quite understand' before giving up and transferring to an agent.",
+    "transfer_point": "After the fourth failed NLU match at 05:59:02, the bot explicitly stated 'I'm having trouble understanding your request' and initiated transfer to live_agent template.",
+    "agent_resolution": null,
+    "session_id": "sess-8bc7081750e6295e"
+  },
+  "sess-ede56509eb06d250": {
+    "transfer_reason_code": "backend_integration_gap",
+    "confidence": 5,
+    "reasoning": "The bot explicitly stated it could not retrieve customer information due to a system issue and was unable to access the remittance status, indicating a backend API integration failure rather than NLU or policy-based escalation.",
+    "transfer_point": "At 09:01:56, after the bot attempted to query the remittance reference number and received a system error; customer frustration at 09:02:41 ('tried multiple times') triggered the transfer at 09:03:41.",
+    "agent_resolution": "Agent Ahmed Al Mansoori accessed the account directly (bypassing the failed bot integration), confirmed the system issue, and resolved the query by updating the account and providing a new reference number REF12986946.",
+    "session_id": "sess-ede56509eb06d250"
+  },
+  "sess-53bc22e1d435064b": {
+    "transfer_reason_code": "policy_routed",
+    "confidence": 5,
+    "reasoning": "Bot explicitly stated that loan restructuring requests require review by credit management team per Mashreq Bank policy, and deliberately transferred to specialist team rather than attempting resolution or failing to understand the request.",
+    "transfer_point": "At 05:21:41, after bot identified the request as a policy-mandated escalation requiring specialist review.",
+    "agent_resolution": null,
+    "session_id": "sess-53bc22e1d435064b"
+  },
+  "sess-02c63003d2983994": {
+    "transfer_reason_code": "policy_routed",
+    "confidence": 5,
+    "reasoning": "Bot correctly identified that account freeze enquiries require compliance team review per regulatory requirements and deliberately transferred the customer to a specialist team, not due to NLU failure or fallback.",
+    "transfer_point": "At 11:47:23, immediately after customer asked why their account was frozen, bot recognized this as a policy-routed journey requiring specialist handling.",
+    "agent_resolution": null,
+    "session_id": "sess-02c63003d2983994"
+  },
+  "sess-aace85e9db670cf1": {
+    "transfer_reason_code": "policy_routed",
+    "confidence": 5,
+    "reasoning": "The bot correctly identified that EMI deferral requests require specialist review under UAE Central Bank guidelines and deliberately transferred to the Loans specialist team per policy, not due to NLU failure or customer demand.",
+    "transfer_point": "After customer asked about EMI deferral; bot recognized this as a policy-gated journey requiring human specialist intervention.",
+    "agent_resolution": null,
+    "session_id": "sess-aace85e9db670cf1"
+  },
+  "sess-6169426a69e9ea5d": {
+    "transfer_reason_code": "backend_integration_gap",
+    "confidence": 4,
+    "reasoning": "The bot explicitly stated 'This request cannot be completed at this time' and provided no specific data or reason, indicating the credit card blocking API was unavailable or not integrated; the agent immediately resolved it, confirming the backend capability existed but the bot could not access it.",
+    "transfer_point": "At 2026-04-02 20:31:04, after the customer's second request for specificity and frustration with generic responses.",
+    "agent_resolution": "Agent Vikram Patel confirmed the card block was processed and provided a specific reference number (REF82038079), demonstrating the backend system was functional and the bot's inability was a technical integration failure, not a policy requirement.",
+    "session_id": "sess-6169426a69e9ea5d"
+  },
+  "sess-a1d3c86584734aa5": {
+    "transfer_reason_code": "authentication_friction",
+    "confidence": 5,
+    "reasoning": "Customer failed to authenticate through the bot's OTP verification flow; the bot attempted two authentication methods (mobile OTP and Emirates ID) but both failed, triggering a mandatory transfer to the authentication support team.",
+    "transfer_point": "At 2026-01-16 11:52:18, after the bot's Emirates ID verification attempt returned 'unable to verify your identity at this time', the bot transferred to live_agent with explicit mention of security-based transfer.",
+    "agent_resolution": "Agent Sara Johnson took over and attempted a third authentication method (registered email address) to complete identity verification, indicating the issue was authentication friction rather than a backend system outage.",
+    "session_id": "sess-a1d3c86584734aa5"
+  },
+  "sess-d4427d8ff2808ad6": {
+    "transfer_reason_code": "customer_demanded_human",
+    "confidence": 5,
+    "reasoning": "Customer explicitly requested an agent ('Agent please') at 13:33:35, before the bot could attempt to diagnose or resolve the mobile app login issue, demonstrating early demand for human intervention.",
+    "transfer_point": "At 13:33:35, immediately after bot presented category selection, customer typed 'Agent please' and bot transferred at 13:34:35.",
+    "agent_resolution": "Agent James Wilson acknowledged the request and began proper troubleshooting by asking for Emirates ID verification to access account details and diagnose the login issue.",
+    "session_id": "sess-d4427d8ff2808ad6"
+  },
+  "sess-ce4bd614a8c910ef": {
+    "transfer_reason_code": "trust_or_ux_failure",
+    "confidence": 4,
+    "reasoning": "The bot provided accurate information (reference number REF58014070) and confirmed it was up-to-date, but the customer explicitly stated distrust ('I'm not convinced') and requested human confirmation 'to be safe' — a classic trust failure despite correct bot performance.",
+    "transfer_point": "At 17:02:10, after the customer expressed doubt about the bot's accuracy despite receiving a specific reference number.",
+    "agent_resolution": "Agent Nour Ibrahim confirmed the same information (personal loan application status with reference number), though notably provided a different reference number (REF49449359 vs REF58014070), which suggests either a data inconsistency or the agent pulled fresh data — this discrepancy may indicate a backend integration issue that the bot did not surface.",
+    "session_id": "sess-ce4bd614a8c910ef"
+  },
+  "sess-125d0eed478adc85": {
+    "transfer_reason_code": "bot_fallback_exhausted",
+    "confidence": 5,
+    "reasoning": "The bot failed to match the customer's intent across four consecutive attempts using identical phrasing ('structured products'), triggering repeated 'I didn't quite understand' responses before giving up and transferring.",
+    "transfer_point": "After the fourth failed NLU match at 09:56:39, the bot explicitly stated 'I'm having trouble understanding your request' and initiated transfer to live_agent at 09:57:09.",
+    "agent_resolution": null,
+    "session_id": "sess-125d0eed478adc85"
+  },
+  "sess-1feba3bf84beae62": {
+    "transfer_reason_code": "policy_routed",
+    "confidence": 5,
+    "reasoning": "Bot explicitly stated 'This request must be handled by a specialist as per Mashreq Bank's service policies' and 'requires review by our specialist team', indicating a deliberate policy-based transfer for product recommendations, not a fallback or NLU failure.",
+    "transfer_point": "At 09:58:02, immediately after customer asked for product recommendations; bot recognized this as requiring specialist financial advisory per policy.",
+    "agent_resolution": null,
+    "session_id": "sess-1feba3bf84beae62"
+  },
+  "sess-ad9c13c783aa57c8": {
+    "transfer_reason_code": "backend_integration_gap",
+    "confidence": 5,
+    "reasoning": "The bot explicitly stated it could not retrieve customer information due to a system issue and was unable to process the card block request, indicating a backend API or integration failure rather than NLU or policy-based escalation.",
+    "transfer_point": "At 2025-12-01 01:15:43, after the bot failed to retrieve account information; transfer completed at 01:17:28.",
+    "agent_resolution": "Agent Sara Johnson accessed the account directly and confirmed the card block was resolved, providing reference number REF36913545.",
+    "session_id": "sess-ad9c13c783aa57c8"
+  },
+  "sess-b153a16d7d7053e8": {
+    "transfer_reason_code": "policy_routed",
+    "confidence": 5,
+    "reasoning": "The bot correctly identified that EMI deferral requests require specialist review under UAE Central Bank guidelines and deliberately transferred to the Loans specialist team per policy, not due to NLU failure or fallback.",
+    "transfer_point": "After customer requested EMI deferral at 23:40:34; bot acknowledged policy requirement and initiated transfer at 23:42:04.",
+    "agent_resolution": null,
+    "session_id": "sess-b153a16d7d7053e8"
+  },
+  "sess-aeab22217695e1e8": {
+    "transfer_reason_code": "bot_has_data_communicates_poorly",
+    "confidence": 5,
+    "reasoning": "The bot had access to the customer's account data (pending merchant claim of AED 599.77 from EMIRATES AIRLINES) but communicated only a generic 'balance in your account' message instead of explaining the specific authorization hold, causing customer frustration and escalation; the agent's detailed explanation immediately resolved the issue.",
+    "transfer_point": "At 06:14:37, after the customer explicitly requested an agent due to the bot's unhelpful generic responses about account closure blocks.",
+    "agent_resolution": "Agent Vikram Patel identified the root cause (pending EMIRATES AIRLINES merchant authorization hold of AED 599.77) and explained that it would clear automatically within 3-5 business days, allowing account closure to proceed — information the bot possessed but failed to communicate clearly.",
+    "session_id": "sess-aeab22217695e1e8"
+  },
+  "sess-7b2cc7c4265af5a3": {
+    "transfer_reason_code": "backend_integration_gap",
+    "confidence": 4,
+    "reasoning": "The bot explicitly stated 'This request cannot be completed at this time' when asked about structured products, indicating the backend system lacks integration or data access for this product category, forcing a policy-based escalation to the Wealth Management team.",
+    "transfer_point": "At 03:20:55, after the customer's second request for specifics on structured products and frustration with generic responses.",
+    "agent_resolution": "Agent Sara Johnson from Wealth Management team provided the requested information and resolved the query with reference REF73079920.",
+    "session_id": "sess-7b2cc7c4265af5a3"
+  },
+  "sess-8e5b4ffa924f642e": {
+    "transfer_reason_code": "policy_routed",
+    "confidence": 5,
+    "reasoning": "The bot correctly identified that EMI deferral requests require specialist review under UAE Central Bank guidelines and deliberately transferred the customer to the Loans specialist team per policy, not due to NLU failure or fallback.",
+    "transfer_point": "After customer asked about deferring EMI payment, bot recognized this as a policy-gated journey requiring human specialist intervention.",
+    "agent_resolution": null,
+    "session_id": "sess-8e5b4ffa924f642e"
+  },
+  "sess-e24abdbc551e96b1": {
+    "transfer_reason_code": "bot_has_data_communicates_poorly",
+    "confidence": 4,
+    "reasoning": "The bot detected a blocker to account closure (implied by the customer's frustration: 'My balance is zero, why can't you close it?') but failed to communicate the specific reason—it should have explained what is preventing closure (e.g., pending transactions, holds, or regulatory requirements) instead of vaguely saying 'let me check your account status' and then immediately escalating without providing the actual issue.",
+    "transfer_point": "At 22:52:33, after the customer questioned why their zero-balance account cannot be closed; the bot escalated without explaining the specific blocker.",
+    "agent_resolution": null,
+    "session_id": "sess-e24abdbc551e96b1"
+  },
+  "sess-f14e69acd0c0e07c": {
+    "transfer_reason_code": "backend_integration_gap",
+    "confidence": 4,
+    "reasoning": "The bot stated 'This request cannot be completed at this time' without providing specific data or explanation, indicating the financial health check feature was not integrated or available; the customer's repeated requests for specificity were met with generic deflection rather than actual information retrieval.",
+    "transfer_point": "At 17:28:27, after the customer expressed frustration with vague responses and the bot recognized it could not fulfill the request.",
+    "agent_resolution": "Agent Priya Nair provided a resolution and updated the customer's account with reference REF78461217, suggesting the financial health check data was accessible to the agent but not to the bot's backend integration.",
+    "session_id": "sess-f14e69acd0c0e07c"
+  }
+}

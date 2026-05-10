@@ -1,0 +1,55 @@
+user_id,channel_id,session_id,channel,language,score,date_time,comments,_synthetic
+u-6e30629c932de52f8dcd474a47,ch-web-mobile-client-1840,sess-31ca096c5c04cc9e,Web/Mobile Client,ur,2,2026-02-06 11:31:22,Bot couldn't understand my question at all,True
+u-b84a0bd43dd09fc1c7bdd9e17c,ch-web-mobile-client-7865,sess-43c6b3367c84d20d,Web/Mobile Client,en,1,2025-12-08 12:39:51,,True
+u-9096a77a05641ffa6b03208fe0,ch-web-mobile-client-3225,sess-04b6feaf11e0060f,Web/Mobile Client,en,4,2026-02-03 19:46:43,Great experience overall. My card ending 8925 was affected,True
+u-7948f3d2172e5fb1ee31a7b532,ch-web-mobile-client-3070,sess-5f99f4a1dec3c0d6,Web/Mobile Client,en,3,2026-01-27 13:42:34,,True
+u-32596fdd5cddb1de4c3f70faed,ch-whatsapp-7715,sess-b564006df3bbe1bc,WhatsApp,en,3,2026-02-04 00:20:05,,True
+u-7715e02a8cec5fb5adb13bcaa8,ch-whatsapp-9212,sess-cfbe99775a62c724,WhatsApp,ar,5,2025-11-13 23:16:21,,True
+u-9922c34ffce30ed3db9fcbf121,ch-web-mobile-client-7543,sess-61a1e59e8787cc40,Web/Mobile Client,en,1,2025-11-27 03:57:13,,True
+u-9495eb6a942a2df904b042066b,ch-whatsapp-8274,sess-6abcc6a5017bce35,WhatsApp,en,4,2026-01-11 11:41:40,,True
+u-f362a760d36943be8b3d5a755a,ch-ivr-8178,sess-bd0e1f8692702168,IVR,en,3,2026-03-23 15:58:20,Agent resolved my issue but bot couldn't,True
+u-c255cc01a1c1bad843a8828453,ch-whatsapp-6252,sess-c75ab35e75367aea,WhatsApp,en,2,2025-11-25 11:39:13,Why can't the bot just answer simple questions?,True
+u-aa56dd673ad83c6ec1e014c23b,ch-whatsapp-3742,sess-81e16cb5ba44ecd2,WhatsApp,en,4,2026-04-18 11:07:44,,True
+u-8be38a5ac8fd590936b995d9f0,ch-web-mobile-client-7049,sess-17e58ce7b8241acf,Web/Mobile Client,en,1,2025-12-15 02:45:55,,True
+u-84e06414427895a052aa1a4ea0,ch-web-mobile-client-3822,sess-a10d9b77aa620b60,Web/Mobile Client,en,5,2025-12-22 02:33:31,,True
+u-26c570a8fb58d3876f473b1800,ch-whatsapp-1064,sess-294e2a3004f39495,WhatsApp,en,5,2026-04-09 10:43:40,,True
+u-0e7032f5b5af4830e7347c2173,ch-web-mobile-client-5786,sess-25c16013aae3feb6,Web/Mobile Client,ar,1,2026-04-15 18:42:03,,True
+u-3d39aa1a7ea0de1026fc220fd7,ch-web-mobile-client-2157,sess-e440f3139c3a3857,Web/Mobile Client,en,3,2026-04-13 19:43:49,,True
+u-cdd9409f86f22e9a06e77d205b,ch-web-mobile-client-2417,sess-76124ec32cd04b06,Web/Mobile Client,en,5,2025-11-21 21:42:11,Agent was professional and resolved my issue,True
+u-44050a90eca4df1d0528e63c4b,ch-web-mobile-client-3639,sess-f2235fdca932526a,Web/Mobile Client,en,4,2026-04-12 18:56:45,My issue was resolved on the first call,True
+u-f66d29195e2bd68d4ee58dc08c,ch-internet-banking-6037,sess-43c07afa289dd033,Internet Banking,ur,4,2026-02-26 14:44:37,,True
+u-87e6bb0c6d9eb2f3e3bc88c443,ch-whatsapp-1205,sess-a938981700b7499c,WhatsApp,ar,4,2026-01-31 02:02:02,,True
+u-268f4add8f7dee7952fad40076,ch-internet-banking-5679,sess-f869d84a218eda2d,Internet Banking,en,5,2026-04-24 05:45:15,,True
+u-72f0798e9b460c3c3cb249860d,ch-whatsapp-6481,sess-dd484b258bb3bf5f,WhatsApp,ur,4,2026-04-11 23:55:41,,True
+u-97b7ba8222ff60bde4f7c24d05,ch-web-mobile-client-1070,sess-073097884e496642,Web/Mobile Client,ur,3,2026-03-15 22:02:27,The transfer was eventually completed,True
+u-0682df183f84eda6734acee688,ch-whatsapp-2003,sess-b87bdfd3859ca64a,WhatsApp,en,3,2025-12-02 14:44:29,,True
+u-718f6a452ea64fd234fd6733d5,ch-ivr-8311,sess-756639d7e7c5b273,IVR,en,4,2026-01-24 13:52:29,,True
+u-2c0b467e568e179de1898cd90b,ch-whatsapp-8834,sess-5931e0ffe03f5f50,WhatsApp,en,4,2025-12-16 10:08:09,,True
+u-21296506b0aaaa22cdc9b32ab4,ch-web-mobile-client-8940,sess-93a41c17f644498f,Web/Mobile Client,ar,2,2025-11-07 05:19:23,,True
+u-270a9b4c0a07d792a86d24f18b,ch-web-mobile-client-9121,sess-cfb3f6a973709f0d,Web/Mobile Client,ur,3,2025-12-04 05:00:03,,True
+u-b8cf71c76b98ce8b626e584604,ch-web-mobile-client-1818,sess-5af3e6cf48b14de7,Web/Mobile Client,en,1,2026-02-25 16:01:38,,True
+u-5e5703694a1b1bff53c7c25043,ch-ivr-2869,sess-3e3c98fa52f69219,IVR,en,4,2026-01-23 13:12:53,,True
+u-886dda53fed58b8b4634722913,ch-whatsapp-7219,sess-eda2ebee92c94d61,WhatsApp,en,5,2025-12-25 02:54:39,Great experience overall,True
+u-bfcb3762225a296fd6bfd0c620,ch-web-mobile-client-1352,sess-4fb1361206640a11,Web/Mobile Client,ar,5,2025-11-16 23:36:40,Agent was professional and resolved my issue,True
+u-a0395853e4387872adbdebaffd,ch-web-mobile-client-2154,sess-ec6966848c4bf4d3,Web/Mobile Client,ar,1,2026-04-22 23:24:44,,True
+u-e15994c6b682677bd2793654ad,ch-web-mobile-client-7942,sess-fb9dc4bee0662dec,Web/Mobile Client,en,4,2026-01-26 04:33:28,,True
+u-9b04711bd7fef628b72d236ca7,ch-web-mobile-client-4599,sess-77da33d4eab101c4,Web/Mobile Client,en,2,2026-04-25 21:56:21,,True
+u-238486f83c6cb0ad83408b1523,ch-internet-banking-7976,sess-2b2ccf64dba47c47,Internet Banking,ar,4,2026-01-04 17:49:46,,True
+u-1a212cea93e8c63f079eb188e0,ch-web-mobile-client-4151,sess-329dfba3ba15499a,Web/Mobile Client,en,2,2026-01-07 01:50:08,,True
+u-8d801ace2e408155e2c4ce7086,ch-web-mobile-client-5700,sess-4cc951e9fb71fb78,Web/Mobile Client,en,2,2026-03-08 05:03:13,Had to repeat myself multiple times before getting transferred. My card ending 6138 was affected,True
+u-1193b05dbb1a9cdea4d1976ed8,ch-whatsapp-5491,sess-02bbc0323d665cca,WhatsApp,en,5,2026-03-16 22:46:48,My issue was resolved on the first call,True
+u-a76e12a7b4d7914c38382401c9,ch-ivr-5763,sess-15642bc5a07a3243,IVR,en,4,2026-04-06 02:18:28,Easy to use and informative,True
+u-f7d027faf28784d612b9bedd8d,ch-web-mobile-client-7546,sess-2ccc726033b0b610,Web/Mobile Client,en,4,2025-11-03 01:12:27,Very helpful and quick service,True
+u-da5db302f6e48a69cf13305b45,ch-web-mobile-client-2370,sess-2d8cc11a6e98cbe3,Web/Mobile Client,en,4,2026-02-06 07:31:43,,True
+u-ac07412b36594a044f04b598a8,ch-web-mobile-client-5894,sess-cdaa83d11e536bc0,Web/Mobile Client,en,5,2025-12-15 22:18:21,,True
+u-b201cfb4c04738f0fc11d693de,ch-web-mobile-client-6235,sess-1053fba101ab101a,Web/Mobile Client,ur,4,2026-01-03 10:35:42,Very helpful and quick service,True
+u-b4bfbe059c44f8e9a121d994d2,ch-ivr-7217,sess-a648a999f8acdfb9,IVR,ar,4,2025-11-01 17:47:24,,True
+u-057c5586589edaf61616fdc52e,ch-internet-banking-6134,sess-ae0343f234c830d8,Internet Banking,en,5,2025-12-26 09:24:22,,True
+u-aab0b1c9d4320168dba6973e67,ch-whatsapp-3102,sess-5569c2eb57a90597,WhatsApp,en,3,2026-01-01 22:46:10,Needs improvement in understanding Arabic,True
+u-26c570a8fb58d3876f473b1800,ch-whatsapp-6820,sess-b23fe2de25323c76,WhatsApp,en,4,2025-11-25 22:39:28,,True
+u-fb4623009d6bbaaf2d9e593831,ch-web-mobile-client-1255,sess-2ef132f006fbbb88,Web/Mobile Client,en,1,2026-02-19 07:20:31,,True
+u-d31fbb52abd7676797165f954f,ch-web-mobile-client-3057,sess-a3e949206d295be4,Web/Mobile Client,en,3,2026-03-14 03:46:32,,True
+u-3869fa8a8daf1d19732158d79c,ch-whatsapp-7446,sess-43b79375f395d08b,WhatsApp,en,2,2026-03-02 23:15:39,,True
+u-a5569f315df1d5d473e4589394,ch-web-mobile-client-5969,sess-2ef96f788067cfea,Web/Mobile Client,en,4,2025-11-28 04:06:39,,True
+u-be6afcdca3923e1004e0f64928,ch-web-mobile-client-1291,sess-64f245d9d89668bb,Web/Mobile Client,en,2,2026-01-25 00:23:56,,True
+u-6591518519491016a738053f72,ch-web-mobile-client-3905,sess-d33a84c2b58fd53f,Web/Mobile Client,en,4,2026-04-02 22:41:09,Easy to use and informative,True

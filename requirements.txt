@@ -1,0 +1,27 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# CBP Transcript Analysis — Python Dependencies
+#
+# Dashboard (cloud deployment): only streamlit + pandas are required.
+# Pipeline (local): uncomment the sections below as needed.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─── Dashboard (required) ─────────────────────────────────────────────────────
+streamlit>=1.28.0
+pandas>=1.5.0
+
+# ─── Pipeline — core (uncomment for local pipeline runs) ──────────────────────
+# PyYAML>=6.0
+# python-dateutil>=2.8.0
+# Faker>=19.0.0
+# python-docx>=1.0.0
+# lxml>=4.9.0
+
+# ─── Pipeline — LLM providers (uncomment the one you use) ─────────────────────
+# anthropic>=0.25.0
+# openai>=1.12.0
+
+# ─── Pipeline — MongoDB production mode ───────────────────────────────────────
+# pymongo[srv]>=4.4.0
+
+# ─── Pipeline — Testing ───────────────────────────────────────────────────────
+# pytest>=7.0.0

@@ -1,0 +1,807 @@
+# =============================================================================
+# TAXONOMIES — CBP Transcript Analysis Pipeline
+# Mashreq Bank — Conversational Banking Platform
+# Version: 1.0 | Date: 2026-05-10
+# =============================================================================
+# Edit this file to tune scoring, exclusions, and classification taxonomies.
+# Do NOT edit pipeline code for these changes.
+# =============================================================================
+
+
+# =============================================================================
+# JOURNEY TAXONOMY — 90 journeys across 9 domains
+# =============================================================================
+# Each entry: id, name, domain, cbp_capability_fit (0.0-1.0), regulatory_complexity (0.0-1.0)
+# cbp_capability_fit: 1.0 = CBP has everything needed today; 0.0 = would require major backend work
+# regulatory_complexity: 1.0 = heavy regulatory / compliance controls; 0.0 = purely informational
+
+journeys:
+
+  # --- CARDS (15) ---
+  - id: CARD_001
+    name: Credit Card Balance Enquiry
+    domain: cards
+    cbp_capability_fit: 0.95
+    regulatory_complexity: 0.10
+    notes: "High-confidence containment candidate. Pure data retrieval."
+
+  - id: CARD_002
+    name: Credit Card Statement Request
+    domain: cards
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.10
+
+  - id: CARD_003
+    name: Credit Card Limit Enhancement Request
+    domain: cards
+    cbp_capability_fit: 0.60
+    regulatory_complexity: 0.55
+    notes: "Requires credit decisioning. Bot can collect inputs; decisioning stays human."
+
+  - id: CARD_004
+    name: Credit Card Block / Replacement
+    domain: cards
+    cbp_capability_fit: 0.85
+    regulatory_complexity: 0.30
+
+  - id: CARD_005
+    name: Credit Card Instalment Plan Setup
+    domain: cards
+    cbp_capability_fit: 0.75
+    regulatory_complexity: 0.25
+
+  - id: CARD_006
+    name: Credit Card Reward Points Redemption
+    domain: cards
+    cbp_capability_fit: 0.80
+    regulatory_complexity: 0.10
+
+  - id: CARD_007
+    name: Credit Card Transaction Dispute
+    domain: cards
+    cbp_capability_fit: 0.45
+    regulatory_complexity: 0.70
+    notes: "Dispute process has regulatory timelines; human judgment required for fraud triage."
+
+  - id: CARD_008
+    name: Debit Card Block / Replacement
+    domain: cards
+    cbp_capability_fit: 0.88
+    regulatory_complexity: 0.20
+
+  - id: CARD_009
+    name: Debit Card PIN Reset
+    domain: cards
+    cbp_capability_fit: 0.70
+    regulatory_complexity: 0.35
+    notes: "Authentication friction is the main escalation driver."
+
+  - id: CARD_010
+    name: Supplementary Card Request
+    domain: cards
+    cbp_capability_fit: 0.65
+    regulatory_complexity: 0.40
+
+  - id: CARD_011
+    name: Credit Card Payment Due Date Enquiry
+    domain: cards
+    cbp_capability_fit: 0.95
+    regulatory_complexity: 0.05
+
+  - id: CARD_012
+    name: Credit Card Minimum Payment Enquiry
+    domain: cards
+    cbp_capability_fit: 0.95
+    regulatory_complexity: 0.05
+
+  - id: CARD_013
+    name: Credit Card International Usage Activation
+    domain: cards
+    cbp_capability_fit: 0.82
+    regulatory_complexity: 0.15
+
+  - id: CARD_014
+    name: Credit Card Annual Fee Waiver Request
+    domain: cards
+    cbp_capability_fit: 0.55
+    regulatory_complexity: 0.20
+    notes: "Requires retention policy decision. Bot can explain eligibility; agent approves."
+
+  - id: CARD_015
+    name: Credit Card Closure Request
+    domain: cards
+    cbp_capability_fit: 0.50
+    regulatory_complexity: 0.60
+    notes: "Retention journey. Regulatory requirement to confirm no outstanding balance/disputes."
+
+  # --- LOANS (15) ---
+  - id: LOAN_001
+    name: Personal Loan Balance Enquiry
+    domain: loans
+    cbp_capability_fit: 0.95
+    regulatory_complexity: 0.10
+
+  - id: LOAN_002
+    name: Personal Loan Statement Request
+    domain: loans
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.10
+
+  - id: LOAN_003
+    name: Personal Loan Eligibility Enquiry
+    domain: loans
+    cbp_capability_fit: 0.70
+    regulatory_complexity: 0.45
+
+  - id: LOAN_004
+    name: Personal Loan Application Status
+    domain: loans
+    cbp_capability_fit: 0.85
+    regulatory_complexity: 0.20
+
+  - id: LOAN_005
+    name: Personal Loan Early Settlement Enquiry
+    domain: loans
+    cbp_capability_fit: 0.65
+    regulatory_complexity: 0.50
+    notes: "UAE Central Bank early settlement fee rules apply."
+
+  - id: LOAN_006
+    name: Personal Loan Restructuring Request
+    domain: loans
+    cbp_capability_fit: 0.35
+    regulatory_complexity: 0.75
+    notes: "High regulatory complexity; credit review required."
+
+  - id: LOAN_007
+    name: Personal Loan EMI Deferral Request
+    domain: loans
+    cbp_capability_fit: 0.40
+    regulatory_complexity: 0.70
+
+  - id: LOAN_008
+    name: Auto Loan Balance Enquiry
+    domain: loans
+    cbp_capability_fit: 0.95
+    regulatory_complexity: 0.10
+
+  - id: LOAN_009
+    name: Auto Loan Early Settlement
+    domain: loans
+    cbp_capability_fit: 0.60
+    regulatory_complexity: 0.50
+
+  - id: LOAN_010
+    name: Home Loan Balance Enquiry
+    domain: loans
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.15
+
+  - id: LOAN_011
+    name: Home Loan NOC Request
+    domain: loans
+    cbp_capability_fit: 0.55
+    regulatory_complexity: 0.65
+    notes: "No-Objection Certificate for property transfer. Multiple regulatory steps."
+
+  - id: LOAN_012
+    name: Loan Insurance Enquiry
+    domain: loans
+    cbp_capability_fit: 0.60
+    regulatory_complexity: 0.55
+
+  - id: LOAN_013
+    name: Loan Top-Up Eligibility Enquiry
+    domain: loans
+    cbp_capability_fit: 0.65
+    regulatory_complexity: 0.40
+
+  - id: LOAN_014
+    name: Loan Payment History Request
+    domain: loans
+    cbp_capability_fit: 0.88
+    regulatory_complexity: 0.10
+
+  - id: LOAN_015
+    name: Loan Pre-closure Certificate Request
+    domain: loans
+    cbp_capability_fit: 0.72
+    regulatory_complexity: 0.30
+
+  # --- ACCOUNTS (15) ---
+  - id: ACCT_001
+    name: Current Account Balance Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.97
+    regulatory_complexity: 0.05
+
+  - id: ACCT_002
+    name: Savings Account Balance Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.97
+    regulatory_complexity: 0.05
+
+  - id: ACCT_003
+    name: Account Statement Request
+    domain: accounts
+    cbp_capability_fit: 0.92
+    regulatory_complexity: 0.10
+
+  - id: ACCT_004
+    name: Account Closure Request
+    domain: accounts
+    cbp_capability_fit: 0.50
+    regulatory_complexity: 0.65
+    notes: "Reddy's canonical example. Bot detects closure block (pending merchant transaction) but communicates poorly. Agent explains correctly."
+
+  - id: ACCT_005
+    name: IBAN Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.97
+    regulatory_complexity: 0.05
+
+  - id: ACCT_006
+    name: Cheque Book Request
+    domain: accounts
+    cbp_capability_fit: 0.85
+    regulatory_complexity: 0.15
+
+  - id: ACCT_007
+    name: Cheque Status Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.88
+    regulatory_complexity: 0.10
+
+  - id: ACCT_008
+    name: Account Freeze / Unfreeze Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.40
+    regulatory_complexity: 0.80
+    notes: "Freeze may be regulatory / court-ordered. Requires human verification."
+
+  - id: ACCT_009
+    name: Standing Order Setup / Cancellation
+    domain: accounts
+    cbp_capability_fit: 0.75
+    regulatory_complexity: 0.20
+
+  - id: ACCT_010
+    name: Direct Debit Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.80
+    regulatory_complexity: 0.15
+
+  - id: ACCT_011
+    name: Account Interest Rate Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.10
+
+  - id: ACCT_012
+    name: Salary Account Conversion Request
+    domain: accounts
+    cbp_capability_fit: 0.55
+    regulatory_complexity: 0.35
+
+  - id: ACCT_013
+    name: Joint Account Holder Addition
+    domain: accounts
+    cbp_capability_fit: 0.35
+    regulatory_complexity: 0.55
+    notes: "KYC requirements for new party; requires human review."
+
+  - id: ACCT_014
+    name: Account Upgrade Request
+    domain: accounts
+    cbp_capability_fit: 0.60
+    regulatory_complexity: 0.30
+
+  - id: ACCT_015
+    name: Overdraft Facility Enquiry
+    domain: accounts
+    cbp_capability_fit: 0.70
+    regulatory_complexity: 0.45
+
+  # --- WEALTH (10) ---
+  - id: WLTH_001
+    name: Investment Portfolio Balance Enquiry
+    domain: wealth
+    cbp_capability_fit: 0.85
+    regulatory_complexity: 0.25
+
+  - id: WLTH_002
+    name: Fixed Deposit Maturity Enquiry
+    domain: wealth
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.10
+
+  - id: WLTH_003
+    name: Fixed Deposit Renewal Request
+    domain: wealth
+    cbp_capability_fit: 0.70
+    regulatory_complexity: 0.30
+
+  - id: WLTH_004
+    name: Fixed Deposit Premature Withdrawal Request
+    domain: wealth
+    cbp_capability_fit: 0.55
+    regulatory_complexity: 0.45
+
+  - id: WLTH_005
+    name: Mutual Fund Portfolio Enquiry
+    domain: wealth
+    cbp_capability_fit: 0.75
+    regulatory_complexity: 0.35
+    notes: "Regulatory disclosure requirements apply to fund information."
+
+  - id: WLTH_006
+    name: Wealth Management Advisory Appointment
+    domain: wealth
+    cbp_capability_fit: 0.80
+    regulatory_complexity: 0.20
+
+  - id: WLTH_007
+    name: Sukuk / Bond Enquiry
+    domain: wealth
+    cbp_capability_fit: 0.65
+    regulatory_complexity: 0.40
+
+  - id: WLTH_008
+    name: Gold Savings Plan Enquiry
+    domain: wealth
+    cbp_capability_fit: 0.75
+    regulatory_complexity: 0.20
+
+  - id: WLTH_009
+    name: Insurance Product Enquiry
+    domain: wealth
+    cbp_capability_fit: 0.60
+    regulatory_complexity: 0.55
+    notes: "Insurance product advice is regulated under CBUAE."
+
+  - id: WLTH_010
+    name: Structured Product Enquiry
+    domain: wealth
+    cbp_capability_fit: 0.40
+    regulatory_complexity: 0.70
+    notes: "High complexity; suitability assessment required."
+
+  # --- REMITTANCES (10) ---
+  - id: REMI_001
+    name: International Remittance Enquiry
+    domain: remittances
+    cbp_capability_fit: 0.88
+    regulatory_complexity: 0.20
+
+  - id: REMI_002
+    name: International Remittance Status Tracking
+    domain: remittances
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.15
+
+  - id: REMI_003
+    name: Exchange Rate Enquiry
+    domain: remittances
+    cbp_capability_fit: 0.95
+    regulatory_complexity: 0.05
+
+  - id: REMI_004
+    name: Beneficiary Addition / Management
+    domain: remittances
+    cbp_capability_fit: 0.70
+    regulatory_complexity: 0.40
+    notes: "AML screening on beneficiary; may require additional verification."
+
+  - id: REMI_005
+    name: Remittance Recall / Cancellation Request
+    domain: remittances
+    cbp_capability_fit: 0.50
+    regulatory_complexity: 0.60
+    notes: "Swift recall process; timing-dependent. Regulatory reporting may apply."
+
+  - id: REMI_006
+    name: WPS (Wage Protection System) Enquiry
+    domain: remittances
+    cbp_capability_fit: 0.85
+    regulatory_complexity: 0.35
+    notes: "UAE Ministry of Human Resources requirement."
+
+  - id: REMI_007
+    name: Instant Transfer (UAEFTS) Status Enquiry
+    domain: remittances
+    cbp_capability_fit: 0.92
+    regulatory_complexity: 0.10
+
+  - id: REMI_008
+    name: Transfer Limit Enquiry
+    domain: remittances
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.20
+
+  - id: REMI_009
+    name: Standing Remittance Order Enquiry
+    domain: remittances
+    cbp_capability_fit: 0.82
+    regulatory_complexity: 0.15
+
+  - id: REMI_010
+    name: Remittance Fee Enquiry
+    domain: remittances
+    cbp_capability_fit: 0.95
+    regulatory_complexity: 0.05
+
+  # --- DIGITAL BANKING (10) ---
+  - id: DIGI_001
+    name: Mobile App Login / Access Issue
+    domain: digital_banking
+    cbp_capability_fit: 0.70
+    regulatory_complexity: 0.30
+    notes: "Authentication friction is primary driver. Self-service unlock has security requirements."
+
+  - id: DIGI_002
+    name: Mobile App Password Reset
+    domain: digital_banking
+    cbp_capability_fit: 0.75
+    regulatory_complexity: 0.30
+
+  - id: DIGI_003
+    name: Internet Banking Registration
+    domain: digital_banking
+    cbp_capability_fit: 0.65
+    regulatory_complexity: 0.35
+
+  - id: DIGI_004
+    name: OTP / Authentication Issues
+    domain: digital_banking
+    cbp_capability_fit: 0.68
+    regulatory_complexity: 0.35
+
+  - id: DIGI_005
+    name: Mobile App Feature Navigation Help
+    domain: digital_banking
+    cbp_capability_fit: 0.90
+    regulatory_complexity: 0.05
+
+  - id: DIGI_006
+    name: Cardless Withdrawal Enquiry
+    domain: digital_banking
+    cbp_capability_fit: 0.85
+    regulatory_complexity: 0.15
+
+  - id: DIGI_007
+    name: Digital Wallet Setup (Apple Pay / Google Pay)
+    domain: digital_banking
+    cbp_capability_fit: 0.80
+    regulatory_complexity: 0.15
+
+  - id: DIGI_008
+    name: E-statement Registration
+    domain: digital_banking
+    cbp_capability_fit: 0.88
+    regulatory_complexity: 0.05
+
+  - id: DIGI_009
+    name: Push Notification / Alert Setup
+    domain: digital_banking
+    cbp_capability_fit: 0.85
+    regulatory_complexity: 0.05
+
+  - id: DIGI_010
+    name: Device Management / Trusted Device Issues
+    domain: digital_banking
+    cbp_capability_fit: 0.65
+    regulatory_complexity: 0.35
+
+  # --- COMPLAINTS (5) ---
+  - id: COMP_001
+    name: Complaint Registration — General
+    domain: complaints
+    cbp_capability_fit: 0.70
+    regulatory_complexity: 0.55
+    notes: "Complaint registration is bot-feasible; resolution requires human. UAE CBUAE complaint timelines apply."
+
+  - id: COMP_002
+    name: Complaint Status Followup
+    domain: complaints
+    cbp_capability_fit: 0.82
+    regulatory_complexity: 0.30
+
+  - id: COMP_003
+    name: Fraudulent Transaction Report
+    domain: complaints
+    cbp_capability_fit: 0.45
+    regulatory_complexity: 0.80
+    notes: "EXCLUDED from MVP shortlist. High emotional stakes + regulatory complexity."
+
+  - id: COMP_004
+    name: Unauthorized Account Access Report
+    domain: complaints
+    cbp_capability_fit: 0.40
+    regulatory_complexity: 0.85
+    notes: "EXCLUDED. Security incident; requires human and InfoSec involvement."
+
+  - id: COMP_005
+    name: Service Quality Feedback
+    domain: complaints
+    cbp_capability_fit: 0.88
+    regulatory_complexity: 0.10
+
+  # --- WELLNESS / ADVISORY (5) ---
+  - id: WELL_001
+    name: Financial Health Check Enquiry
+    domain: wellness_advisory
+    cbp_capability_fit: 0.72
+    regulatory_complexity: 0.30
+
+  - id: WELL_002
+    name: Spending Analysis Request
+    domain: wellness_advisory
+    cbp_capability_fit: 0.80
+    regulatory_complexity: 0.15
+
+  - id: WELL_003
+    name: Budget Planning Assistance
+    domain: wellness_advisory
+    cbp_capability_fit: 0.75
+    regulatory_complexity: 0.20
+    notes: "Advisory content; pipeline flags for suitability disclaimer."
+
+  - id: WELL_004
+    name: Savings Goal Setup
+    domain: wellness_advisory
+    cbp_capability_fit: 0.78
+    regulatory_complexity: 0.15
+
+  - id: WELL_005
+    name: Product Recommendation Enquiry
+    domain: wellness_advisory
+    cbp_capability_fit: 0.55
+    regulatory_complexity: 0.50
+    notes: "EXCLUDED from MVP shortlist. Product advisory complexity."
+
+  # --- INTERNAL (5) ---
+  - id: INTL_001
+    name: Branch Locator
+    domain: internal
+    cbp_capability_fit: 0.97
+    regulatory_complexity: 0.02
+
+  - id: INTL_002
+    name: ATM Locator
+    domain: internal
+    cbp_capability_fit: 0.97
+    regulatory_complexity: 0.02
+
+  - id: INTL_003
+    name: Contact Centre Hours Enquiry
+    domain: internal
+    cbp_capability_fit: 0.98
+    regulatory_complexity: 0.02
+
+  - id: INTL_004
+    name: General Banking FAQ
+    domain: internal
+    cbp_capability_fit: 0.92
+    regulatory_complexity: 0.05
+
+  - id: INTL_005
+    name: Unknown / Out of Scope
+    domain: internal
+    cbp_capability_fit: 0.10
+    regulatory_complexity: 0.05
+    notes: "Catch-all for unclassified sessions. Always excluded from MVP scoring."
+
+
+# =============================================================================
+# TRANSFER (ESCALATION) REASON TAXONOMY
+# =============================================================================
+transfer_reasons:
+  - code: bot_fallback_exhausted
+    label: Bot Fallback Exhausted
+    description: "NLU could not match intent after multiple retries. Bot gave up and transferred."
+    remediation_hint: intent_model_improvement
+
+  - code: customer_demanded_human
+    label: Customer Demanded Human
+    description: "Customer typed 'agent', 'human', 'operator', or equivalent early in the session."
+    remediation_hint: trust_or_ux_failure_or_content_quality
+
+  - code: policy_routed
+    label: Policy-Routed Escalation
+    description: "Bot correctly identified that this journey requires human intervention per policy."
+    remediation_hint: no_action_or_product_or_policy_change
+
+  - code: silent_failure
+    label: Silent Failure (Re-contact)
+    description: "Session appeared contained, but user re-contacted within 24h on same topic."
+    remediation_hint: flow_redesign
+
+  - code: bot_has_data_communicates_poorly
+    label: Bot Has Data But Communicates Poorly
+    description: "Bot retrieved correct data but response was generic/unhelpful. Reddy's account-closure pattern."
+    remediation_hint: content_quality_improvement
+
+  - code: trust_or_ux_failure
+    label: Trust or UX Failure
+    description: "Bot answered correctly but customer did not trust the answer or found UX confusing."
+    remediation_hint: content_quality_improvement
+
+  - code: backend_integration_gap
+    label: Backend Integration Gap
+    description: "Bot could not complete the action due to missing backend API or system integration."
+    remediation_hint: backend_integration
+
+  - code: authentication_friction
+    label: Authentication Friction
+    description: "Customer could not authenticate to proceed with the bot journey."
+    remediation_hint: authentication_friction_reduction
+
+  - code: language_dialect_gap
+    label: Language / Dialect Gap
+    description: "NLU failed due to dialect variation (Gulf Arabic, Egyptian Arabic, Pakistani Urdu dialect)."
+    remediation_hint: language_dialect_coverage
+
+
+# =============================================================================
+# REMEDIATION TYPE TAXONOMY
+# =============================================================================
+remediation_types:
+  - code: faq_addition
+    label: FAQ Addition
+    description: "Add a new FAQ entry to the bot's knowledge base."
+    difficulty: 1  # 1=easy, 5=hard
+
+  - code: content_quality_improvement
+    label: Content Quality Improvement
+    description: "Improve existing bot response copy — clearer, more specific, more actionable."
+    difficulty: 2
+
+  - code: intent_model_improvement
+    label: Intent Model Improvement
+    description: "Retrain or augment NLU model for this intent."
+    difficulty: 3
+
+  - code: flow_redesign
+    label: Flow Redesign
+    description: "Redesign the conversation flow for this journey."
+    difficulty: 3
+
+  - code: authentication_friction_reduction
+    label: Authentication Friction Reduction
+    description: "Reduce authentication steps or improve fallback for auth failures."
+    difficulty: 3
+
+  - code: backend_integration
+    label: Backend Integration
+    description: "Build or fix a backend API integration required for the bot to complete the action."
+    difficulty: 4
+
+  - code: language_dialect_coverage
+    label: Language / Dialect Coverage
+    description: "Extend NLU training data for underrepresented Arabic or Urdu dialects."
+    difficulty: 3
+
+  - code: product_or_policy_change
+    label: Product or Policy Change
+    description: "The escalation is driven by policy; requires product/ops team to change the rule."
+    difficulty: 5
+
+  - code: no_action
+    label: No Action Required
+    description: "Escalation is appropriate per policy. Bot is working correctly."
+    difficulty: 0
+
+
+# =============================================================================
+# EXCLUSION LIST — Journeys excluded from MVP scoring
+# =============================================================================
+# These journeys are excluded regardless of volume or leakage rate.
+# Reasons: regulatory_required_human, high_emotional_stakes, product_advisory_complex
+exclusions:
+  - journey_id: COMP_003
+    reason: high_emotional_stakes
+    note: "Fraudulent transaction. Requires empathetic human handling and fraud team escalation."
+
+  - journey_id: COMP_004
+    reason: regulatory_required_human
+    note: "Security incident. InfoSec policy requires human; cannot be bot-contained."
+
+  - journey_id: WELL_005
+    reason: product_advisory_complex
+    note: "Product recommendations require suitability assessment under CBUAE guidelines."
+
+  - journey_id: INTL_005
+    reason: catch_all
+    note: "Unclassified sessions excluded from scoring by definition."
+
+  - journey_id: LOAN_006
+    reason: regulatory_required_human
+    note: "Loan restructuring requires credit committee review."
+
+  - journey_id: LOAN_007
+    reason: regulatory_required_human
+    note: "EMI deferral under UAE CBUAE COVID/hardship guidelines; human review required."
+
+  - journey_id: ACCT_008
+    reason: regulatory_required_human
+    note: "Account freeze may be court-ordered; requires compliance sign-off."
+
+  - journey_id: ACCT_013
+    reason: regulatory_required_human
+    note: "Joint account additions require full KYC for new party."
+
+
+# =============================================================================
+# SCORING WEIGHTS (Section 10)
+# =============================================================================
+# All weights must sum to <= 1.0 (penalty is subtracted, so net sum may be < 1)
+scoring_weights:
+  volume_share: 0.25
+  leakage_rate: 0.25
+  remediability: 0.20
+  cbp_capability_fit: 0.15
+  csat_signal: 0.10
+  regulatory_complexity_penalty: -0.05  # negative = subtract from score
+
+# Minimum thresholds — journeys below these are excluded from ranking
+scoring_thresholds:
+  minimum_volume_sessions: 500  # over the 6-month analysis window
+  minimum_leakage_rate: 0.05    # exclude journeys with < 5% escalation rate (not worth fixing)
+
+# How many top journeys to include in MVP shortlist
+mvp_shortlist_size: 10
+mvp_runners_up: 5
+
+
+# =============================================================================
+# CSAT JOIN CONFIG (Section 9B)
+# =============================================================================
+csat_join:
+  window_minutes: 60           # Max time between session end and CSAT submission
+  prefer_direct_join: true     # Use session_id direct join when available
+
+
+# =============================================================================
+# PARETO DISTRIBUTION FOR SYNTHETIC DATA (Section 5)
+# =============================================================================
+# The top N journeys carry this share of total traffic
+pareto:
+  top_n_journeys: 15
+  traffic_share: 0.60          # top 15 carry 60% of sessions
+
+# Geography distribution
+geography:
+  UAE: 0.60
+  Egypt: 0.25
+  Pakistan: 0.15
+
+# Language distribution per geography
+language_by_geography:
+  UAE:
+    en: 0.75
+    ar: 0.20
+    ur: 0.05
+  Egypt:
+    ar: 0.70
+    en: 0.30
+  Pakistan:
+    ur: 0.60
+    en: 0.40
+
+# Failure mode distribution (across all sessions with escalation)
+failure_mode_distribution:
+  bot_fallback_exhausted: 0.20
+  customer_demanded_human: 0.15
+  policy_routed: 0.10
+  silent_failure: 0.10
+  bot_has_data_communicates_poorly: 0.15
+  trust_or_ux_failure: 0.10
+  backend_integration_gap: 0.10
+  authentication_friction: 0.05
+  language_dialect_gap: 0.05
+
+# CSAT generation
+csat:
+  response_rate: 0.12          # 12% of sessions receive a CSAT response
+  comment_rate: 0.30           # 30% of CSAT responses have a non-empty comment
+  pii_in_comment_rate: 0.05   # 5% of comments contain PII

@@ -1,0 +1,1176 @@
+{
+  "analysis_window": {
+    "start": "2025-11-01",
+    "end": "2026-04-30",
+    "step_change_threshold_pp": 15
+  },
+  "journeys": [
+    {
+      "journey_id": "INTL_005",
+      "journey_name": "",
+      "weeks_with_data": 27,
+      "timeseries": [
+        {
+          "week": "2025-W44",
+          "total": 126,
+          "escalated": 24,
+          "rate_pct": 19.0
+        },
+        {
+          "week": "2025-W45",
+          "total": 383,
+          "escalated": 88,
+          "rate_pct": 23.0
+        },
+        {
+          "week": "2025-W46",
+          "total": 421,
+          "escalated": 83,
+          "rate_pct": 19.7
+        },
+        {
+          "week": "2025-W47",
+          "total": 435,
+          "escalated": 98,
+          "rate_pct": 22.5
+        },
+        {
+          "week": "2025-W48",
+          "total": 384,
+          "escalated": 95,
+          "rate_pct": 24.7
+        },
+        {
+          "week": "2025-W49",
+          "total": 372,
+          "escalated": 86,
+          "rate_pct": 23.1
+        },
+        {
+          "week": "2025-W50",
+          "total": 414,
+          "escalated": 89,
+          "rate_pct": 21.5
+        },
+        {
+          "week": "2025-W51",
+          "total": 372,
+          "escalated": 89,
+          "rate_pct": 23.9
+        },
+        {
+          "week": "2025-W52",
+          "total": 414,
+          "escalated": 94,
+          "rate_pct": 22.7
+        },
+        {
+          "week": "2026-W01",
+          "total": 373,
+          "escalated": 91,
+          "rate_pct": 24.4
+        },
+        {
+          "week": "2026-W02",
+          "total": 391,
+          "escalated": 94,
+          "rate_pct": 24.0
+        },
+        {
+          "week": "2026-W03",
+          "total": 383,
+          "escalated": 87,
+          "rate_pct": 22.7
+        },
+        {
+          "week": "2026-W04",
+          "total": 400,
+          "escalated": 85,
+          "rate_pct": 21.2
+        },
+        {
+          "week": "2026-W05",
+          "total": 363,
+          "escalated": 75,
+          "rate_pct": 20.7
+        },
+        {
+          "week": "2026-W06",
+          "total": 378,
+          "escalated": 91,
+          "rate_pct": 24.1
+        },
+        {
+          "week": "2026-W07",
+          "total": 362,
+          "escalated": 84,
+          "rate_pct": 23.2
+        },
+        {
+          "week": "2026-W08",
+          "total": 351,
+          "escalated": 68,
+          "rate_pct": 19.4
+        },
+        {
+          "week": "2026-W09",
+          "total": 374,
+          "escalated": 84,
+          "rate_pct": 22.5
+        },
+        {
+          "week": "2026-W10",
+          "total": 399,
+          "escalated": 100,
+          "rate_pct": 25.1
+        },
+        {
+          "week": "2026-W11",
+          "total": 379,
+          "escalated": 81,
+          "rate_pct": 21.4
+        },
+        {
+          "week": "2026-W12",
+          "total": 392,
+          "escalated": 93,
+          "rate_pct": 23.7
+        },
+        {
+          "week": "2026-W13",
+          "total": 340,
+          "escalated": 67,
+          "rate_pct": 19.7
+        },
+        {
+          "week": "2026-W14",
+          "total": 378,
+          "escalated": 70,
+          "rate_pct": 18.5
+        },
+        {
+          "week": "2026-W15",
+          "total": 364,
+          "escalated": 96,
+          "rate_pct": 26.4
+        },
+        {
+          "week": "2026-W16",
+          "total": 397,
+          "escalated": 88,
+          "rate_pct": 22.2
+        },
+        {
+          "week": "2026-W17",
+          "total": 384,
+          "escalated": 78,
+          "rate_pct": 20.3
+        },
+        {
+          "week": "2026-W18",
+          "total": 171,
+          "escalated": 39,
+          "rate_pct": 22.8
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "CARD_004",
+      "journey_name": "Credit Card Block / Replacement",
+      "weeks_with_data": 7,
+      "timeseries": [
+        {
+          "week": "2025-W49",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2025-W50",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W51",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W52",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W01",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W04",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W14",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [
+        {
+          "week": "2025-W50",
+          "from_rate_pct": 100.0,
+          "to_rate_pct": 0.0,
+          "delta_pp": -100.0,
+          "direction": "decrease"
+        },
+        {
+          "week": "2026-W04",
+          "from_rate_pct": 0.0,
+          "to_rate_pct": 100.0,
+          "delta_pp": 100.0,
+          "direction": "increase"
+        }
+      ],
+      "has_step_change": true
+    },
+    {
+      "journey_id": "ACCT_001",
+      "journey_name": "Current Account Balance Enquiry",
+      "weeks_with_data": 6,
+      "timeseries": [
+        {
+          "week": "2025-W48",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W50",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W51",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W05",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W08",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W09",
+          "total": 2,
+          "escalated": 1,
+          "rate_pct": 50.0
+        }
+      ],
+      "step_changes": [
+        {
+          "week": "2026-W09",
+          "from_rate_pct": 0.0,
+          "to_rate_pct": 50.0,
+          "delta_pp": 50.0,
+          "direction": "increase"
+        }
+      ],
+      "has_step_change": true
+    },
+    {
+      "journey_id": "ACCT_005",
+      "journey_name": "IBAN Enquiry",
+      "weeks_with_data": 5,
+      "timeseries": [
+        {
+          "week": "2025-W45",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W46",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W47",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W01",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W16",
+          "total": 2,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "ACCT_003",
+      "journey_name": "Account Statement Request",
+      "weeks_with_data": 5,
+      "timeseries": [
+        {
+          "week": "2025-W44",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W49",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W03",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W12",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W14",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "REMI_001",
+      "journey_name": "International Remittance Enquiry",
+      "weeks_with_data": 5,
+      "timeseries": [
+        {
+          "week": "2025-W48",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W04",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W12",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W14",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W15",
+          "total": 2,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "DIGI_001",
+      "journey_name": "Mobile App Login / Access Issue",
+      "weeks_with_data": 4,
+      "timeseries": [
+        {
+          "week": "2025-W49",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W02",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W08",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W17",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [
+        {
+          "week": "2026-W02",
+          "from_rate_pct": 100.0,
+          "to_rate_pct": 0.0,
+          "delta_pp": -100.0,
+          "direction": "decrease"
+        }
+      ],
+      "has_step_change": true
+    },
+    {
+      "journey_id": "CARD_011",
+      "journey_name": "Credit Card Payment Due Date Enquiry",
+      "weeks_with_data": 4,
+      "timeseries": [
+        {
+          "week": "2025-W50",
+          "total": 2,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W51",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W13",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W18",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "REMI_003",
+      "journey_name": "Exchange Rate Enquiry",
+      "weeks_with_data": 4,
+      "timeseries": [
+        {
+          "week": "2025-W49",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W50",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W14",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W16",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "CARD_001",
+      "journey_name": "Credit Card Balance Enquiry",
+      "weeks_with_data": 4,
+      "timeseries": [
+        {
+          "week": "2025-W45",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W04",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W14",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W15",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "ACCT_002",
+      "journey_name": "Savings Account Balance Enquiry",
+      "weeks_with_data": 3,
+      "timeseries": [
+        {
+          "week": "2025-W52",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W02",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W08",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_001",
+      "journey_name": "Personal Loan Balance Enquiry",
+      "weeks_with_data": 3,
+      "timeseries": [
+        {
+          "week": "2025-W46",
+          "total": 2,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2025-W51",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W06",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "CARD_012",
+      "journey_name": "Credit Card Minimum Payment Enquiry",
+      "weeks_with_data": 3,
+      "timeseries": [
+        {
+          "week": "2025-W46",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W03",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W13",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_007",
+      "journey_name": "Personal Loan EMI Deferral Request",
+      "weeks_with_data": 3,
+      "timeseries": [
+        {
+          "week": "2025-W44",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W02",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W09",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "DIGI_004",
+      "journey_name": "OTP / Authentication Issues",
+      "weeks_with_data": 3,
+      "timeseries": [
+        {
+          "week": "2025-W50",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W03",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W08",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [
+        {
+          "week": "2026-W03",
+          "from_rate_pct": 0.0,
+          "to_rate_pct": 100.0,
+          "delta_pp": 100.0,
+          "direction": "increase"
+        },
+        {
+          "week": "2026-W08",
+          "from_rate_pct": 100.0,
+          "to_rate_pct": 0.0,
+          "delta_pp": -100.0,
+          "direction": "decrease"
+        }
+      ],
+      "has_step_change": true
+    },
+    {
+      "journey_id": "CARD_008",
+      "journey_name": "Debit Card Block / Replacement",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2026-W15",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W16",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [
+        {
+          "week": "2026-W16",
+          "from_rate_pct": 100.0,
+          "to_rate_pct": 0.0,
+          "delta_pp": -100.0,
+          "direction": "decrease"
+        }
+      ],
+      "has_step_change": true
+    },
+    {
+      "journey_id": "ACCT_011",
+      "journey_name": "Account Interest Rate Enquiry",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2026-W06",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W18",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "REMI_002",
+      "journey_name": "International Remittance Status Tracking",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2026-W05",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W10",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [
+        {
+          "week": "2026-W10",
+          "from_rate_pct": 100.0,
+          "to_rate_pct": 0.0,
+          "delta_pp": -100.0,
+          "direction": "decrease"
+        }
+      ],
+      "has_step_change": true
+    },
+    {
+      "journey_id": "WLTH_010",
+      "journey_name": "Structured Product Enquiry",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2025-W45",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W17",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "CARD_014",
+      "journey_name": "Credit Card Annual Fee Waiver Request",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2025-W50",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W17",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "ACCT_004",
+      "journey_name": "Account Closure Request",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2026-W01",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        },
+        {
+          "week": "2026-W06",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "REMI_008",
+      "journey_name": "Transfer Limit Enquiry",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2026-W02",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W05",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "DIGI_005",
+      "journey_name": "Mobile App Feature Navigation Help",
+      "weeks_with_data": 2,
+      "timeseries": [
+        {
+          "week": "2025-W51",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        },
+        {
+          "week": "2026-W08",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_003",
+      "journey_name": "Personal Loan Eligibility Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W02",
+          "total": 2,
+          "escalated": 1,
+          "rate_pct": 50.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_010",
+      "journey_name": "Home Loan Balance Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W03",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "WELL_002",
+      "journey_name": "Spending Analysis Request",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W11",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "DIGI_009",
+      "journey_name": "Push Notification / Alert Setup",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W10",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "ACCT_013",
+      "journey_name": "Joint Account Holder Addition",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W08",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "WLTH_003",
+      "journey_name": "Fixed Deposit Renewal Request",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W15",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_014",
+      "journey_name": "Loan Payment History Request",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W12",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_009",
+      "journey_name": "Auto Loan Early Settlement",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W16",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_006",
+      "journey_name": "Personal Loan Restructuring Request",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2025-W47",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "ACCT_008",
+      "journey_name": "Account Freeze / Unfreeze Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W02",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_004",
+      "journey_name": "Personal Loan Application Status",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W10",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "ACCT_007",
+      "journey_name": "Cheque Status Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W09",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "WLTH_007",
+      "journey_name": "Sukuk / Bond Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W04",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "WELL_005",
+      "journey_name": "Product Recommendation Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W14",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "REMI_004",
+      "journey_name": "Beneficiary Addition / Management",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W16",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "LOAN_002",
+      "journey_name": "Personal Loan Statement Request",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W01",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "DIGI_006",
+      "journey_name": "Cardless Withdrawal Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2025-W45",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "COMP_002",
+      "journey_name": "Complaint Status Followup",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2025-W48",
+          "total": 1,
+          "escalated": 0,
+          "rate_pct": 0.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    },
+    {
+      "journey_id": "WELL_001",
+      "journey_name": "Financial Health Check Enquiry",
+      "weeks_with_data": 1,
+      "timeseries": [
+        {
+          "week": "2026-W02",
+          "total": 1,
+          "escalated": 1,
+          "rate_pct": 100.0
+        }
+      ],
+      "step_changes": [],
+      "has_step_change": false
+    }
+  ],
+  "journeys_with_step_change": 6
+}

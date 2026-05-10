@@ -1,0 +1,1641 @@
+{
+  "summary": {
+    "total_sessions": 10000,
+    "total_escalated": 2240,
+    "overall_escalation_rate": 0.224,
+    "journeys_analyzed": 42
+  },
+  "journeys": [
+    {
+      "journey_id": "INTL_005",
+      "journey_name": "Unknown",
+      "total_sessions": 9900,
+      "escalated_sessions": 2217,
+      "escalation_rate": 0.2239,
+      "transfer_reason_breakdown": {
+        "unknown": 2217
+      },
+      "by_geography": {
+        "Pakistan": {
+          "total": 1207,
+          "escalated": 275,
+          "rate": 0.2278
+        },
+        "Egypt/UAE": {
+          "total": 2891,
+          "escalated": 637,
+          "rate": 0.2203
+        },
+        "UAE": {
+          "total": 5802,
+          "escalated": 1305,
+          "rate": 0.2249
+        }
+      },
+      "by_language": {
+        "ur": {
+          "total": 1207,
+          "escalated": 275,
+          "rate": 0.2278
+        },
+        "ar": {
+          "total": 2891,
+          "escalated": 637,
+          "rate": 0.2203
+        },
+        "en": {
+          "total": 5802,
+          "escalated": 1305,
+          "rate": 0.2249
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 6006,
+          "escalated": 1383,
+          "rate": 0.2303
+        },
+        "WhatsApp": {
+          "total": 1978,
+          "escalated": 436,
+          "rate": 0.2204
+        },
+        "Internet Banking": {
+          "total": 906,
+          "escalated": 203,
+          "rate": 0.2241
+        },
+        "IVR": {
+          "total": 1010,
+          "escalated": 195,
+          "rate": 0.1931
+        }
+      }
+    },
+    {
+      "journey_id": "CARD_004",
+      "journey_name": "Credit Card Block / Replacement",
+      "total_sessions": 7,
+      "escalated_sessions": 3,
+      "escalation_rate": 0.4286,
+      "transfer_reason_breakdown": {
+        "customer_demanded_human": 1,
+        "backend_integration_gap": 2
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 3,
+          "escalated": 2,
+          "rate": 0.6667
+        },
+        "Egypt/UAE": {
+          "total": 4,
+          "escalated": 1,
+          "rate": 0.25
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 3,
+          "escalated": 2,
+          "rate": 0.6667
+        },
+        "ar": {
+          "total": 4,
+          "escalated": 1,
+          "rate": 0.25
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 7,
+          "escalated": 3,
+          "rate": 0.4286
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_007",
+      "journey_name": "Personal Loan EMI Deferral Request",
+      "total_sessions": 3,
+      "escalated_sessions": 3,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "policy_routed": 3
+      },
+      "by_geography": {
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "UAE": {
+          "total": 2,
+          "escalated": 2,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "en": {
+          "total": 2,
+          "escalated": 2,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "IVR": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "Internet Banking": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "WLTH_010",
+      "journey_name": "Structured Product Enquiry",
+      "total_sessions": 2,
+      "escalated_sessions": 2,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "bot_fallback_exhausted": 1,
+        "backend_integration_gap": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_004",
+      "journey_name": "Account Closure Request",
+      "total_sessions": 2,
+      "escalated_sessions": 2,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "bot_has_data_communicates_poorly": 2
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "IVR": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "DIGI_001",
+      "journey_name": "Mobile App Login / Access Issue",
+      "total_sessions": 4,
+      "escalated_sessions": 1,
+      "escalation_rate": 0.25,
+      "transfer_reason_breakdown": {
+        "customer_demanded_human": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 4,
+          "escalated": 1,
+          "rate": 0.25
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 4,
+          "escalated": 1,
+          "rate": 0.25
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "IVR": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_003",
+      "journey_name": "Personal Loan Eligibility Enquiry",
+      "total_sessions": 2,
+      "escalated_sessions": 1,
+      "escalation_rate": 0.5,
+      "transfer_reason_breakdown": {
+        "authentication_friction": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        }
+      }
+    },
+    {
+      "journey_id": "WELL_002",
+      "journey_name": "Spending Analysis Request",
+      "total_sessions": 1,
+      "escalated_sessions": 1,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "backend_integration_gap": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "CARD_008",
+      "journey_name": "Debit Card Block / Replacement",
+      "total_sessions": 2,
+      "escalated_sessions": 1,
+      "escalation_rate": 0.5,
+      "transfer_reason_breakdown": {
+        "policy_routed": 1
+      },
+      "by_geography": {
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_013",
+      "journey_name": "Joint Account Holder Addition",
+      "total_sessions": 1,
+      "escalated_sessions": 1,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "bot_fallback_exhausted": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "Internet Banking": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_001",
+      "journey_name": "Current Account Balance Enquiry",
+      "total_sessions": 7,
+      "escalated_sessions": 1,
+      "escalation_rate": 0.1429,
+      "transfer_reason_breakdown": {
+        "bot_fallback_exhausted": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 5,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 5,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 4,
+          "escalated": 1,
+          "rate": 0.25
+        },
+        "WhatsApp": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Internet Banking": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "REMI_002",
+      "journey_name": "International Remittance Status Tracking",
+      "total_sessions": 2,
+      "escalated_sessions": 1,
+      "escalation_rate": 0.5,
+      "transfer_reason_breakdown": {
+        "backend_integration_gap": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        }
+      },
+      "by_channel": {
+        "Internet Banking": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_006",
+      "journey_name": "Personal Loan Restructuring Request",
+      "total_sessions": 1,
+      "escalated_sessions": 1,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "policy_routed": 1
+      },
+      "by_geography": {
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_008",
+      "journey_name": "Account Freeze / Unfreeze Enquiry",
+      "total_sessions": 1,
+      "escalated_sessions": 1,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "policy_routed": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "Internet Banking": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "DIGI_004",
+      "journey_name": "OTP / Authentication Issues",
+      "total_sessions": 3,
+      "escalated_sessions": 1,
+      "escalation_rate": 0.3333,
+      "transfer_reason_breakdown": {
+        "authentication_friction": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        },
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 2,
+          "escalated": 1,
+          "rate": 0.5
+        },
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        },
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_004",
+      "journey_name": "Personal Loan Application Status",
+      "total_sessions": 1,
+      "escalated_sessions": 1,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "trust_or_ux_failure": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "WELL_005",
+      "journey_name": "Product Recommendation Enquiry",
+      "total_sessions": 1,
+      "escalated_sessions": 1,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "policy_routed": 1
+      },
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "WELL_001",
+      "journey_name": "Financial Health Check Enquiry",
+      "total_sessions": 1,
+      "escalated_sessions": 1,
+      "escalation_rate": 1.0,
+      "transfer_reason_breakdown": {
+        "backend_integration_gap": 1
+      },
+      "by_geography": {
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 1,
+          "rate": 1.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_005",
+      "journey_name": "IBAN Enquiry",
+      "total_sessions": 6,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 4,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 4,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 5,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_002",
+      "journey_name": "Savings Account Balance Enquiry",
+      "total_sessions": 3,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_001",
+      "journey_name": "Personal Loan Balance Enquiry",
+      "total_sessions": 4,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Internet Banking": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_003",
+      "journey_name": "Account Statement Request",
+      "total_sessions": 5,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "Egypt/UAE": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 4,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_010",
+      "journey_name": "Home Loan Balance Enquiry",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "IVR": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "CARD_011",
+      "journey_name": "Credit Card Payment Due Date Enquiry",
+      "total_sessions": 5,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "IVR": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "DIGI_009",
+      "journey_name": "Push Notification / Alert Setup",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_011",
+      "journey_name": "Account Interest Rate Enquiry",
+      "total_sessions": 2,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "CARD_012",
+      "journey_name": "Credit Card Minimum Payment Enquiry",
+      "total_sessions": 3,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "REMI_003",
+      "journey_name": "Exchange Rate Enquiry",
+      "total_sessions": 4,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Egypt/UAE": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ar": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "IVR": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "CARD_001",
+      "journey_name": "Credit Card Balance Enquiry",
+      "total_sessions": 4,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "WLTH_003",
+      "journey_name": "Fixed Deposit Renewal Request",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "REMI_001",
+      "journey_name": "International Remittance Enquiry",
+      "total_sessions": 6,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "Pakistan": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "UAE": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "ur": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "en": {
+          "total": 3,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 5,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_014",
+      "journey_name": "Loan Payment History Request",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_009",
+      "journey_name": "Auto Loan Early Settlement",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "ACCT_007",
+      "journey_name": "Cheque Status Enquiry",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "WLTH_007",
+      "journey_name": "Sukuk / Bond Enquiry",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "REMI_004",
+      "journey_name": "Beneficiary Addition / Management",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "CARD_014",
+      "journey_name": "Credit Card Annual Fee Waiver Request",
+      "total_sessions": 2,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "LOAN_002",
+      "journey_name": "Personal Loan Statement Request",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "REMI_008",
+      "journey_name": "Transfer Limit Enquiry",
+      "total_sessions": 2,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "Pakistan": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "ur": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "DIGI_006",
+      "journey_name": "Cardless Withdrawal Enquiry",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "COMP_002",
+      "journey_name": "Complaint Status Followup",
+      "total_sessions": 1,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "WhatsApp": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    },
+    {
+      "journey_id": "DIGI_005",
+      "journey_name": "Mobile App Feature Navigation Help",
+      "total_sessions": 2,
+      "escalated_sessions": 0,
+      "escalation_rate": 0.0,
+      "transfer_reason_breakdown": {},
+      "by_geography": {
+        "Egypt/UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "UAE": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_language": {
+        "ar": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        },
+        "en": {
+          "total": 1,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      },
+      "by_channel": {
+        "Web/Mobile Client": {
+          "total": 2,
+          "escalated": 0,
+          "rate": 0.0
+        }
+      }
+    }
+  ]
+}

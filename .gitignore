@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+build/
+dist/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Raw data (large synthetic files — not needed for dashboard)
+data/raw/
+
+# Word docs (large, regenerable)
+data/outputs/journey_reports/
+
+# Logs
+*.log
+
+# Claude Code local files
+.claude/
+
+# Large synthetic data files (dashboard doesn't need these; regenerate with generate_synthetic.py)
+data/synthetic/full/

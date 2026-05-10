@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "sessions_processed": 10000,
+  "transcript_rows": 71421,
+  "csat_rows": 1200,
+  "journeys_classified": 100,
+  "sessions_transferred": 23,
+  "sessions_deep_coded": 23,
+  "journeys_remediation_assigned": 17,
+  "csat_join_rate_pct": 100.0,
+  "knowledge_transfer_opportunities": 6,
+  "mvp_shortlist_count": 0,
+  "top_10_mvp": []
+}

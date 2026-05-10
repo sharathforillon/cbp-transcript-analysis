@@ -1,0 +1,67 @@
+# =============================================================================
+# SCHEMA MAPPING — Kore.ai Field Name Remapping
+# CBP Transcript Analysis Pipeline
+# =============================================================================
+# INSTRUCTIONS FOR DEV TEAM:
+# 1. Run db.messages.findOne() against real Mongo.
+# 2. If a field name differs from the left-hand side (contract name), update
+#    the right-hand side (source name) to match what Mongo actually has.
+# 3. DO NOT edit pipeline code — it reads field names from this file only.
+# =============================================================================
+
+# Mongo collection names
+collections:
+  transcripts: messages          # [VERIFY] Confirm collection name in real Mongo
+  csat: csat_responses           # [VERIFY] Confirm CSAT collection/file name
+
+# Transcripts field mapping: contract_name: source_field_name
+transcripts:
+  bot_name: bot_name
+  user_id: user_id
+  channel: channel
+  language: language
+  bot_message: bot_message
+  user_message: user_message
+  timestamp: timestamp
+  session_id: session_id         # [VERIFY] Set session_id_present below
+
+  # Availability flag — flip to false if session_id is not in source data
+  # When false, the pipeline uses time-gap sessionization (Path B)
+  session_id_present: true       # [VERIFY] Confirm this against real Mongo
+
+# CSAT field mapping
+csat:
+  user_id: user_id
+  channel_id: channel_id
+  session_id: session_id
+  channel: channel
+  language: language
+  score: score
+  date_time: date_time
+  comments: comments
+
+# Transfer signal indicators — template_types that mean a human handoff occurred
+# [VERIFY] Confirm these match your Kore.ai deployment's template_type values
+transfer_indicators:
+  - live_agent
+  - SYSTEM
+
+# System message keywords (for text-based transfer detection as fallback)
+transfer_keywords:
+  - "connecting you to an agent"
+  - "transferring you"
+  - "transfer you to"
+  - "live agent"
+  - "human agent"
+  - "agent will assist"
+  - "representative will"
+  - "support team"
+
+# Sessionization config (Path B — time-gap based)
+sessionization:
+  gap_minutes: 30                # Sessions split when gap between messages exceeds this
+
+# Pipeline mode flags
+pipeline:
+  mode: synthetic                # synthetic | production — controls header banner in dashboard
+  synthetic_flag_field: _synthetic  # Field name in synthetic records marking them as synthetic

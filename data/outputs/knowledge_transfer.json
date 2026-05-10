@@ -1,0 +1,88 @@
+{
+  "summary": {
+    "journeys_with_agent_messages": 11,
+    "total_opportunities": 6,
+    "min_frequency_threshold": 3,
+    "note": "Clustering uses word-overlap heuristic. For production, replace _simple_cluster() with sentence embeddings (e.g. sentence-transformers/all-MiniLM-L6-v2) for better grouping."
+  },
+  "opportunities": [
+    {
+      "journey_id": "INTL_005",
+      "journey_name": "",
+      "representative_message": "Hello, I'm Khalid Al Rashidi. I can confirm what our assistant told you — I've processed your request for Mobile App Login / Access Issue. Your reference number is REF14787188.",
+      "frequency": 489,
+      "example_messages": [
+        "Hello, I'm Khalid Al Rashidi. I can confirm what our assistant told you — I've processed your request for Mobile App Login / Access Issue. Your reference number is REF14787188.",
+        "Good day, this is Ahmed Al Mansoori. I can see there was a system issue. Let me access your account directly. I can confirm I've initiated the transfer recall. The process takes 3-7 business days depending on the destination bank.",
+        "Hello, I'm Ahmed Al Mansoori. I can confirm what our assistant told you — I've processed your request for Loan Top-Up Eligibility Enquiry. Your reference number is REF54682532."
+      ],
+      "bot_feasibility": "with_data_access",
+      "automation_impact_score": 342.3
+    },
+    {
+      "journey_id": "INTL_005",
+      "journey_name": "",
+      "representative_message": "Of course, I can help with that. Let me pull up your account. Can you confirm your Emirates ID?",
+      "frequency": 378,
+      "example_messages": [
+        "Of course, I can help with that. Let me pull up your account. Can you confirm your Emirates ID?",
+        "Of course, I can help with that. Let me pull up your account. Can you confirm your Emirates ID?",
+        "Hi there, I'm Nour Ibrahim. I can help you with that. I've resolved your query and updated your account accordingly. Your reference is REF87659710."
+      ],
+      "bot_feasibility": "with_data_access",
+      "automation_impact_score": 264.6
+    },
+    {
+      "journey_id": "INTL_005",
+      "journey_name": "",
+      "representative_message": "Hi, this is Fatima Al Mazrouei. I can see you're having trouble with OTP. Can you confirm your registered email address so I can verify your identity?",
+      "frequency": 341,
+      "example_messages": [
+        "Hi, this is Fatima Al Mazrouei. I can see you're having trouble with OTP. Can you confirm your registered email address so I can verify your identity?",
+        "Hi, this is Priya Nair. I can see you're having trouble with OTP. Can you confirm your registered email address so I can verify your identity?",
+        "Hi, this is Fatima Al Mazrouei. I can see you're having trouble with OTP. Can you confirm your registered email address so I can verify your identity?"
+      ],
+      "bot_feasibility": "with_data_access",
+      "automation_impact_score": 238.7
+    },
+    {
+      "journey_id": "INTL_005",
+      "journey_name": "",
+      "representative_message": "Hello, this is Vikram Patel. How can I assist you today?",
+      "frequency": 143,
+      "example_messages": [
+        "Hello, this is Vikram Patel. How can I assist you today?",
+        "Hello, this is James Wilson. How can I assist you today?",
+        "Hello, this is Priya Nair. How can I assist you today?"
+      ],
+      "bot_feasibility": "with_data_access",
+      "automation_impact_score": 100.1
+    },
+    {
+      "journey_id": "INTL_005",
+      "journey_name": "",
+      "representative_message": "Hello, I'm Ahmed Al Mansoori from Mashreq Bank. I can see why the bot couldn't explain this clearly. Your account has a pending merchant claim of AED 675.16 from ADIB POS. This is an authorization hold and not an actual balance — it will clear automatically within 3-5 business days. Once cleared, yo",
+      "frequency": 34,
+      "example_messages": [
+        "Hello, I'm Ahmed Al Mansoori from Mashreq Bank. I can see why the bot couldn't explain this clearly. Your account has a pending merchant claim of AED 675.16 from ADIB POS. This is an authorization hold and not an actual balance — it will clear automatically within 3-5 business days. Once cleared, your account will be ready for closure. I'll add a note to your account.",
+        "Yes, exactly. The ADIB POS hold will expire automatically. I'd recommend calling back in 5 business days or checking the app — the hold will show as cleared. Is there anything else I can help you with?",
+        "Yes, exactly. The ETISALAT UAE hold will expire automatically. I'd recommend calling back in 5 business days or checking the app — the hold will show as cleared. Is there anything else I can help you with?"
+      ],
+      "bot_feasibility": "with_data_access",
+      "automation_impact_score": 23.8
+    },
+    {
+      "journey_id": "CARD_004",
+      "journey_name": "Credit Card Block / Replacement",
+      "representative_message": "Of course, I can help with that. Let me pull up your account. Can you confirm your Emirates ID?",
+      "frequency": 3,
+      "example_messages": [
+        "Of course, I can help with that. Let me pull up your account. Can you confirm your Emirates ID?",
+        "Hi there, I'm Vikram Patel. I can help you with that. I've resolved your query and updated your account accordingly. Your reference is REF82038079.",
+        "Good day, this is Sara Johnson. I can see there was a system issue. Let me access your account directly. I can confirm I've resolved your query and updated your account accordingly. Your reference is REF36913545."
+      ],
+      "bot_feasibility": "with_data_access",
+      "automation_impact_score": 2.1
+    }
+  ]
+}
