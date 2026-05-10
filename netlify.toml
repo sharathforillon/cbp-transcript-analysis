@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  command = "mkdir -p public/data && cp data/outputs/*.json public/data/"
+
+[[headers]]
+  for = "/data/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
