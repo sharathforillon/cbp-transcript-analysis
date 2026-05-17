@@ -159,14 +159,201 @@ def _remediation_color(code: str) -> str:
 # ============================================================================
 
 def _inject_css():
-    # Target card divs by their unique border-left style — Streamlit strips
-    # class= attributes but preserves <style> tags and inline style= attributes.
+    """Global typography + design-token polish.
+
+    Streamlit strips most class attributes, so we target by inline style and
+    by data-testid selectors that Streamlit emits for native widgets.
+    """
     st.markdown(
         """
         <style>
-        div[style*="border-left: 4px solid"] { color: #1a1a1a !important; }
-        div[style*="border-left: 4px solid"] b,
-        div[style*="border-left: 4px solid"] small { color: #1a1a1a !important; }
+        /* ── design tokens ───────────────────────────────────────────────── */
+        :root {
+            --ink-1:    #0b1220;
+            --ink-2:    #1f2937;
+            --ink-3:    #4b5563;
+            --ink-4:    #6b7280;
+            --bg-1:     #ffffff;
+            --bg-2:     #f7f8fb;
+            --bg-3:     #eef1f6;
+            --brand:    #1a73e8;
+            --brand-d:  #0f4d9e;
+            --success:  #21a366;
+            --warn:     #ef9b1f;
+            --danger:   #d53e2c;
+            --accent:   #6750a4;
+        }
+
+        /* ── overall page ────────────────────────────────────────────────── */
+        section.main > div.block-container { padding-top: 1rem !important; max-width: 1280px; }
+        h1, h2, h3, h4 { color: var(--ink-1) !important; font-weight: 700; letter-spacing: -0.01em; }
+        h1 { font-size: 28px !important; }
+        h2 { font-size: 22px !important; margin-top: 8px !important; }
+        h3 { font-size: 18px !important; }
+        h4 { font-size: 15px !important; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3) !important; }
+
+        /* ── force dark text inside coloured cards (Streamlit otherwise inherits) ── */
+        div[style*="border-left"] { color: var(--ink-1) !important; }
+        div[style*="border-left"] b, div[style*="border-left"] small, div[style*="border-left"] span {
+            color: var(--ink-1) !important;
+        }
+
+        /* ── metric polish ───────────────────────────────────────────────── */
+        [data-testid="stMetric"] {
+            background: var(--bg-2);
+            border: 1px solid var(--bg-3);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        [data-testid="stMetricLabel"] {
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-3) !important;
+        }
+        [data-testid="stMetricValue"] {
+            font-size: 26px !important;
+            font-weight: 700 !important;
+            color: var(--ink-1) !important;
+        }
+
+        /* ── buttons polish ──────────────────────────────────────────────── */
+        [data-testid="stBaseButton-secondary"] {
+            background: var(--bg-1);
+            border: 1px solid var(--bg-3);
+            color: var(--brand);
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 6px 14px;
+        }
+        [data-testid="stBaseButton-secondary"]:hover {
+            background: var(--bg-2);
+            border-color: var(--brand);
+        }
+        [data-testid="stBaseButton-primary"] {
+            background: var(--brand);
+            border: none;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        /* ── radio & selectbox ───────────────────────────────────────────── */
+        [data-testid="stRadio"] label, [data-testid="stSelectbox"] label {
+            font-weight: 600;
+            color: var(--ink-2) !important;
+        }
+
+        /* ── hero card ───────────────────────────────────────────────────── */
+        .cbp-hero {
+            background: linear-gradient(135deg, #1a73e8 0%, #6750a4 100%);
+            color: white;
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin: 8px 0 18px 0;
+            box-shadow: 0 6px 18px rgba(26, 115, 232, 0.18);
+        }
+        .cbp-hero .cbp-eyebrow {
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            opacity: 0.88;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .cbp-hero .cbp-number {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -0.02em;
+        }
+        .cbp-hero .cbp-tagline {
+            font-size: 15px;
+            opacity: 0.94;
+            margin-top: 10px;
+            max-width: 720px;
+        }
+
+        /* ── Quick-win callout ───────────────────────────────────────────── */
+        .cbp-quickwins {
+            background: #fff7e6;
+            border: 1px solid #f5c87a;
+            border-left: 5px solid var(--warn);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 14px 0;
+        }
+        .cbp-quickwins h4 { color: #8a5a00 !important; margin: 0 0 8px 0; }
+        .cbp-quickwins ol { margin: 4px 0 0 18px; padding: 0; color: var(--ink-1); }
+        .cbp-quickwins li { padding: 4px 0; font-size: 14px; }
+        .cbp-quickwins li b { color: var(--ink-1); }
+
+        /* ── journey card ────────────────────────────────────────────────── */
+        .cbp-card {
+            background: white;
+            border: 1px solid var(--bg-3);
+            border-left: 5px solid var(--brand);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 8px;
+            transition: box-shadow 0.15s ease;
+        }
+        .cbp-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+        .cbp-card .cbp-rank {
+            display: inline-block;
+            background: var(--bg-2);
+            color: var(--brand-d);
+            font-weight: 700;
+            font-size: 12px;
+            padding: 3px 9px;
+            border-radius: 99px;
+            margin-right: 8px;
+        }
+        .cbp-card .cbp-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ink-1);
+        }
+        .cbp-card .cbp-meta {
+            font-size: 12px;
+            color: var(--ink-3);
+            margin-top: 2px;
+        }
+        .cbp-card .cbp-row {
+            display: flex; gap: 22px; margin-top: 10px; flex-wrap: wrap;
+            font-size: 13px; color: var(--ink-2);
+        }
+        .cbp-card .cbp-row b { color: var(--ink-1); font-size: 14px; }
+        .cbp-card .cbp-fix {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--bg-3);
+            font-size: 13px;
+            color: var(--ink-3);
+        }
+        .cbp-card .cbp-fix b { color: var(--ink-1); }
+
+        /* ── containability pill ─────────────────────────────────────────── */
+        .cbp-pill {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .cbp-pill.high   { background: #e6f4ea; color: #1b5e20; }
+        .cbp-pill.medium { background: #fff4d6; color: #8a5a00; }
+        .cbp-pill.low    { background: #fde0dd; color: #8b1c14; }
+
+        /* ── section divider ─────────────────────────────────────────────── */
+        hr { margin: 1.4rem 0 !important; border-color: var(--bg-3) !important; }
+
+        /* ── sidebar ─────────────────────────────────────────────────────── */
+        [data-testid="stSidebar"] { background: var(--bg-2); }
+        [data-testid="stSidebar"] h2, [data-testid="stSidebar"] p { color: var(--ink-2) !important; }
         </style>
         """,
         unsafe_allow_html=True,
@@ -176,20 +363,27 @@ def _inject_css():
 def render_header():
     _inject_css()
     is_syn = _is_synthetic()
-    banner_color = "#FF4B4B" if is_syn else "#00CC88"
-    banner_text = "⚠️  SYNTHETIC DATA — NOT REAL CUSTOMER DATA" if is_syn else "📊 PRODUCTION DATA"
+    banner_color = "#fde0dd" if is_syn else "#e6f4ea"
+    banner_text  = "⚠️  Synthetic data — not real customer records" if is_syn else "📊 Production data"
+    banner_ink   = "#8b1c14" if is_syn else "#1b5e20"
 
     st.markdown(
         f"""
-        <div style='background-color:{banner_color};padding:8px 16px;border-radius:6px;
-                    color:white;font-weight:bold;font-size:14px;margin-bottom:12px;'>
+        <div style='background:{banner_color};color:{banner_ink};padding:6px 14px;
+                    border-radius:6px;font-size:12px;font-weight:600;margin-bottom:6px;
+                    text-transform:uppercase;letter-spacing:0.05em;display:inline-block;'>
             {banner_text}
         </div>
         """,
         unsafe_allow_html=True,
     )
-    st.title("🏦 Mashreq CBP Transcript Analysis")
-    st.caption("Conversational Banking Platform — MVP Journey Prioritization Tool")
+    st.markdown(
+        "<h1 style='margin-bottom:2px;'>Mashreq CBP — Containment Strategy</h1>"
+        "<p style='color:#6b7280;margin-top:0;font-size:14px;'>"
+        "MVP journey prioritization · powered by LLM analysis of bot→agent transcripts"
+        "</p>",
+        unsafe_allow_html=True,
+    )
 
 
 # ============================================================================
@@ -230,12 +424,6 @@ def _monthly_volume(row: dict, total_dataset_sessions: int, months: int = 6) -> 
 
 
 def view_top_journeys():
-    st.header("1. Containment Strategy — Top 10 MVP Journeys")
-    st.caption(
-        "Strategic priorities to shift bot→agent handoffs back into bot scope. "
-        "Every transcript below was already escalated to a human agent; the question is **which journeys can the bot recapture?**"
-    )
-
     mvp        = load_mvp_shortlist()
     shortlist  = mvp.get("mvp_shortlist", [])
     runners    = mvp.get("runners_up", [])
@@ -252,117 +440,156 @@ def view_top_journeys():
 
     total_dataset_sessions = leakage.get("summary", {}).get("total_sessions", 10000)
 
-    # Sort options (volume + strategic, no rates)
-    sort_by = st.radio(
-        "Sort by:",
-        ["Strategic Score", "Monthly Volume", "Containability", "CBP Fit"],
-        horizontal=True, key="v1_sort",
-    )
-
-    # ---- enrich rows with strategic metrics ----
+    # ── enrich rows with strategic metrics ─────────────────────────────
     enriched = []
     for r in shortlist + runners:
         jid    = r["journey_id"]
         rem    = rem_data.get(jid, {})
         c_label, c_color, c_score = _containability(rem, r.get("cbp_capability_fit", 0.5))
         monthly = _monthly_volume(r, total_dataset_sessions)
-        enriched.append({**r,
-                         "_monthly_volume": monthly,
-                         "_containability_label": c_label,
-                         "_containability_color": c_color,
-                         "_containability_score": c_score,
-                         "_rem_object": rem})
-
-    sort_map = {
-        "Strategic Score": ("composite_score",       False),
-        "Monthly Volume":  ("_monthly_volume",       False),
-        "Containability":  ("_containability_score", False),
-        "CBP Fit":         ("cbp_capability_fit",    False),
-    }
-    sort_col, sort_asc = sort_map[sort_by]
-    enriched.sort(key=lambda x: x.get(sort_col, 0) or 0, reverse=not sort_asc)
-
-    # ---- KPI ROW (strategic, no rates) ----
-    top10                = enriched[:10]
-    total_top10_volume   = sum(j["_monthly_volume"] for j in top10)
-    avg_containability   = sum(j["_containability_score"] for j in top10) / max(len(top10), 1)
-    monthly_agent_cost   = total_top10_volume * 4.50          # $4.50 per agent handoff
-    high_containable_n   = sum(1 for j in top10 if j["_containability_label"] == "HIGH")
-
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Top-10 Monthly Volume",  f"{total_top10_volume:,}",
-              help="Estimated bot→agent handoffs per month across the top 10 journeys")
-    c2.metric("Avg Containability",     f"{avg_containability:.0%}",
-              help="How realistic it is to move these journeys back into bot scope")
-    c3.metric("HIGH Containable",       f"{high_containable_n} / 10",
-              help="Journeys with low-complexity, high-impact remediation paths")
-    c4.metric("Monthly Cost @ Status Quo", f"${monthly_agent_cost:,.0f}",
-              help="Top-10 monthly volume × $4.50 avg agent handoff cost")
-
-    st.divider()
-    st.subheader("🏆 Strategic MVP Shortlist")
-
-    # ---- 10 JOURNEY CARDS (strategic framing) ----
-    for i, row in enumerate(top10):
-        rank   = row.get("mvp_rank", i + 1)
-        jid    = row["journey_id"]
-        name   = row.get("journey_name", jid)
-        domain = (row.get("domain", "") or jid.split("_")[0]).upper()
-        conf   = row.get("confidence", "MEDIUM")
-        score  = row.get("composite_score", 0)
-        cbp    = row.get("cbp_capability_fit", 0.5)
-        rem    = row["_rem_object"]
-        c_lbl  = row["_containability_label"]
-        c_col  = row["_containability_color"]
-        vol    = row["_monthly_volume"]
-        pfm    = rem.get("primary_failure_mode", "").replace("_", " ").title() or "Not yet coded"
         top_rem = (rem.get("recommended_remediations") or [{}])[0]
-        rem_typ = top_rem.get("remediation_type", row.get("primary_remediation", "—")).replace("_", " ").title()
-        rationale_short = top_rem.get("rationale", "")[:140]
-        if rationale_short and len(top_rem.get("rationale", "")) > 140:
+        enriched.append({
+            **r,
+            "_monthly_volume":        monthly,
+            "_containability_label":  c_label,
+            "_containability_color":  c_color,
+            "_containability_score":  c_score,
+            "_rem_object":            rem,
+            "_top_rem":               top_rem,
+            "_impact":                top_rem.get("estimated_impact", "medium"),
+            "_complexity":            top_rem.get("implementation_complexity", "medium"),
+        })
+
+    enriched.sort(key=lambda x: x.get("composite_score", 0) or 0, reverse=True)
+    top10 = enriched[:10]
+
+    # ── EXECUTIVE METRICS ──────────────────────────────────────────────
+    total_volume       = sum(j["_monthly_volume"]      for j in top10)
+    high_containable   = sum(1 for j in top10 if j["_containability_label"] == "HIGH")
+
+    # Quick wins = high or medium impact + low complexity
+    quick_wins = [
+        j for j in top10
+        if j["_impact"] in {"high", "medium"} and j["_complexity"] == "low"
+    ][:3]
+
+    # Annual savings opportunity (containment lift × volume × cost)
+    impact_mult = {"high": 0.60, "medium": 0.35, "low": 0.15}
+    annual_opportunity = sum(
+        j["_monthly_volume"] * impact_mult.get(j["_impact"], 0.35) * 4.50 * 12
+        for j in top10
+    )
+
+    # Time to first win
+    fastest_delivery = "1–2 weeks" if quick_wins else "3–6 weeks"
+
+    # ── HERO BANNER ────────────────────────────────────────────────────
+    st.markdown(
+        f"""
+        <div class='cbp-hero'>
+          <div class='cbp-eyebrow'>Total Containment Opportunity</div>
+          <div class='cbp-number'>${annual_opportunity / 1000:,.0f}K <span style='font-size:22px;opacity:0.7;font-weight:500;'>annual</span></div>
+          <div class='cbp-tagline'>
+            Across the top 10 MVP journeys, we can recapture an estimated
+            <b>{int(total_volume * 0.4):,} agent handoffs per month</b> into bot scope,
+            unlocking <b>${annual_opportunity / 12 / 1000:,.0f}K / month</b> in agent cost savings
+            and freeing capacity for higher-value work.
+          </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # ── 4 SUPPORTING KPIs ──────────────────────────────────────────────
+    k1, k2, k3, k4 = st.columns(4)
+    k1.metric("Monthly Handoffs",   f"{total_volume:,}",
+              help="Estimated bot→agent handoffs/month across the top 10")
+    k2.metric("HIGH Containable",   f"{high_containable} / 10",
+              help="Journeys with low-complexity, high-impact fix paths")
+    k3.metric("Quick Wins",         f"{len(quick_wins)}",
+              help="High/medium impact + low complexity remediations")
+    k4.metric("Time to First Win",  fastest_delivery,
+              help="Fastest-deliverable remediation in the shortlist")
+
+    # ── QUICK WINS CALLOUT (the Monday-morning answer) ─────────────────
+    if quick_wins:
+        items_html = "".join(
+            f"<li><b>{q.get('journey_name','—')}</b> "
+            f"&nbsp;·&nbsp; {q['_top_rem'].get('remediation_type','').replace('_',' ').title()} "
+            f"&nbsp;·&nbsp; ~{q['_monthly_volume']:,} handoffs/mo</li>"
+            for q in quick_wins
+        )
+        st.markdown(
+            f"""
+            <div class='cbp-quickwins'>
+              <h4>🎯 This Quarter's Quick Wins</h4>
+              <p style='font-size:13px;color:#5f4500;margin:0 0 6px 0;'>
+                Low-complexity remediations with measurable impact — ship in 1–2 weeks.
+              </p>
+              <ol>{items_html}</ol>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    # ── STRATEGIC SHORTLIST ────────────────────────────────────────────
+    st.markdown("### Strategic MVP Shortlist")
+    st.caption("Ranked by composite strategic score (volume × containability × CBP fit). "
+               "Click any card to drill into the WHAT, WHERE and HOW.")
+
+    for i, row in enumerate(top10):
+        rank    = row.get("mvp_rank", i + 1)
+        jid     = row["journey_id"]
+        name    = row.get("journey_name", jid)
+        domain  = (row.get("domain", "") or jid.split("_")[0]).upper()
+        conf    = row.get("confidence", "MEDIUM")
+        score   = row.get("composite_score", 0)
+        cbp     = row.get("cbp_capability_fit", 0.5)
+        rem     = row["_rem_object"]
+        c_lbl   = row["_containability_label"]
+        c_col   = row["_containability_color"]
+        vol     = row["_monthly_volume"]
+        pfm     = (rem.get("primary_failure_mode", "") or "—").replace("_", " ").title()
+        rem_typ = row["_top_rem"].get("remediation_type", "—").replace("_", " ").title()
+        rationale_short = (row["_top_rem"].get("rationale") or "")[:160]
+        if rationale_short and len(row["_top_rem"].get("rationale", "")) > 160:
             rationale_short += "…"
 
-        # Container card
-        card_bg = "#e6f4ea" if c_lbl == "HIGH" else "#fff8e1" if c_lbl == "MEDIUM" else "#fce8e6"
+        st.markdown(
+            f"""
+            <div class='cbp-card' style='border-left-color:{c_col};'>
+              <div style='display:flex;justify-content:space-between;align-items:flex-start;'>
+                <div>
+                  <span class='cbp-rank'>#{rank}</span>
+                  <span class='cbp-name'>{name}</span>
+                  <div class='cbp-meta'>{domain} &nbsp;·&nbsp; {jid} &nbsp;·&nbsp; {_confidence_badge(conf)}</div>
+                </div>
+                <div style='text-align:right;'>
+                  <span class='cbp-pill {c_lbl.lower()}'>{c_lbl} containability</span>
+                  <div style='font-size:11px;color:#6b7280;margin-top:4px;'>Score {score:.2f}</div>
+                </div>
+              </div>
+              <div class='cbp-row'>
+                <span>📊 <b>{vol:,}</b> handoffs/mo</span>
+                <span>🤖 <b>{cbp:.0%}</b> CBP fit</span>
+                <span>⚠️ Primary failure: <b>{pfm}</b></span>
+              </div>
+              <div class='cbp-fix'>
+                <b>🛠 Top fix:</b> {rem_typ} &nbsp;·&nbsp; <i>{rationale_short or "—"}</i>
+              </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        if st.button(f"🔍  Drill into {jid}", key=f"drill_{jid}"):
+            st.session_state["selected_journey"] = jid
+            st.session_state["_pending_nav"]     = "Per-Journey Deep Dive"
+            st.rerun()
 
-        with st.container():
-            st.markdown(
-                f"""
-                <div style='background:{card_bg};border-radius:10px;padding:14px 18px;
-                            margin-bottom:8px;border-left:5px solid {c_col};'>
-                <div style='display:flex;justify-content:space-between;align-items:baseline;'>
-                  <div>
-                    <b style='color:#1a1a1a;font-size:16px;'>#{rank} &nbsp; {name}</b>
-                    <small style='color:#666;'>&nbsp;·&nbsp; {domain} &nbsp;·&nbsp; {jid} &nbsp;·&nbsp; {_confidence_badge(conf)}</small>
-                  </div>
-                  <div style='text-align:right;'>
-                    <small style='color:#666;'>Strategic Score</small><br>
-                    <b style='color:#1a1a1a;font-size:15px;'>{score:.3f}</b>
-                  </div>
-                </div>
-                <div style='display:flex;gap:18px;margin-top:8px;flex-wrap:wrap;'>
-                  <span style='color:#1a1a1a;'><b>📊 {vol:,}</b><small> sessions/mo</small></span>
-                  <span style='color:#1a1a1a;'><b>🤖 {cbp:.0%}</b><small> CBP fit</small></span>
-                  <span style='color:#1a1a1a;'><b>🎯 {c_lbl}</b><small> containability</small></span>
-                  <span style='color:#1a1a1a;'><small>⚠️ Primary failure:</small> <b>{pfm}</b></span>
-                </div>
-                <div style='margin-top:8px;'>
-                  <small style='color:#444;'><b>🛠 Top fix:</b> {rem_typ}</small><br>
-                  <small style='color:#555;font-style:italic;'>{rationale_short or "—"}</small>
-                </div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
-            if st.button(f"🔍 Drill into {jid}", key=f"drill_{jid}"):
-                st.session_state["selected_journey"]  = jid
-                st.session_state["_pending_nav"]      = "Per-Journey Deep Dive"
-                st.rerun()
-
-    # ---- runners-up & excluded ----
+    # ── secondary content (collapsed) ──────────────────────────────────
+    st.markdown("---")
     if runners:
-        with st.expander(f"🏃 Runners-Up ({len(runners)} journeys)"):
+        with st.expander(f"🏃  Runners-up ({len(runners)} journeys)"):
             r_df = pd.DataFrame(runners)[
                 ["journey_id", "journey_name", "total_sessions",
                  "composite_score", "primary_remediation", "cbp_capability_fit"]
@@ -379,16 +606,24 @@ def view_top_journeys():
             st.dataframe(r_df, use_container_width=True, hide_index=True)
 
     if excluded:
-        with st.expander(f"🚫 Excluded Journeys ({len(excluded)})"):
+        with st.expander(f"🚫  Excluded journeys ({len(excluded)})"):
             e_df = pd.DataFrame(excluded)[["journey_id", "journey_name", "exclusion_reason"]]
-            e_df.columns = ["ID", "Journey", "Excluded Because"]
+            e_df.columns = ["ID", "Journey", "Excluded because"]
             st.dataframe(e_df, use_container_width=True, hide_index=True)
-            st.caption("Excluded: regulatory_required_human, high_emotional_stakes, or product_advisory_complex.")
+            st.caption("Excluded: regulatory_required_human, high_emotional_stakes, product_advisory_complex.")
 
-    # ---- export ----
+    with st.expander("📐  Methodology"):
+        st.markdown(
+            "**Strategic Score** = volume × containability × CBP fit, weighted by taxonomy priorities.  \n"
+            "**Containability** = `impact × (1 / complexity) × (0.4 + 0.6 × CBP fit)` → HIGH ≥ 0.55, MEDIUM ≥ 0.30, LOW < 0.30  \n"
+            "**Monthly Volume** = journey share of sample × total dataset sessions ÷ analysis window months  \n"
+            "**Annual Opportunity** = sum over top-10 of *(monthly_volume × impact_lift × $4.50 × 12)*  \n"
+            "**Impact lifts** = high 60%, medium 35%, low 15% (conservative)."
+        )
+
     all_df = pd.DataFrame(shortlist + runners)
     if not all_df.empty:
-        _export_button(all_df, "MVP Shortlist", "export_mvp")
+        _export_button(all_df, "Strategic Shortlist", "export_mvp")
 
 
 # ============================================================================
@@ -396,7 +631,9 @@ def view_top_journeys():
 # ============================================================================
 
 def view_per_journey():  # noqa: C901
-    st.header("2. Strategic Journey Drill-Down")
+    pass  # noop — actual rendering begins below
+    st.markdown("### Strategic Journey Drill-Down")
+    st.caption("Diagnose a single MVP candidate end-to-end: failure modes, failure points, and the fix plan.")
 
     # ── load all data sources ──────────────────────────────────────────────
     mvp            = load_mvp_shortlist()
@@ -469,8 +706,12 @@ def view_per_journey():  # noqa: C901
     # 1️⃣  WHAT IS BREAKING?
     # ══════════════════════════════════════════════════════════════════════
     st.markdown("---")
-    st.markdown("### 1️⃣ &nbsp; WHAT is breaking?")
-    st.caption("Failure modes, customer intents and the LLM's diagnostic synthesis")
+    st.markdown(
+        "<h4 style='color:#1a73e8!important;'>STEP 1 &nbsp;·&nbsp; What is breaking?</h4>"
+        "<p style='font-size:13px;color:#6b7280;margin-top:-6px;'>"
+        "Failure modes, customer intents and the LLM's diagnostic synthesis.</p>",
+        unsafe_allow_html=True,
+    )
 
     primary_fm  = rem.get("primary_failure_mode", "")
     fm_dist     = rem.get("failure_mode_distribution", {})
@@ -521,8 +762,12 @@ def view_per_journey():  # noqa: C901
     # 2️⃣  WHERE IS IT BREAKING?
     # ══════════════════════════════════════════════════════════════════════
     st.markdown("---")
-    st.markdown("### 2️⃣ &nbsp; WHERE is it breaking?")
-    st.caption("The exact bot turn that fails, plus segmentation by channel / language / geography")
+    st.markdown(
+        "<h4 style='color:#1a73e8!important;'>STEP 2 &nbsp;·&nbsp; Where is it breaking?</h4>"
+        "<p style='font-size:13px;color:#6b7280;margin-top:-6px;'>"
+        "The exact bot turn that fails, plus segmentation by channel / language / geography.</p>",
+        unsafe_allow_html=True,
+    )
 
     if j_sessions:
         st.markdown("**📍 Per-Session Bot Failure Points**")
@@ -611,8 +856,12 @@ def view_per_journey():  # noqa: C901
     # 3️⃣  HOW TO FIX IT?
     # ══════════════════════════════════════════════════════════════════════
     st.markdown("---")
-    st.markdown("### 3️⃣ &nbsp; HOW to fix it?")
-    st.caption("Priority-ordered remediation plan, content additions and agent knowledge gaps")
+    st.markdown(
+        "<h4 style='color:#1a73e8!important;'>STEP 3 &nbsp;·&nbsp; How to fix it?</h4>"
+        "<p style='font-size:13px;color:#6b7280;margin-top:-6px;'>"
+        "Priority-ordered remediation plan, content additions, and knowledge transfer opportunities.</p>",
+        unsafe_allow_html=True,
+    )
 
     rems = rem.get("recommended_remediations", [])
     if rems:
