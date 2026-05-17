@@ -196,115 +196,196 @@ def render_header():
 # VIEW 1: TOP PRIORITY JOURNEYS
 # ============================================================================
 
-def view_top_journeys():
-    st.header("1. Top Priority Journeys")
-    st.caption("Ranked by composite score. Click any row to drill down (View 2).")
+def _containability(rem: dict, cbp_fit: float) -> tuple[str, str, float]:
+    """Return (label, color, score 0–1) for how containable this journey is.
 
-    mvp = load_mvp_shortlist()
-    shortlist = mvp.get("mvp_shortlist", [])
-    runners = mvp.get("runners_up", [])
-    excluded = mvp.get("excluded_journeys", [])
+    Containability = how realistic is it to move this journey from agent → bot,
+    given the recommended remediation's complexity and the CBP's current capability fit.
+    """
+    top = (rem.get("recommended_remediations") or [{}])[0]
+    impact     = top.get("estimated_impact", "medium")
+    complexity = top.get("implementation_complexity", "medium")
+    imp_w   = {"high": 1.0, "medium": 0.6, "low": 0.3}.get(impact, 0.5)
+    comp_w  = {"low": 1.0, "medium": 0.6, "high": 0.3}.get(complexity, 0.5)
+    score   = imp_w * comp_w * (0.4 + 0.6 * cbp_fit)
+    if score >= 0.55:
+        return "HIGH", "#34a853", score
+    if score >= 0.30:
+        return "MEDIUM", "#fbbc04", score
+    return "LOW", "#ea4335", score
+
+
+def _monthly_volume(row: dict, total_dataset_sessions: int, months: int = 6) -> int:
+    """Project monthly agent-handoff volume from the classified sample.
+
+    POC mode: classifier saw a small fraction of total sessions, so we
+    scale up the journey's share to the full dataset.
+    """
+    n_classified = row.get("total_sessions", 0)
+    sample_share = row.get("volume_share", 0)
+    if sample_share > 0:
+        monthly = int(sample_share * total_dataset_sessions / max(months, 1))
+        return max(monthly, n_classified)
+    return n_classified
+
+
+def view_top_journeys():
+    st.header("1. Containment Strategy — Top 10 MVP Journeys")
+    st.caption(
+        "Strategic priorities to shift bot→agent handoffs back into bot scope. "
+        "Every transcript below was already escalated to a human agent; the question is **which journeys can the bot recapture?**"
+    )
+
+    mvp        = load_mvp_shortlist()
+    shortlist  = mvp.get("mvp_shortlist", [])
+    runners    = mvp.get("runners_up", [])
+    excluded   = mvp.get("excluded_journeys", [])
+    rem_data   = load_remediation_assignments()
+    leakage    = load_leakage_map()
 
     if not shortlist:
-        st.warning("No scored journeys found. Run the pipeline first: `python -m src.pipeline --source full --dry-run --yes`")
+        st.warning(
+            "No scored journeys found. Run the pipeline first: "
+            "`python -m src.pipeline --source full --max-classify 100`"
+        )
         return
 
-    # ---- SORT CONTROLS ----
+    total_dataset_sessions = leakage.get("summary", {}).get("total_sessions", 10000)
+
+    # Sort options (volume + strategic, no rates)
     sort_by = st.radio(
-        "Sort by:", ["Composite Score", "Total Volume", "Leakage Rate"],
-        horizontal=True, key="v1_sort"
+        "Sort by:",
+        ["Strategic Score", "Monthly Volume", "Containability", "CBP Fit"],
+        horizontal=True, key="v1_sort",
     )
+
+    # ---- enrich rows with strategic metrics ----
+    enriched = []
+    for r in shortlist + runners:
+        jid    = r["journey_id"]
+        rem    = rem_data.get(jid, {})
+        c_label, c_color, c_score = _containability(rem, r.get("cbp_capability_fit", 0.5))
+        monthly = _monthly_volume(r, total_dataset_sessions)
+        enriched.append({**r,
+                         "_monthly_volume": monthly,
+                         "_containability_label": c_label,
+                         "_containability_color": c_color,
+                         "_containability_score": c_score,
+                         "_rem_object": rem})
+
     sort_map = {
-        "Composite Score": ("composite_score", False),
-        "Total Volume": ("total_sessions", False),
-        "Leakage Rate": ("escalation_rate", False),
+        "Strategic Score": ("composite_score",       False),
+        "Monthly Volume":  ("_monthly_volume",       False),
+        "Containability":  ("_containability_score", False),
+        "CBP Fit":         ("cbp_capability_fit",    False),
     }
     sort_col, sort_asc = sort_map[sort_by]
+    enriched.sort(key=lambda x: x.get(sort_col, 0) or 0, reverse=not sort_asc)
 
-    # Build display dataframe
-    all_journeys = shortlist + runners
-    df = pd.DataFrame(all_journeys)
-    if df.empty:
-        st.warning("No data available.")
-        return
+    # ---- KPI ROW (strategic, no rates) ----
+    top10                = enriched[:10]
+    total_top10_volume   = sum(j["_monthly_volume"] for j in top10)
+    avg_containability   = sum(j["_containability_score"] for j in top10) / max(len(top10), 1)
+    monthly_agent_cost   = total_top10_volume * 4.50          # $4.50 per agent handoff
+    high_containable_n   = sum(1 for j in top10 if j["_containability_label"] == "HIGH")
 
-    df = df.sort_values(sort_col, ascending=sort_asc).reset_index(drop=True)
-
-    # ---- METRICS ROW ----
-    col1, col2, col3, col4 = st.columns(4)
-    leakage = load_leakage_map()
-    summary = leakage.get("summary", {})
-    with col1:
-        st.metric("Total Sessions", f"{summary.get('total_sessions', 0):,}")
-    with col2:
-        st.metric("Total Escalations", f"{summary.get('total_escalated', 0):,}")
-    with col3:
-        rate = summary.get('overall_escalation_rate', 0)
-        st.metric("Overall Escalation Rate", f"{rate:.1%}")
-    with col4:
-        st.metric("MVP Candidates", len(shortlist))
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Top-10 Monthly Volume",  f"{total_top10_volume:,}",
+              help="Estimated bot→agent handoffs per month across the top 10 journeys")
+    c2.metric("Avg Containability",     f"{avg_containability:.0%}",
+              help="How realistic it is to move these journeys back into bot scope")
+    c3.metric("HIGH Containable",       f"{high_containable_n} / 10",
+              help="Journeys with low-complexity, high-impact remediation paths")
+    c4.metric("Monthly Cost @ Status Quo", f"${monthly_agent_cost:,.0f}",
+              help="Top-10 monthly volume × $4.50 avg agent handoff cost")
 
     st.divider()
+    st.subheader("🏆 Strategic MVP Shortlist")
 
-    # ---- TOP 10 TABLE ----
-    st.subheader("🏆 MVP Shortlist (Top 10)")
+    # ---- 10 JOURNEY CARDS (strategic framing) ----
+    for i, row in enumerate(top10):
+        rank   = row.get("mvp_rank", i + 1)
+        jid    = row["journey_id"]
+        name   = row.get("journey_name", jid)
+        domain = (row.get("domain", "") or jid.split("_")[0]).upper()
+        conf   = row.get("confidence", "MEDIUM")
+        score  = row.get("composite_score", 0)
+        cbp    = row.get("cbp_capability_fit", 0.5)
+        rem    = row["_rem_object"]
+        c_lbl  = row["_containability_label"]
+        c_col  = row["_containability_color"]
+        vol    = row["_monthly_volume"]
+        pfm    = rem.get("primary_failure_mode", "").replace("_", " ").title() or "Not yet coded"
+        top_rem = (rem.get("recommended_remediations") or [{}])[0]
+        rem_typ = top_rem.get("remediation_type", row.get("primary_remediation", "—")).replace("_", " ").title()
+        rationale_short = top_rem.get("rationale", "")[:140]
+        if rationale_short and len(top_rem.get("rationale", "")) > 140:
+            rationale_short += "…"
 
-    for i, row in df.head(10).iterrows():
-        rank = row.get("mvp_rank", i + 1)
-        jid = row.get("journey_id", "")
-        name = row.get("journey_name", jid)
-        n = row.get("total_sessions", 0)
-        e = row.get("escalated_sessions", 0)
-        rate = row.get("escalation_rate", 0)
-        score = row.get("composite_score", 0)
-        rem = row.get("primary_remediation", "")
-        conf = row.get("confidence", "MEDIUM")
-        why = row.get("why_this_matters", "")
-        cbp_fit = row.get("cbp_capability_fit", 0)
-
-        # Color by MVP fit
-        if cbp_fit >= 0.80 and score > 0.5:
-            card_color = "#e6f4ea"  # green
-        elif cbp_fit >= 0.50:
-            card_color = "#fff8e1"  # amber
-        else:
-            card_color = "#fce8e6"  # red
+        # Container card
+        card_bg = "#e6f4ea" if c_lbl == "HIGH" else "#fff8e1" if c_lbl == "MEDIUM" else "#fce8e6"
 
         with st.container():
             st.markdown(
                 f"""
-                <div style='background:{card_color};border-radius:8px;padding:12px 16px;margin-bottom:8px;border-left:4px solid {"#34a853" if cbp_fit>=0.8 else "#fbbc04" if cbp_fit>=0.5 else "#ea4335"};'>
-                <b style='color:#1a1a1a;'>#{rank} {name}</b>&nbsp;<small style='color:#1a1a1a;'>| {jid} | {_confidence_badge(conf)}</small><br>
-                <small style='color:#1a1a1a;'>{e:,} escalations ({rate:.0%} rate) &nbsp;•&nbsp; Score: <b style='color:#1a1a1a;'>{score:.3f}</b> &nbsp;•&nbsp; {_remediation_color(rem)} {rem}</small><br>
-                <small style='color:#444444;'>{why}</small>
+                <div style='background:{card_bg};border-radius:10px;padding:14px 18px;
+                            margin-bottom:8px;border-left:5px solid {c_col};'>
+                <div style='display:flex;justify-content:space-between;align-items:baseline;'>
+                  <div>
+                    <b style='color:#1a1a1a;font-size:16px;'>#{rank} &nbsp; {name}</b>
+                    <small style='color:#666;'>&nbsp;·&nbsp; {domain} &nbsp;·&nbsp; {jid} &nbsp;·&nbsp; {_confidence_badge(conf)}</small>
+                  </div>
+                  <div style='text-align:right;'>
+                    <small style='color:#666;'>Strategic Score</small><br>
+                    <b style='color:#1a1a1a;font-size:15px;'>{score:.3f}</b>
+                  </div>
+                </div>
+                <div style='display:flex;gap:18px;margin-top:8px;flex-wrap:wrap;'>
+                  <span style='color:#1a1a1a;'><b>📊 {vol:,}</b><small> sessions/mo</small></span>
+                  <span style='color:#1a1a1a;'><b>🤖 {cbp:.0%}</b><small> CBP fit</small></span>
+                  <span style='color:#1a1a1a;'><b>🎯 {c_lbl}</b><small> containability</small></span>
+                  <span style='color:#1a1a1a;'><small>⚠️ Primary failure:</small> <b>{pfm}</b></span>
+                </div>
+                <div style='margin-top:8px;'>
+                  <small style='color:#444;'><b>🛠 Top fix:</b> {rem_typ}</small><br>
+                  <small style='color:#555;font-style:italic;'>{rationale_short or "—"}</small>
+                </div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
             if st.button(f"🔍 Drill into {jid}", key=f"drill_{jid}"):
-                st.session_state["selected_journey"] = jid
-                st.session_state["_pending_nav"] = "Per-Journey Deep Dive"
+                st.session_state["selected_journey"]  = jid
+                st.session_state["_pending_nav"]      = "Per-Journey Deep Dive"
                 st.rerun()
 
-    # ---- RUNNERS UP ----
+    # ---- runners-up & excluded ----
     if runners:
         with st.expander(f"🏃 Runners-Up ({len(runners)} journeys)"):
-            runners_df = pd.DataFrame(runners)[["journey_id", "journey_name", "total_sessions", "escalated_sessions", "escalation_rate", "composite_score", "primary_remediation"]]
-            runners_df.columns = ["ID", "Journey", "Sessions", "Escalations", "Rate", "Score", "Remediation"]
-            runners_df["Rate"] = runners_df["Rate"].apply(lambda x: f"{x:.0%}")
-            runners_df["Score"] = runners_df["Score"].apply(lambda x: f"{x:.3f}")
-            st.dataframe(runners_df, use_container_width=True, hide_index=True)
+            r_df = pd.DataFrame(runners)[
+                ["journey_id", "journey_name", "total_sessions",
+                 "composite_score", "primary_remediation", "cbp_capability_fit"]
+            ].rename(columns={
+                "journey_id":          "ID",
+                "journey_name":        "Journey",
+                "total_sessions":      "Sample",
+                "composite_score":     "Score",
+                "primary_remediation": "Remediation",
+                "cbp_capability_fit":  "CBP Fit",
+            })
+            r_df["Score"]   = r_df["Score"].apply(lambda x: f"{x:.3f}")
+            r_df["CBP Fit"] = r_df["CBP Fit"].apply(lambda x: f"{x:.0%}")
+            st.dataframe(r_df, use_container_width=True, hide_index=True)
 
-    # ---- EXCLUDED ----
     if excluded:
         with st.expander(f"🚫 Excluded Journeys ({len(excluded)})"):
-            excl_df = pd.DataFrame(excluded)[["journey_id", "journey_name", "exclusion_reason", "total_sessions"]]
-            excl_df.columns = ["ID", "Journey", "Excluded Because", "Sessions"]
-            st.dataframe(excl_df, use_container_width=True, hide_index=True)
-            st.caption("Excluded journeys: regulatory_required_human, high_emotional_stakes, or product_advisory_complex.")
+            e_df = pd.DataFrame(excluded)[["journey_id", "journey_name", "exclusion_reason"]]
+            e_df.columns = ["ID", "Journey", "Excluded Because"]
+            st.dataframe(e_df, use_container_width=True, hide_index=True)
+            st.caption("Excluded: regulatory_required_human, high_emotional_stakes, or product_advisory_complex.")
 
-    # ---- EXPORT ----
+    # ---- export ----
     all_df = pd.DataFrame(shortlist + runners)
     if not all_df.empty:
         _export_button(all_df, "MVP Shortlist", "export_mvp")
@@ -315,14 +396,14 @@ def view_top_journeys():
 # ============================================================================
 
 def view_per_journey():  # noqa: C901
-    st.header("2. Per-Journey Deep Dive")
+    st.header("2. Strategic Journey Drill-Down")
 
     # ── load all data sources ──────────────────────────────────────────────
-    mvp               = load_mvp_shortlist()
-    rem_assignments   = load_remediation_assignments()
-    fail_clf          = load_failure_classifications()
-    leakage           = load_leakage_map()
-    trends            = load_temporal_trends()
+    mvp            = load_mvp_shortlist()
+    rem_assigns    = load_remediation_assignments()
+    fail_clf       = load_failure_classifications()
+    leakage        = load_leakage_map()
+    trends         = load_temporal_trends()
 
     all_journeys = mvp.get("mvp_shortlist", []) + mvp.get("runners_up", [])
     if not all_journeys:
@@ -341,126 +422,82 @@ def view_per_journey():  # noqa: C901
         return
 
     # ── pull related data ─────────────────────────────────────────────────
-    rem            = rem_assignments.get(selected_jid, {})
-    j_sessions     = [v for v in fail_clf.values() if v.get("journey_id") == selected_jid]
-    j_leakage      = next((j for j in leakage.get("journeys", []) if j["journey_id"] == selected_jid), {})
-    j_trend        = next((j for j in trends.get("journeys", []) if j["journey_id"] == selected_jid), {})
-    timeseries     = j_trend.get("timeseries", [])
+    rem        = rem_assigns.get(selected_jid, {})
+    j_sessions = [v for v in fail_clf.values() if v.get("journey_id") == selected_jid]
+    j_leakage  = next((j for j in leakage.get("journeys", []) if j["journey_id"] == selected_jid), {})
+    j_trend    = next((j for j in trends.get("journeys", []) if j["journey_id"] == selected_jid), {})
+    timeseries = j_trend.get("timeseries", [])
 
-    # ── derived scalars ───────────────────────────────────────────────────
-    esc_rate       = jd.get("escalation_rate", 0)
-    n_escalated    = jd.get("escalated_sessions", 0)
-    n_total        = jd.get("total_sessions", 0)
-    avg_csat       = jd.get("avg_csat", 3.0)
-    cbp_fit        = jd.get("cbp_capability_fit", 0.5)
-    score          = jd.get("composite_score", 0)
+    # ── derived scalars (strategic, not rate-based) ───────────────────────
+    cbp_fit         = jd.get("cbp_capability_fit", 0.5)
+    n_sample        = jd.get("total_sessions", 0)
+    score           = jd.get("composite_score", 0)
+    top_rem         = (rem.get("recommended_remediations") or [{}])[0]
+    impact_level    = top_rem.get("estimated_impact", "medium")
+    complexity      = top_rem.get("implementation_complexity", "medium")
+    rem_type        = top_rem.get("remediation_type", jd.get("primary_remediation", "unknown"))
 
-    top_rem        = (rem.get("recommended_remediations") or [{}])[0]
-    impact_level   = top_rem.get("estimated_impact", "medium")
-    complexity     = top_rem.get("implementation_complexity", "medium")
-    rem_type       = top_rem.get("remediation_type", jd.get("primary_remediation", "unknown"))
-
-    impact_mult    = {"high": 0.60, "medium": 0.35, "low": 0.15}.get(impact_level, 0.35)
-    timeline       = {"high": "8–12 weeks", "medium": "3–6 weeks", "low": "1–2 weeks"}.get(complexity, "4–6 weeks")
-    csat_uplift    = {"high": 0.5, "medium": 0.3, "low": 0.1}.get(impact_level, 0.3)
-    COST_PER_ESC   = 4.50   # $ per escalation (industry average, banking chatbots)
-    MIN_PER_ESC    = 8      # avg agent handle time in minutes
-
-    # monthly baseline: use last-4-week actuals, else use sample count
-    if timeseries:
-        monthly_esc = sum(w.get("escalated", 0) for w in timeseries[-4:])
-    else:
-        monthly_esc = n_escalated
-
-    proj_esc        = int(monthly_esc * (1 - impact_mult))
-    monthly_saved   = monthly_esc - proj_esc
-    cost_saved_mo   = monthly_saved * COST_PER_ESC
-    mins_saved_mo   = monthly_saved * MIN_PER_ESC
-    proj_csat       = min(5.0, avg_csat + csat_uplift)
-    proj_esc_rate   = esc_rate * (1 - impact_mult)
+    total_dataset_sessions = leakage.get("summary", {}).get("total_sessions", 10000)
+    monthly_volume         = _monthly_volume(jd, total_dataset_sessions)
+    c_label, c_color, c_score = _containability(rem, cbp_fit)
 
     # ══════════════════════════════════════════════════════════════════════
     # HEADER
     # ══════════════════════════════════════════════════════════════════════
-    domain = jd.get("domain", "").upper()
+    domain = (jd.get("domain", "") or selected_jid.split("_")[0]).upper()
     rank   = jd.get("mvp_rank", "—")
     st.markdown(f"### {jd.get('journey_name', selected_jid)}")
     st.caption(
-        f"**{domain}** · MVP Rank **#{rank}** · Composite Score **{score:.3f}** · "
-        f"{_confidence_badge(jd.get('confidence', 'MEDIUM'))} confidence · "
-        f"CBP Fit **{cbp_fit:.0%}**"
+        f"**{domain}** · MVP Rank **#{rank}** · Strategic Score **{score:.3f}** · "
+        f"{_confidence_badge(jd.get('confidence', 'MEDIUM'))} confidence"
     )
 
-    # ══════════════════════════════════════════════════════════════════════
-    # A: BUSINESS IMPACT SNAPSHOT
-    # ══════════════════════════════════════════════════════════════════════
-    st.markdown("---")
-    st.markdown("#### 📊 Business Impact Snapshot")
+    # ── strategic KPI row (volume + containability, NOT rates) ────────────
     c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("Escalation Rate",      f"{esc_rate:.1%}",
-              help="% of sessions requiring human agent transfer")
-    c2.metric("Monthly Escalations",  f"{monthly_esc:,}",
-              help="Estimated from last 4 weeks of data")
-    c3.metric("Monthly Cost of Inaction", f"${monthly_esc * COST_PER_ESC:,.0f}",
-              help="$4.50 avg cost per escalation (banking industry benchmark)")
-    c4.metric("Avg CSAT",             f"{avg_csat:.1f}/5.0",
-              help="Customer satisfaction score for this journey")
-    c5.metric("Bot-Containable",      f"{int(n_escalated * cbp_fit):,} / {n_escalated:,}",
-              help="Escalations the CBP can handle without new integrations")
+    c1.metric("📊 Monthly Volume", f"{monthly_volume:,}",
+              help="Estimated bot→agent handoffs per month for this journey")
+    c2.metric("🔬 Sessions Analyzed", f"{n_sample:,}",
+              help="Number of sessions LLM-coded for this journey in the current sample")
+    c3.metric("🎯 Containability", c_label,
+              help=f"How realistic to move this journey back into bot scope (score: {c_score:.2f})")
+    c4.metric("🤖 CBP Fit", f"{cbp_fit:.0%}",
+              help="Share of this journey the bot can handle with current capabilities")
+    c5.metric("🛠 Implementation", complexity.title(),
+              help=f"Effort to deliver the top remediation: {rem_type.replace('_', ' ').title()}")
 
     # ══════════════════════════════════════════════════════════════════════
-    # B: ROOT CAUSE DIAGNOSIS
+    # 1️⃣  WHAT IS BREAKING?
     # ══════════════════════════════════════════════════════════════════════
     st.markdown("---")
-    st.markdown("#### 🔍 Root Cause Diagnosis")
+    st.markdown("### 1️⃣ &nbsp; WHAT is breaking?")
+    st.caption("Failure modes, customer intents and the LLM's diagnostic synthesis")
 
     primary_fm  = rem.get("primary_failure_mode", "")
     fm_dist     = rem.get("failure_mode_distribution", {})
     llm_reason  = rem.get("reasoning", "")
 
     if primary_fm:
-        st.error(f"**Primary Failure Mode: `{primary_fm.replace('_', ' ').title()}`**  —  "
-                 f"confirmed across {rem.get('sessions_in_sample', n_escalated)} sampled session(s).")
+        st.error(
+            f"**Primary Failure Mode:** `{primary_fm.replace('_', ' ').title()}` "
+            f"— confirmed across {rem.get('sessions_in_sample', n_sample)} sampled session(s)."
+        )
 
-    col_diag, col_fm = st.columns([3, 2])
+    col_synth, col_dist = st.columns([3, 2])
 
-    with col_diag:
+    with col_synth:
         if llm_reason:
-            st.markdown("**🤖 LLM Synthesis**")
+            st.markdown("**🤖 LLM Diagnostic Synthesis**")
             st.info(llm_reason)
 
+        # customer intent clustering
         if j_sessions:
-            st.markdown("**📋 Per-Session Evidence**")
+            intents = [s.get("customer_intent", "") for s in j_sessions if s.get("customer_intent")]
+            if intents:
+                st.markdown("**🎯 Customer Intents Observed**")
+                for intent in intents[:5]:
+                    st.markdown(f"- {intent}")
 
-            def _trunc(s: str, n: int = 65) -> str:
-                return (s[:n] + "…") if len(s) > n else s
-
-            rows = [
-                {
-                    "Customer Intent":   _trunc(s.get("customer_intent", "—")),
-                    "Bot Failure Point": _trunc(s.get("bot_failure_point", "—")),
-                    "Root Blocker":      _trunc(s.get("actual_blocker", "—"), 55),
-                    "Prevention":        s.get("what_would_have_prevented_escalation", "—"),
-                }
-                for s in j_sessions[:6]
-            ]
-            st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
-
-            # Prevention detail drill-down
-            for s in j_sessions[:3]:
-                detail = s.get("prevention_detail", "")
-                if detail:
-                    sid_short = s.get("session_id", "")[:14]
-                    with st.expander(f"💬 Prevention detail — session `{sid_short}…`"):
-                        st.write(detail)
-                        if s.get("customer_confusion_signal"):
-                            st.caption(f"**Customer confusion signal:** {s['customer_confusion_signal']}")
-                        if s.get("agent_action"):
-                            st.caption(f"**Agent action taken:** {s['agent_action']}")
-        else:
-            st.info("No per-session failure data for this journey. Run pipeline to generate deep-coding.")
-
-    with col_fm:
+    with col_dist:
         if fm_dist:
             st.markdown("**Failure Mode Distribution**")
             fm_df = pd.DataFrame([
@@ -481,21 +518,112 @@ def view_per_journey():  # noqa: C901
                 st.caption(f"• `{reason}` — {count} ({pct:.0f}%)")
 
     # ══════════════════════════════════════════════════════════════════════
-    # C: RECOMMENDED FIX PLAN
+    # 2️⃣  WHERE IS IT BREAKING?
     # ══════════════════════════════════════════════════════════════════════
     st.markdown("---")
-    st.markdown("#### 🛠️ Recommended Fix Plan")
+    st.markdown("### 2️⃣ &nbsp; WHERE is it breaking?")
+    st.caption("The exact bot turn that fails, plus segmentation by channel / language / geography")
+
+    if j_sessions:
+        st.markdown("**📍 Per-Session Bot Failure Points**")
+
+        def _trunc(s: str, n: int = 70) -> str:
+            return (s[:n] + "…") if len(s) > n else s
+
+        rows = [
+            {
+                "Customer Intent":    _trunc(s.get("customer_intent", "—"), 55),
+                "Bot Failure Point":  _trunc(s.get("bot_failure_point", "—"), 75),
+                "Root Blocker":       _trunc(s.get("actual_blocker", "—"), 60),
+                "Agent Action":       _trunc(s.get("agent_action", "—"), 60),
+                "Prevention":         s.get("what_would_have_prevented_escalation", "—"),
+            }
+            for s in j_sessions[:8]
+        ]
+        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+        # Expandable evidence per session
+        for s in j_sessions[:3]:
+            detail = s.get("prevention_detail", "")
+            if detail:
+                sid_short = s.get("session_id", "")[:14]
+                with st.expander(f"💬 Evidence — session `{sid_short}…`"):
+                    st.markdown(f"**Prevention detail:** {detail}")
+                    if s.get("customer_confusion_signal"):
+                        st.markdown(f"**Customer confusion signal:** {s['customer_confusion_signal']}")
+                    if s.get("agent_resolution_status"):
+                        st.markdown(f"**Agent resolution status:** `{s['agent_resolution_status']}`")
+    else:
+        st.info("No per-session evidence available for this journey.")
+
+    # segmentation
+    seg_by_channel  = j_leakage.get("by_channel", {})
+    seg_by_language = j_leakage.get("by_language", {})
+    seg_by_geo      = j_leakage.get("by_geography", {})
+    if any([seg_by_channel, seg_by_language, seg_by_geo]):
+        st.markdown("**🌐 Volume Segmentation**")
+        sc1, sc2, sc3 = st.columns(3)
+
+        def _seg_volume(seg: dict, col, label: str):
+            if not seg:
+                return
+            rows = [
+                {"Segment": k, "Sessions": v["total"], "Escalations": v["escalated"]}
+                for k, v in sorted(seg.items(), key=lambda x: -x[1].get("total", 0))
+                if v.get("total", 0) > 0
+            ]
+            if rows:
+                col.markdown(f"_{label}_")
+                col.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+                top = rows[0]
+                col.caption(f"🎯 Largest segment: **{top['Segment']}** ({top['Sessions']:,} sessions)")
+
+        _seg_volume(seg_by_channel,  sc1, "By Channel")
+        _seg_volume(seg_by_language, sc2, "By Language")
+        _seg_volume(seg_by_geo,      sc3, "By Geography")
+
+    # trend
+    if timeseries:
+        st.markdown("**📈 Weekly Volume Trend**")
+        ts_df = pd.DataFrame(timeseries).rename(
+            columns={"week": "Week", "escalated": "Agent Handoffs"}
+        )
+        col_chart, col_stat = st.columns([3, 1])
+        with col_chart:
+            st.line_chart(ts_df.set_index("Week")[["Agent Handoffs"]])
+        with col_stat:
+            if len(timeseries) >= 4:
+                early = sum(w.get("escalated", 0) for w in timeseries[:4])
+                late  = sum(w.get("escalated", 0) for w in timeseries[-4:])
+                delta = late - early
+                trend = "📈 Growing" if delta > 5 else ("📉 Shrinking" if delta < -5 else "➡️ Stable")
+                st.metric("Trend", trend)
+                st.metric("Recent / Early", f"{late} / {early}",
+                          delta=f"{delta:+d}")
+        step_changes = j_trend.get("step_changes", [])
+        if step_changes:
+            st.warning(
+                f"⚠️ {len(step_changes)} step-change(s) detected — investigate "
+                "deployments or product changes around these dates."
+            )
+
+    # ══════════════════════════════════════════════════════════════════════
+    # 3️⃣  HOW TO FIX IT?
+    # ══════════════════════════════════════════════════════════════════════
+    st.markdown("---")
+    st.markdown("### 3️⃣ &nbsp; HOW to fix it?")
+    st.caption("Priority-ordered remediation plan, content additions and agent knowledge gaps")
 
     rems = rem.get("recommended_remediations", [])
     if rems:
         for i, r in enumerate(rems, 1):
-            rtype    = r.get("remediation_type", "").replace("_", " ").title()
+            rtype     = r.get("remediation_type", "").replace("_", " ").title()
             rationale = r.get("rationale", "No rationale provided.")
-            imp      = r.get("estimated_impact", "medium")
-            comp     = r.get("implementation_complexity", "medium")
-            imp_icon    = {"high": "🟢", "medium": "🟡", "low": "🔴"}.get(imp, "🟡")
-            comp_icon   = {"low": "🟢", "medium": "🟡", "high": "🔴"}.get(comp, "🟡")
-            delivery    = {"high": "8–12 wks", "medium": "3–6 wks", "low": "1–2 wks"}.get(comp, "4–6 wks")
+            imp       = r.get("estimated_impact", "medium")
+            comp      = r.get("implementation_complexity", "medium")
+            imp_icon  = {"high": "🟢", "medium": "🟡", "low": "🔴"}.get(imp, "🟡")
+            comp_icon = {"low": "🟢", "medium": "🟡", "high": "🔴"}.get(comp, "🟡")
+            delivery  = {"high": "8–12 wks", "medium": "3–6 wks", "low": "1–2 wks"}.get(comp, "4–6 wks")
             st.markdown(
                 f"""
                 <div style='background:#f8f9fa;border-left:4px solid #1a73e8;
@@ -512,155 +640,114 @@ def view_per_journey():  # noqa: C901
     else:
         st.info("No remediation plan available — run pipeline with real LLM to generate recommendations.")
 
-    faq_topics = rem.get("recommended_faq_topics", [])
-    if faq_topics:
-        st.markdown("**📋 Content / FAQ Topics to Add**")
-        for t in faq_topics:
-            st.markdown(f"- {t}")
+    col_faq, col_kt = st.columns(2)
 
-    kt_note = rem.get("knowledge_transfer_opportunity")
-    if kt_note:
-        st.info(f"💡 **Knowledge Transfer Opportunity:** {kt_note}")
+    with col_faq:
+        faq_topics = rem.get("recommended_faq_topics", [])
+        if faq_topics:
+            st.markdown("**📋 Content / FAQ Topics to Add**")
+            for t in faq_topics:
+                st.markdown(f"- {t}")
 
-    # ══════════════════════════════════════════════════════════════════════
-    # D: SEGMENTATION — WHERE IT HURTS MOST
-    # ══════════════════════════════════════════════════════════════════════
-    seg_by_channel  = j_leakage.get("by_channel", {})
-    seg_by_language = j_leakage.get("by_language", {})
-    seg_by_geo      = j_leakage.get("by_geography", {})
-
-    if any([seg_by_channel, seg_by_language, seg_by_geo]):
-        st.markdown("---")
-        st.markdown("#### 📍 Segmentation — Where It Hurts Most")
-        c1, c2, c3 = st.columns(3)
-
-        def _seg_table(seg: dict, col):
-            if not seg:
-                return
-            rows = [
-                {
-                    "Segment":        k,
-                    "Esc. Rate":      f"{v['rate']:.1%}",
-                    "Escalations":    v["escalated"],
-                    "Total Sessions": v["total"],
-                }
-                for k, v in sorted(seg.items(), key=lambda x: -x[1].get("rate", 0))
-                if v.get("total", 0) > 0
-            ]
-            if rows:
-                col.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
-                worst = rows[0]
-                col.caption(f"⚠️ Highest rate: **{worst['Segment']}** @ {worst['Esc. Rate']}")
-
-        with c1:
-            st.markdown("**By Channel**")
-            _seg_table(seg_by_channel, c1)
-        with c2:
-            st.markdown("**By Language**")
-            _seg_table(seg_by_language, c2)
-        with c3:
-            st.markdown("**By Geography**")
-            _seg_table(seg_by_geo, c3)
+    with col_kt:
+        kt_note = rem.get("knowledge_transfer_opportunity")
+        if kt_note:
+            st.markdown("**💡 Knowledge Transfer Opportunity**")
+            st.info(kt_note)
 
     # ══════════════════════════════════════════════════════════════════════
-    # E: TREND ANALYSIS
+    # CTA: STRATEGIC IMPACT PROJECTION (hidden by default)
     # ══════════════════════════════════════════════════════════════════════
-    if timeseries:
-        st.markdown("---")
-        st.markdown("#### 📈 Escalation Trend")
-        ts_df = pd.DataFrame(timeseries).rename(
-            columns={"week": "Week", "rate_pct": "Escalation Rate %", "escalated": "Escalations"}
+    st.markdown("---")
+    show_proj_key = f"show_proj_{selected_jid}"
+    if show_proj_key not in st.session_state:
+        st.session_state[show_proj_key] = False
+
+    cta_col, _ = st.columns([1, 2])
+    with cta_col:
+        if not st.session_state[show_proj_key]:
+            if st.button("📊 Show Strategic Impact Projection", key=f"btn_{show_proj_key}",
+                         use_container_width=True, type="primary"):
+                st.session_state[show_proj_key] = True
+                st.rerun()
+        else:
+            if st.button("🔼 Hide Projection", key=f"hide_{show_proj_key}",
+                         use_container_width=True):
+                st.session_state[show_proj_key] = False
+                st.rerun()
+
+    if st.session_state[show_proj_key]:
+        # ── compute projection ───────────────────────────────────────────
+        impact_mult   = {"high": 0.60, "medium": 0.35, "low": 0.15}.get(impact_level, 0.35)
+        csat_uplift   = {"high": 0.5,  "medium": 0.3,  "low": 0.1}.get(impact_level, 0.3)
+        timeline      = {"high": "8–12 weeks", "medium": "3–6 weeks", "low": "1–2 weeks"}.get(complexity, "4–6 weeks")
+        COST_PER_HND  = 4.50   # $ per agent handoff
+        MIN_PER_HND   = 8
+
+        proj_vol      = int(monthly_volume * (1 - impact_mult))
+        vol_saved     = monthly_volume - proj_vol
+        cost_saved_mo = vol_saved * COST_PER_HND
+        mins_saved_mo = vol_saved * MIN_PER_HND
+        avg_csat      = jd.get("avg_csat", 3.0)
+        proj_csat     = min(5.0, avg_csat + csat_uplift)
+
+        st.markdown("### 🎯 Strategic Impact Projection")
+        rem_label = rem_type.replace("_", " ").title()
+        st.markdown(
+            f"If **{rem_label}** is delivered (impact: **{impact_level.title()}** · "
+            f"complexity: **{complexity.title()}** · ETA: **{timeline}**), here is the projected containment lift:"
         )
-        col_chart, col_stats = st.columns([3, 1])
-        with col_chart:
-            st.line_chart(ts_df.set_index("Week")[["Escalation Rate %"]])
-        with col_stats:
-            if len(timeseries) >= 4:
-                early = sum(w.get("rate_pct", 0) for w in timeseries[:4]) / 4
-                late  = sum(w.get("rate_pct", 0) for w in timeseries[-4:]) / 4
-                delta = late - early
-                trend = "📈 Worsening" if delta > 1 else ("📉 Improving" if delta < -1 else "➡️ Stable")
-                st.metric("Trend", trend)
-                st.metric("Early avg", f"{early:.1f}%")
-                st.metric("Recent avg", f"{late:.1f}%", delta=f"{delta:+.1f}pp")
-        step_changes = j_trend.get("step_changes", [])
-        if step_changes:
-            st.warning(
-                f"⚠️ {len(step_changes)} abrupt step-change(s) detected — "
-                "investigate deployments or product changes around these dates."
+
+        before, arrow, after = st.columns([5, 1, 5])
+        with before:
+            st.markdown(
+                "<div style='background:#fce8e6;border-radius:8px;padding:10px 14px;"
+                "text-align:center;margin-bottom:8px;'>"
+                "<b style='color:#c62828;'>Status Quo</b></div>",
+                unsafe_allow_html=True,
             )
-            for sc in step_changes:
-                st.caption(
-                    f"Week {sc['week']}: {sc['from_rate_pct']}% → "
-                    f"{sc['to_rate_pct']}% ({sc['delta_pp']:+.1f}pp)"
-                )
+            m1, m2 = st.columns(2)
+            m1.metric("Monthly Handoffs", f"{monthly_volume:,}")
+            m2.metric("Monthly Cost",     f"${monthly_volume * COST_PER_HND:,.0f}")
+            m1.metric("Agent Mins / mo",  f"{monthly_volume * MIN_PER_HND:,}")
+            m2.metric("Avg CSAT",         f"{avg_csat:.1f}/5.0")
 
-    # ══════════════════════════════════════════════════════════════════════
-    # F: POST-FIX IMPACT PROJECTION
-    # ══════════════════════════════════════════════════════════════════════
+        with arrow:
+            st.markdown(
+                "<div style='text-align:center;padding-top:55px;font-size:26px;color:#555;'>→</div>",
+                unsafe_allow_html=True,
+            )
+
+        with after:
+            st.markdown(
+                "<div style='background:#e6f4ea;border-radius:8px;padding:10px 14px;"
+                "text-align:center;margin-bottom:8px;'>"
+                "<b style='color:#1b5e20;'>After Containment Fix</b></div>",
+                unsafe_allow_html=True,
+            )
+            m1, m2 = st.columns(2)
+            m1.metric("Monthly Handoffs", f"{proj_vol:,}",
+                      delta=f"-{vol_saved:,}", delta_color="inverse")
+            m2.metric("Monthly Cost",     f"${proj_vol * COST_PER_HND:,.0f}",
+                      delta=f"-${cost_saved_mo:,.0f}", delta_color="inverse")
+            m1.metric("Agent Mins / mo",  f"{proj_vol * MIN_PER_HND:,}",
+                      delta=f"-{mins_saved_mo:,}", delta_color="inverse")
+            m2.metric("Projected CSAT",   f"{proj_csat:.1f}/5.0",
+                      delta=f"+{csat_uplift:.1f}", delta_color="normal")
+
+        st.success(
+            f"**Projected annual saving: ${cost_saved_mo * 12:,.0f}** · "
+            f"**{vol_saved * 12:,} handoffs contained/year** · "
+            f"**{int(mins_saved_mo * 12 / 60):,} agent-hours freed/year**"
+        )
+        st.caption(
+            f"ℹ️ Methodology — {impact_level.title()} impact → {impact_mult:.0%} containment lift. "
+            f"$4.50 per handoff · 8 min avg handle time · CSAT uplift +{csat_uplift:.1f} pts. "
+            "Conservative estimates; refine after real deployment data."
+        )
+
+    # ── word doc ──────────────────────────────────────────────────────────
     st.markdown("---")
-    st.markdown("#### 🎯 Post-Fix Impact Projection")
-
-    rem_label = rem_type.replace("_", " ").title()
-    st.markdown(
-        f"Projecting **{impact_level.title()} impact** fix via **{rem_label}** "
-        f"(complexity: **{complexity.title()}** · delivery: **{timeline}**)"
-    )
-
-    col_before, col_arrow, col_after = st.columns([5, 1, 5])
-    with col_before:
-        st.markdown(
-            "<div style='background:#fce8e6;border-radius:8px;padding:10px 14px;"
-            "text-align:center;margin-bottom:8px;'>"
-            "<b style='color:#c62828;'>Current State</b></div>",
-            unsafe_allow_html=True,
-        )
-        m1, m2 = st.columns(2)
-        m1.metric("Monthly Escalations",  f"{monthly_esc:,}")
-        m2.metric("Escalation Rate",       f"{esc_rate:.1%}")
-        m1.metric("Monthly Cost",          f"${monthly_esc * COST_PER_ESC:,.0f}")
-        m2.metric("Agent Mins / mo",       f"{monthly_esc * MIN_PER_ESC:,}")
-        st.metric("Avg CSAT",              f"{avg_csat:.1f}/5.0")
-
-    with col_arrow:
-        st.markdown(
-            "<div style='text-align:center;padding-top:55px;font-size:26px;color:#555;'>→</div>",
-            unsafe_allow_html=True,
-        )
-
-    with col_after:
-        st.markdown(
-            "<div style='background:#e6f4ea;border-radius:8px;padding:10px 14px;"
-            "text-align:center;margin-bottom:8px;'>"
-            "<b style='color:#1b5e20;'>After Fix (Projected)</b></div>",
-            unsafe_allow_html=True,
-        )
-        m1, m2 = st.columns(2)
-        m1.metric("Monthly Escalations",  f"{proj_esc:,}",
-                  delta=f"-{monthly_saved:,}", delta_color="inverse")
-        m2.metric("Escalation Rate",       f"{proj_esc_rate:.1%}",
-                  delta=f"{proj_esc_rate - esc_rate:.1%}", delta_color="inverse")
-        m1.metric("Monthly Cost",          f"${proj_esc * COST_PER_ESC:,.0f}",
-                  delta=f"-${cost_saved_mo:,.0f}", delta_color="inverse")
-        m2.metric("Agent Mins / mo",       f"{proj_esc * MIN_PER_ESC:,}",
-                  delta=f"-{mins_saved_mo:,}", delta_color="inverse")
-        st.metric("Projected CSAT",        f"{proj_csat:.1f}/5.0",
-                  delta=f"+{csat_uplift:.1f}", delta_color="normal")
-
-    st.success(
-        f"**Projected annual saving: ${cost_saved_mo * 12:,.0f}** · "
-        f"**{monthly_saved * 12:,} escalations avoided/year** · "
-        f"**{int(mins_saved_mo * 12 / 60):,} agent-hours freed/year**"
-    )
-    st.caption(
-        f"ℹ️  Methodology: {impact_level.title()} impact → {impact_mult:.0%} escalation reduction. "
-        f"Cost basis: $4.50/escalation · 8 min avg handle time. "
-        f"CSAT uplift: +{csat_uplift:.1f} pts. All figures are conservative estimates."
-    )
-
-    # ── generate word doc ─────────────────────────────────────────────────
-    st.markdown("---")
-    st.subheader("Generate Report")
     if st.button("📄 Generate Word Report for this Journey", key="gen_doc"):
         with st.spinner("Generating Word document…"):
             try:
